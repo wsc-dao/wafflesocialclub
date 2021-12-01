@@ -10,7 +10,9 @@ $ yarn start
 
 $ cd packages/web
 $ yarn deploy
-
+## Packages.json
+## "deploy:gh": "yarn export && gh-pages -d ../../build/web --repo https://github.com/Dvob3east/waffleclub -t true",
+## "deploy": "cross-env ASSET_PREFIX=/waffleclub/ yarn build && yarn deploy:gh",
 
 - CLI :
 

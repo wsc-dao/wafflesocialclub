@@ -1,0 +1,76 @@
+{
+    "name": "TestPFP #",
+    "symbol": "AAA",
+    "description": "My First PFPTEST",
+    "seller_fee_basis_points": 0,
+    "external_url":  "https://localhost:3030",
+    "creators": [
+        {
+            "address": "EWDZ2hM1qukjW68w1HqX1GHHmVFS5hGCjmq6gg4EXz34",
+            "share": 100
+        }
+    ],
+    "collection": {
+        "name": "PFP x BELGAVERSE",
+        "family": "BELGAVERSE"
+    },
+    "dnp": {},
+    "premadeCustoms": [],
+    "breakdown": {
+        "background": {
+            "blue.png": 4,
+            "brown.png": 5,
+            "flesh.png": 8,
+            "green.png": 5,
+            "light-blue.png": 3,
+            "light-green.png": 2,
+            "light-pink.png": 2,
+            "light-purple.png": 5,
+            "light-yellow.png": 5,
+            "orange.png": 1,
+            "pink.png": 4,
+            "purple.png": 6,
+            "red.png": 2,
+            "yellow.png": 48
+        },
+        "body": {
+            "body_black.png": 8,
+            "body_blue.png": 9,
+            "body_green.png": 7,
+            "body_orange.png": 8,
+            "body_turquoise.png": 8,
+            "body_yellow.png": 60
+        },
+        "head": {
+            "head_basic.png": 11,
+            "head_king.png": 48,
+            "head_laugh.png": 41
+        },
+        "phylactère": {
+            "phylactère_ecars.png": 25,
+            "phylactère_evilorgood.png": 5,
+            "phylactère_happy.png": 18,
+            "phylactère_memory.png": 22,
+            "phylactère_old.png": 30
+        },
+        "tie": {
+            "tie_blue.png": 3,
+            "tie_burgundy.png": 15,
+            "tie_green.png": 3,
+            "tie_grey.png": 6,
+            "tie_pink.png": 1,
+            "tie_red.png": 10,
+            "tie_turquoise.png": 13,
+            "tie_yellow.png": 49
+        }
+    },
+    "order": [
+        "background",
+        "phylactère",
+        "body",
+        "tie",
+        "head"
+    ],
+    "width": 1000,
+    "height": 1000
+}
