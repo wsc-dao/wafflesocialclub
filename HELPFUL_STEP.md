@@ -49,7 +49,50 @@ solana balance
 
 $ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts -h
 $ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts upload -h
-$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine
-$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts update_candy_machine
+
+npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts upload ./assets -e devnet -k /home/devobeast/.config/solana/devnet.json -n 10
+
+Beginning the upload for 10 (png+json) pairs
+started at: 1638373582362
+wallet public key: 2L5DqBrc63qeUB5qeCEsAHsUDoY2c9nKppyyEwMnkgdz
+Processing file: 0, 0.png
+initializing config
+initialized config for a candy machine with publickey: 2qs1WLGUVYUddXy4tkXLqpKNg4XY2QQFVBoDotHhJWoJ
+Processing file: 1, 1.png
+Processing file: 2, 2.png
+Processing file: 3, 3.png
+Processing file: 4, 4.png
+Processing file: 5, 5.png
+Processing file: 6, 6.png
+Processing file: 7, 7.png
+Processing file: 8, 8.png
+Processing file: 9, 9.png
+Writing indices 0-9
+Done. Successful = true.
+ended at: 2021-12-01T15:47:31.056Z. time taken: 00:01:08
+
+8tSu23wvg7viRTYfAkkQQ1iczqxHWVk7WuJEgfEQ8AsB
+
+initialized config for a candy machine with publickey: 2qs1WLGUVYUddXy4tkXLqpKNg4XY2QQFVBoDotHhJWoJ
+
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine -h
+
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine -e devnet -k /home/devobeast/.config/solana/devnet.json -s 8tSu23wvg7viRTYfAkkQQ1iczqxHWVk7WuJEgfEQ8AsB -p 2
+
+create_candy_machine finished. candy machine pubkey: 7wrD1e2ApEdhVjkgFH2pGZg5m3S1gQUyjuYCNVaCK9Mp
+
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts update_candy_machine -e devnet -k /home/devobeast/.config/solana/devnet.json -p 1 -d "13 Dec 2021 00:00:00 CET"
+
+
+
+initialized config for a candy machine with publickey: 8tSu23wvg7viRTYfAkkQQ1iczqxHWVk7WuJEgfEQ8AsB
+
+wallet public key: 2L5DqBrc63qeUB5qeCEsAHsUDoY2c9nKppyyEwMnkgdz
+create_candy_machine finished. candy machine pubkey: 7wrD1e2ApEdhVjkgFH2pGZg5m3S1gQUyjuYCNVaCK9Mp
+startDate timestamp: 1639353600
+wallet public key: 2L5DqBrc63qeUB5qeCEsAHsUDoY2c9nKppyyEwMnkgdz
+ - updated startDate timestamp: 1639353600 (13 Dec 2021 00:00:00 GMT)
+ - updated price: 1000000000 lamports (1 SOL)
+update_candy_machine finished 5rZCS4KqaF9r1VfhLWNTqYquAdRyvdpKP84Q6D9m4ngi7igg4zzcj5HDGTb6Mto6DKoQGEp9NnzQHvsqU96iJHT7
 
 ```
