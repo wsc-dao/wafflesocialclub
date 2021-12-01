@@ -10,3 +10,6 @@ git push
 
 # git checkout -b <newbranch>
 # git push -u origin HEAD
+# git push origin --delete dev_toan
+# git branch -d localBranchName
+
