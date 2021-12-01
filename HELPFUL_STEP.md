@@ -1,27 +1,25 @@
-### Customized by D3vobeast ###
+Waffle Club is an exclusive NFT platform, marketplace and DAO, built on Solana. Waffle Club aims to bridge the gap between artists and their limited exclusive NFTs, events and gifts and many more ! and YOU are invited to be part of our amazing community.
 
-- JS/WEB :
-
-### LOCAL RUN ####
+## Customized by D3vobeast
+## LOCAL RUN :
+```
 $ git clone https://github.com/metaplex-foundation/metaplex.git
 $ cd metaplex/js
 $ yarn install && yarn bootstrap && yarn build
 $ yarn start
+```
+## DEPLOY :
 
-### DEPLOY ###
-## Packages.json
-## "deploy:gh": "yarn export && gh-pages -d ../../build/web --repo https://github.com/Dvob3east/waffleclub -t true",
-## "deploy": "cross-env ASSET_PREFIX=/waffleclub/ yarn build && yarn deploy:gh", #
-
-
-
+```
+$ Packages.json
+$ "deploy:gh": "yarn export && gh-pages -d ../../build/web --repo https://github.com/Dvob3east/waffleclub -t true",
+$ "deploy": "cross-env ASSET_PREFIX=/waffleclub/ yarn build && yarn deploy:gh", #
 
 $ cd packages/web && yarn deploy
+```
 
-
-
-### CLI Candy MACHINE ###
-
+## CLI Candy MACHINE :
+```
 $ cd metaplex/js/packages/cli
 $npm i ts-node@latest
 $ yarn install
@@ -35,5 +33,9 @@ https://docs.metaplex.com/nft-standard
 
 $ npx ts-node ~/belgaverse/beverse/metaplex/js/packages/cli/src/candy-machine-cli.ts create_generative_art -h
 $ (test) npx ts-node ~/belgaverse/beverse/metaplex/js/packages/cli/src/candy-machine-cli.ts create_generative_art -n 10
+```
 
-## npx browserslist@latest --update-db
+## +++
+```
+npx browserslist@latest --update-db
+```
