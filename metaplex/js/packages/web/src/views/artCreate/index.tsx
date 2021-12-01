@@ -374,12 +374,6 @@ const UploadStep = (props: {
     }
   };
 
-  const { category } = props.attributes.properties;
-
-  const urlPlaceholder = `http://example.com/path/to/${
-    category === MetadataCategory.Image ? 'image' : 'file'
-  }`;
-
   return (
     <>
       <Row className="call-to-action">
@@ -492,7 +486,7 @@ const UploadStep = (props: {
       >
         <Input
           disabled={!!mainFile}
-          placeholder={urlPlaceholder}
+          placeholder="http://example.com/path/to/image"
           value={customURL}
           onChange={ev => setCustomURL(ev.target.value)}
           onFocus={() => setCustomURLErr('')}
@@ -645,12 +639,11 @@ const InfoStep = (props: {
           {props.attributes.image && (
             <ArtCard
               image={image}
-              animationURL={props.attributes.animation_url}
+              animationURL={animation_url}
               category={props.attributes.properties?.category}
               name={props.attributes.name}
               symbol={props.attributes.symbol}
               small={true}
-              artView={!(props.files.length > 1)}
             />
           )}
         </Col>
@@ -661,7 +654,6 @@ const InfoStep = (props: {
               autoFocus
               className="input"
               placeholder="Max 50 characters"
-              maxLength={50}
               allowClear
               value={props.attributes.name}
               onChange={info =>
@@ -672,12 +664,11 @@ const InfoStep = (props: {
               }
             />
           </label>
-          <label className="action-field">
+          {/* <label className="action-field">
             <span className="field-title">Symbol</span>
             <Input
               className="input"
               placeholder="Max 10 characters"
-              maxLength={10}
               allowClear
               value={props.attributes.symbol}
               onChange={info =>
@@ -687,14 +678,13 @@ const InfoStep = (props: {
                 })
               }
             />
-          </label>
+          </label> */}
 
           <label className="action-field">
             <span className="field-title">Description</span>
             <Input.TextArea
               className="input textarea"
               placeholder="Max 500 characters"
-              maxLength={500}
               value={props.attributes.description}
               onChange={info =>
                 props.setAttributes({
@@ -1121,12 +1111,11 @@ const LaunchStep = (props: {
           {props.attributes.image && (
             <ArtCard
               image={image}
-              animationURL={props.attributes.animation_url}
+              animationURL={animation_url}
               category={props.attributes.properties?.category}
               name={props.attributes.name}
               symbol={props.attributes.symbol}
               small={true}
-              artView={props.files[1]?.type === 'unknown'}
             />
           )}
         </Col>

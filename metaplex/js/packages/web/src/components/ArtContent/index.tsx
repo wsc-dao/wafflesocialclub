@@ -7,7 +7,6 @@ import { useCachedImage, useExtendedArt } from '../../hooks';
 import { Stream, StreamPlayerApi } from '@cloudflare/stream-react';
 import { PublicKey } from '@solana/web3.js';
 import { getLast } from '../../utils/utils';
-import styled from 'styled-components';
 
 const MeshArtContent = ({
   uri,
@@ -159,11 +158,6 @@ const VideoArtContent = ({
   return content;
 };
 
-const HTMLWrapper = styled.div`
-  padding-top: 100%;
-  position: relative;
-`;
-
 const HTMLContent = ({
   uri,
   animationUrl,
@@ -181,7 +175,6 @@ const HTMLContent = ({
   files?: (MetadataFile | string)[];
   artView?: boolean;
 }) => {
-  const [loaded, setLoaded] = useState<boolean>(false);
   if (!artView) {
     return (
       <CachedImageContent
@@ -197,37 +190,14 @@ const HTMLContent = ({
       ? files[0]
       : animationUrl;
   return (
-    <HTMLWrapper>
-      {!loaded && (
-        <ThreeDots
-          style={{
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-            position: 'absolute',
-          }}
-        />
-      )}
-      <iframe
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        sandbox="allow-scripts"
-        frameBorder="0"
-        src={htmlURL}
-        className={className}
-        onLoad={() => {
-          setLoaded(true);
-        }}
-        style={{
-          ...style,
-          height: !loaded ? 0 : '100%',
-          width: '100%',
-          top: 0,
-          left: 0,
-          position: 'absolute',
-        }}
-      ></iframe>
-    </HTMLWrapper>
+    <iframe
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      sandbox="allow-scripts"
+      frameBorder="0"
+      src={htmlURL}
+      className={className}
+      style={style}
+    ></iframe>
   );
 };
 
@@ -296,20 +266,6 @@ export const ArtContent = ({
     );
   }
 
-  if (category === 'html' || animationUrlExt === 'html') {
-    return (
-      <HTMLContent
-        uri={uri}
-        animationUrl={animationURL}
-        className={className}
-        preview={preview}
-        style={style}
-        files={files}
-        artView={artView}
-      />
-    );
-  }
-
   const content =
     category === 'video' ? (
       <VideoArtContent
@@ -319,6 +275,16 @@ export const ArtContent = ({
         uri={uri}
         animationURL={animationURL}
         active={active}
+      />
+    ) : category === 'html' || animationUrlExt === 'html' ? (
+      <HTMLContent
+        uri={uri}
+        animationUrl={animationURL}
+        className={className}
+        preview={preview}
+        style={style}
+        files={files}
+        artView={artView}
       />
     ) : (
       <CachedImageContent
