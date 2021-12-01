@@ -23,7 +23,7 @@ target
 .env
 .vscode
 bin
-#config.json
+config.json
 node_modules
 ./package-lock.json
 hfuzz_target
@@ -34,3 +34,4 @@ hfuzz_workspace
 js/packages/web/.env
 #traits
 #traits-configuration.json
+#*.css
