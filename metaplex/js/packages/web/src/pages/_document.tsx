@@ -40,7 +40,7 @@ export default class MetaplexDocument extends Document {
             href="/favicon-16x16.png"
           />
           <meta name="theme-color" content="#000000" />
-          <meta name="description" content="Belgaverse NFT StoreFront" />
+          <meta name="description" content="Waffle Club NFT StoreFront" />
           <link rel="manifest" href="/manifest.json" />
           <link
             rel="stylesheet"

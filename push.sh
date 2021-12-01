@@ -7,3 +7,6 @@ echo $today_date
 git add *
 git commit -m "$commiter_name : $today_date"
 git push
+
+# git checkout -b <newbranch>
+# git push -u origin HEAD
