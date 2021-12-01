@@ -97,3 +97,4 @@ wallet public key: 2L5DqBrc63qeUB5qeCEsAHsUDoY2c9nKppyyEwMnkgdz
 update_candy_machine finished 5rZCS4KqaF9r1VfhLWNTqYquAdRyvdpKP84Q6D9m4ngi7igg4zzcj5HDGTb6Mto6DKoQGEp9NnzQHvsqU96iJHT7
 
 ```
+:-)
