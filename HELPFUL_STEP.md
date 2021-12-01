@@ -1,4 +1,4 @@
-### customized by Toan Nguyen ###
+### Customized by D3vobeast ###
 
 - JS/WEB :
 
