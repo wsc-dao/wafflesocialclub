@@ -2,19 +2,25 @@
 
 - JS/WEB :
 
-
+### LOCAL RUN ####
 $ git clone https://github.com/metaplex-foundation/metaplex.git
 $ cd metaplex/js
 $ yarn install && yarn bootstrap && yarn build
 $ yarn start
 
-$ cd packages/web
-$ yarn deploy
+### DEPLOY ###
 ## Packages.json
 ## "deploy:gh": "yarn export && gh-pages -d ../../build/web --repo https://github.com/Dvob3east/waffleclub -t true",
-## "deploy": "cross-env ASSET_PREFIX=/waffleclub/ yarn build && yarn deploy:gh",
+## "deploy": "cross-env ASSET_PREFIX=/waffleclub/ yarn build && yarn deploy:gh", #
 
-- CLI :
+
+
+
+$ cd packages/web && yarn deploy
+
+
+
+### CLI Candy MACHINE ###
 
 $ cd metaplex/js/packages/cli
 $npm i ts-node@latest
