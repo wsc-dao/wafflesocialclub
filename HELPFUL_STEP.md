@@ -38,6 +38,7 @@ $ (test) npx ts-node ~/Waffle Club/beverse/metaplex/js/packages/cli/src/candy-ma
 ## +++
 ```
 npx browserslist@latest --update-db
+https://www.varonis.com/blog/git-branching/#:~:text=To%20merge%20branches%20locally%2C%20use,branch%20into%20the%20main%20branch.
 ```
 
 ## MINT SITE
