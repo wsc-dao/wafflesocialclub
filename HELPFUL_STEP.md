@@ -39,3 +39,17 @@ $ (test) npx ts-node ~/Waffle Club/beverse/metaplex/js/packages/cli/src/candy-ma
 ```
 npx browserslist@latest --update-db
 ```
+
+## MINT SITE
+```
+solana config set --url https://api.devnet.solana.com
+
+solana airdrop
+solana balance
+
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts -h
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts upload -h
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine
+$ npx ts-node ~/belgaverse/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts update_candy_machine
+
+```
