@@ -27,3 +27,5 @@ https://docs.metaplex.com/nft-standard
 
 $ npx ts-node ~/belgaverse/beverse/metaplex/js/packages/cli/src/candy-machine-cli.ts create_generative_art -h
 $ (test) npx ts-node ~/belgaverse/beverse/metaplex/js/packages/cli/src/candy-machine-cli.ts create_generative_art -n 10
+
+## npx browserslist@latest --update-db
