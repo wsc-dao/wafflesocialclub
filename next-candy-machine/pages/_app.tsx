@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import { WalletBalanceProvider } from "../hooks/useWalletBalance";
-import "../public/custom.css";
 
 require("@solana/wallet-adapter-react-ui/styles.css");
 
@@ -14,6 +13,7 @@ const WalletConnectionProvider = dynamic(
 );
 
 function MyApp({ Component, pageProps }: AppProps) {
+  
   return (
     <WalletConnectionProvider>
       <WalletBalanceProvider>
