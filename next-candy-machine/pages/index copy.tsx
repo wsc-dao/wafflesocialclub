@@ -65,22 +65,16 @@ export default function Home() {
   return (
     <>
       <Head>
-      
-      <title>Waffle Club Mint Page</title>
+        <title>Waffle Club Mint Page</title>
         <meta
           name="description"
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
-          charSet="utf-8"
         />
-        <link rel="icon" href="/logo192.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="icon" href="/favicon.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
         <link rel="stylesheet" href="/custom.css"></link>
-
       </Head>
+
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <img src="/waffledao_logo.png"></img>
@@ -127,10 +121,8 @@ export default function Home() {
       </div>
     </nav>
       <div className="flex flex-col items-center min-h-screen mx-6">
-
+    
       <h1 className="text-4xl font-bold items-center">Waffle Club limited NFTs drop</h1>
-
-
         <Toaster />
         <div className="flex items-center justify-between w-full mt-3">
 
@@ -150,17 +142,16 @@ export default function Home() {
 
         <div className="mint-container">
                         <h1 className="mb-10 text-3xl font-bold">Mint One</h1>
-        {connected && <p className="mb-3 text-2xl">Total Supply: {nftsData.itemsAvailable}</p>}
-        {connected && <p className="mb-3 text-2xl">Available: {nftsData.itemsRemaining}</p>}
-        {connected && <p className="mb-5 text-2xl">Minted: {nftsData.itemsRedeemed}</p>}
-        <button 
+        {connected && <p className="mb-10 text-2xl">Total Supply: {nftsData.itemsAvailable}</p>}
+        {connected && <p className="mb-10 text-2xl">Available: {nftsData.itemsRemaining}</p>}
+        {connected && <p className="mb-10 text-2xl">Minted: {nftsData.itemsRedeemed}</p>}
+        <button
                           onClick={startMint}
                           disabled={isMinting}
-                          className="mb-3 px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
+                          className="px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
                         >
                           {isMinting ? "loading" : "Mint 1"}
         </button>
-        <p className="text-center">Please don't refresh page while mint is in progress</p>
         </div>
                       <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint Many</h1>
