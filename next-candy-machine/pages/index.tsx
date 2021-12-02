@@ -45,19 +45,19 @@ export default function Home() {
           disabled={isMinting}
           className="px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
         >
-          {isMinting ? "loading" : `mint ${mintCount}`}
+          {isMinting ? "loading" : `Mint ${mintCount}`}
         </button>
 
         <input
           disabled={isMinting}
           type="number"
           min={2}
-          max={10}
+          max={5}
           className="px-2 mx-auto mt-5 font-bold text-white bg-gray-500"
           value={mintCount}
           onChange={(e) => setMintCount((e.target as any).value)}
         />
-        <p className="mx-auto mt-2">min 2; max 10;</p>
+        <p className="mx-auto mt-2">min 2 | max 5</p>
       </>
     );
   };
@@ -65,22 +65,42 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>next-candy-machine</title>
+        <title>Waffle Club Mint Page</title>
         <meta
           name="description"
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
       </Head>
 
-      <div className="flex flex-col items-center min-h-screen mx-6">
-        <Toaster />
-        <div className="flex items-center justify-between w-full mt-3">
-          <h1 className="text-2xl font-bold">next-candy-machine</h1>
-          <div className="flex items-center">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <img src="/waffledao_logo.png"></img>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="https://waffleclub.vercel.app/#/">Home</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#project">Our vision</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#team">Team</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#mint">Mint</a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex items-center">
             {connected && (
               <div className="flex items-end mr-2">
-                <p className="text-xs text-gray-400">balance</p>
+                <p className="text-xs text-gray-400 font-bold">Balance :</p>
                 <p className="mx-1 font-bold leading-none">
                   {balance.toFixed(2)}
                 </p>
@@ -96,14 +116,16 @@ export default function Home() {
             )}
             <WalletMultiButton />
           </div>
+
+      </div>
+    </nav>
+
+      <div className="flex flex-col items-center min-h-screen mx-6">
+        <Toaster />
+        <div className="flex items-center justify-between w-full mt-3">
+          <h1 className="text-2xl font-bold">Waffle Club limited NFTs drop</h1>
+
         </div>
-        {connected && (
-          <p className="mr-auto text-sm">
-            <span className="font-bold">Available/Minted/Total:</span>{" "}
-            {nftsData.itemsRemaining}/{nftsData.itemsRedeemed}/
-            {nftsData.itemsAvailable}
-          </p>
-        )}
         <div className="flex items-start justify-center w-11/12 my-10">
           {connected ? (
             <>
@@ -115,14 +137,20 @@ export default function Home() {
                     <>
                       <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint One</h1>
-                        <button
+                      </div>
+
+        <div className="mint-container">
+        {connected && <p>Total Supply: {nftsData.itemsAvailable}</p>}
+        {connected && <p>Available: {nftsData.itemsRemaining}</p>}
+        {connected && <p>Minted: {nftsData.itemsRedeemed}</p>}
+        <button
                           onClick={startMint}
                           disabled={isMinting}
                           className="px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
                         >
-                          {isMinting ? "loading" : "mint 1"}
-                        </button>
-                      </div>
+                          {isMinting ? "loading" : "Mint 1"}
+        </button>
+        </div>
                       <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint Many</h1>
                         <MintMany />
@@ -151,6 +179,46 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <div className="container" id="team">
+        <h1 className="text-center"> The Team</h1>
+        <div className="row">
+          <div className="col-sm">
+            <div className="card mx-auto">
+              <img src="/avatar.png" className="card-img-top" alt="Lorem Ipsum"></img>
+              <div className="card-body team">
+                <h5 className="card-title">D3v0</h5>
+                <p className="card-text">Guru</p>
+                <a href="https://twitter.com/Devob3ast" className="btn btn-primary">twitter</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="card mx-auto">
+              <img src="/avatar_3.png" className="card-img-top" alt="Lorem Ipsum"></img>
+              <div className="card-body team">
+                <h5 className="card-title">Yolo</h5>
+                <p className="card-text">Sensei</p>
+                <a href="https://twitter.com/yoloshiden" className="btn btn-primary">twitter</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="card mx-auto">
+              <img src="/avatar_2.png" className="card-img-top" alt="Lorem Ipsum"></img>
+              <div className="card-body team">
+                <h5 className="card-title">Semias</h5>
+                <p className="card-text">Grand-sage</p>
+                <a href="https://twitter.com/morfessa" className="btn btn-primary">twitter</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </>
   );
 }
