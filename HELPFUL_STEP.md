@@ -95,5 +95,5 @@ wallet public key: 2L5DqBrc63qeUB5qeCEsAHsUDoY2c9nKppyyEwMnkgdz
  - updated startDate timestamp: 1639353600 (13 Dec 2021 00:00:00 GMT)
  - updated price: 1000000000 lamports (1 SOL)
 update_candy_machine finished 5rZCS4KqaF9r1VfhLWNTqYquAdRyvdpKP84Q6D9m4ngi7igg4zzcj5HDGTb6Mto6DKoQGEp9NnzQHvsqU96iJHT7
-
+s
 ```
