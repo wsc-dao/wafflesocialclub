@@ -12,8 +12,6 @@ import Countdown from "react-countdown";
 import useWalletNfts from "../hooks/useWalletNFTs";
 import AnNFT from "../components/AnNFT/AnNFT";
 
-
-
 export default function Home() {
   const [balance] = useWalletBalance();
   const {
@@ -91,39 +89,41 @@ export default function Home() {
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse justify-content-center"  id="navbarNav">
-          <ul className="navbar-nav ">
-            <li className="nav-item ">
-              <a className="nav-link mr-10" href="#about">About</a>
+        
+
+        <div className="collapse navbar-collapse justify-content-center nav-item"  id="navbarNav">
+          <ul className="navbar-nav ml-auto text-center">
+            <li className="nav-item">
+              <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/">Home</a>
             </li>
-            <li className="nav-item mr-10 ml-10">
+            <li className="nav-item ">
               <a className="nav-link" href="#project">Roadmap</a>
             </li>
-            <li className="nav-item ml-10">
-              <a className="nav-link project-text" href="#team">Waffle Team</a>
-            </li>
-            <li className="nav-item ml-10">
-            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><img src="/waffledao_rebrand_logo.png"/></a>
-            </li>
-            
-        
-            <li className="nav-item ml-10">
-              <a className="nav-link" href="#mint">Mint</a>
-            </li>
-            <li className="nav-item ml-10">
+            <li className="nav-item ">
               <a className="nav-link" href="#mynft">Collection</a>
             </li>
-            <li className="nav-item ml-10">
+            <li className="nav-item ">
+              <a className="nav-link" href="#team">Waffle Team</a>
+            </li>
+            <li className="nav-item brand ">
+              <a className="nav-link"><img src="/waffledao_rebrand_logo.png"/></a>
+            </li>            
+            <li className="nav-item ">
+              <a className="nav-link" href="#mint">Mint</a>
+            </li>
+            <li className="nav-item ">
+              <a className="nav-link" href="#about">About</a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="#faq">FAQ</a>
             </li>
           </ul>
-          
-
         </div>
-        {connected && (
+
+            {connected && (
               <div className="flex items-end mr-2">
-                <p className="text-xs text-yellow-400 font-bold">Balance :</p>
-                <p className="mx-1 text-yellow-400 font-bold leading-none">
+                <p className="text-xs text-gray-400 font-bold">Balance :</p>
+                <p className="mx-1 text-gray-400 font-bold leading-none">
                   {balance.toFixed(2)}
                 </p>
                 <p
@@ -137,99 +137,18 @@ export default function Home() {
               </div>
             )}
             <WalletMultiButton />
+
       </div>
-      
-
     </nav>
-    
-    
 
-    <div className="titlepage text-4xl font-bold items-center">Waffle Club limited NFTs drop</div>
-    <div className="container" id="about">
-    <h1 className="text-3xl font-bold items-center">About</h1>
+    <h1 className="text-3xl font-bold items-center">Waffle Club limited NFTs drop</h1>
 
-    <div id="Deckcarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
-
-    <div className="carousel-inner">
-    <div className="carousel-item active">
-      <img
-        src="/slide_1.png"
-        className="d-block w-100"
-        alt="..."
-      />
+    <div className="container" id="project">
+    <h1 className="text-3xl font-bold items-center"> The Project</h1>
     </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_2.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_3.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_4.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_5.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_6.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_7.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_8.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div className="carousel-item">
-      <img
-        src="/slide_9.png"
-        className="d-block w-100"
-        alt="..."
-      />
-    </div>
-  </div>      
-    
-
-  <button className="carousel-control-prev" type="button" data-bs-target="#Deckcarousel" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span className="visually-hidden">Previous</span>
-  </button>
-  <button className="carousel-control-next" type="button" data-bs-target="#Deckcarousel" data-bs-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-    <span className="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
 
     <div className="container" id="mint">
-    <h1 className="text-3xl font-bold items-center"> Mint Date</h1>
+    <h1 className="text-3xl font-bold items-center"> Mint</h1>
     <div className="flex items-start justify-center w-11/12 my-10">
           {connected ? (
             <>
@@ -271,13 +190,13 @@ export default function Home() {
               )}
             </>
           ) : (
-            <p className="project-text">Connect wallet to mint</p>
+            <p>connect wallet to mint</p>
           )}
         </div>
     </div>
 
     <div className="container" id="mynft">
-          <h1 className="text-3xl font-bold items-center">Your Collection</h1>
+          <h1 className="text-3xl font-bold items-center">My Collection</h1>
           <div className="flex mt-3 gap-x-2">
             {(nfts as any).map((nft: any, i: number) => {
               return <AnNFT key={i} nft={nft} />;
@@ -287,10 +206,10 @@ export default function Home() {
 
 
       <div className="container" id="team">
-        <h1 className="text-3xl font-bold items-center">Waffle Team</h1>
+        <h1 className="text-4xl font-bold items-center"> The Team</h1>
         <div className="row">
           <div className="col-sm">
-            <div className="card mx-auto brand">
+            <div className="card mx-auto">
               <img src="/avatar.png" className="card-img-top" alt="Lorem Ipsum"></img>
               <div className="card-body team">
                 <h5 className="card-title">D3v0</h5>
@@ -301,7 +220,7 @@ export default function Home() {
           </div>
 
           <div className="col-sm">
-            <div className="card mx-auto brand">
+            <div className="card mx-auto">
               <img src="/avatar_3.png" className="card-img-top" alt="Lorem Ipsum"></img>
               <div className="card-body team">
                 <h5 className="card-title">Yolo</h5>
@@ -312,7 +231,7 @@ export default function Home() {
           </div>
 
           <div className="col-sm">
-            <div className="card mx-auto brand">
+            <div className="card mx-auto">
               <img src="/avatar_2.png" className="card-img-top" alt="Lorem Ipsum"></img>
               <div className="card-body team">
                 <h5 className="card-title">Semias</h5>
@@ -324,12 +243,6 @@ export default function Home() {
 
         </div>
       </div>
-
-
-
-    <div className="container" id="faq">
-    <h1 className="text-3xl font-bold items-center">FAQ</h1>
-    </div>
 
 
     </>

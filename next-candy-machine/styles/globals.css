@@ -11,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #12034b;
+  background-color: #b91825e8;
   color: #FFFFFF;
 }
 
@@ -35,11 +35,10 @@ code {
 
 
 a {
-  color: inherit;
+  color: blue;
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
 }
-
