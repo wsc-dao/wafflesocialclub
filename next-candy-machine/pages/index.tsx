@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
 import { useEffect, useState } from "react";
-
+import Image from 'next/image'
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import useCandyMachine from "../hooks/useCandyMachine";
 import useWalletBalance from "../hooks/useWalletBalance";
 import { useWallet } from "@solana/wallet-adapter-react";
-
+import Script from 'next/script'
 import { Toaster } from "react-hot-toast";
 import Countdown from "react-countdown";
 import useWalletNfts from "../hooks/useWalletNFTs";
@@ -64,6 +64,7 @@ export default function Home() {
 
   return (
     <>
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></Script>
       <Head>
         <title>next-candy-machine</title>
         <meta
@@ -71,13 +72,47 @@ export default function Home() {
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
+      <link rel="stylesheet" href="/custom.css"></link>
       </Head>
+      <nav className="navbar sticky-top navbar-expand-lg navbar-dark">
+      <div className="container-fluid">
 
-      <div className="flex flex-col items-center min-h-screen mx-6">
-        <Toaster />
-        <div className="flex items-center justify-between w-full mt-3">
-          <h1 className="text-2xl font-bold">next-candy-machine</h1>
-          <div className="flex items-center">
+
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse justify-content-center"  id="navbarNav">
+          <ul className="navbar-nav ">
+            <li className="nav-item ">
+              <a className="nav-link mr-10" href="#about">About</a>
+            </li>
+            <li className="nav-item mr-10 ml-10">
+              <a className="nav-link" href="#project">Roadmap</a>
+            </li>
+            <li className="nav-item ml-10">
+              <a className="nav-link project-text" href="#team">Waffle Team</a>
+            </li>
+            <li className="nav-item ml-10">
+            
+            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><Image src="/waffledao_rebrand_logo.png" alt="..." width="100%" height="100%" layout="responsive" objectFit="contain"/></a>
+            </li>
+            
+        
+            <li className="nav-item ml-10">
+              <a className="nav-link" href="#mint">Mint</a>
+            </li>
+            <li className="nav-item ml-10">
+              <a className="nav-link" href="#mynft">Collection</a>
+            </li>
+            <li className="nav-item ml-10">
+              <a className="nav-link" href="#faq">FAQ</a>
+            </li>
+          </ul>
+          
+
+        </div>
+        <div className="flex items-center">
             {connected && (
               <div className="flex items-end mr-2">
                 <p className="text-xs text-gray-400">balance</p>
@@ -96,6 +131,110 @@ export default function Home() {
             )}
             <WalletMultiButton />
           </div>
+      </div>
+      
+      
+
+    </nav>
+
+    <div className="titlepage text-4xl font-bold items-center">Waffle Club limited NFTs drop</div>
+
+<div className="container" id="about">
+    <h1 className="text-3xl font-bold items-center">About</h1>
+
+    <div id="Deckcarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <div className="carousel-inner">
+    <div className="carousel-item active">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_1.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_2.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_3.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_4.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_5.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_6.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_7.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_8.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div className="carousel-item">
+      <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
+        src="/slide_9.png"
+        className="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>      
+    
+
+  <button className="carousel-control-prev" type="button" data-bs-target="#Deckcarousel" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
+  </button>
+  <button className="carousel-control-next" type="button" data-bs-target="#Deckcarousel" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div className="flex flex-col items-center min-h-screen mx-6">
+        <Toaster />
+        <div className="flex items-center justify-between w-full mt-3">
+          <h1 className="text-2xl font-bold">Mint Date</h1>
+
         </div>
         {connected && (
           <p className="mr-auto text-sm">
@@ -104,6 +243,8 @@ export default function Home() {
             {nftsData.itemsAvailable}
           </p>
         )}
+</div>
+        
         <div className="flex items-start justify-center w-11/12 my-10">
           {connected ? (
             <>
@@ -142,6 +283,8 @@ export default function Home() {
             <p>connect wallet to mint</p>
           )}
         </div>
+
+        <div className="container" id="mynft">
         <div className="flex flex-col w-full">
           <h2 className="text-2xl font-bold">My NFTs</h2>
           <div className="flex mt-3 gap-x-2">
@@ -150,7 +293,55 @@ export default function Home() {
             })}
           </div>
         </div>
+        </div>
+            
+      
       </div>
+
+      <div className="container" id="team">
+        <h1 className="text-3xl font-bold items-center">Waffle Team</h1>
+        <div className="row">
+          <div className="col-sm">
+            <div className="card mx-auto brand">
+              <Image src="/avatar.png" className="card-Image-top" alt="Lorem Ipsum" width="100%" height="100%" layout="responsive" objectFit="contain"></Image>
+              <div className="card-body team">
+                <h5 className="card-title">D3v0</h5>
+                <p className="card-text">Guru</p>
+                <a href="https://twitter.com/Devob3ast" className="btn btn-primary">twitter</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="card mx-auto brand">
+              <Image src="/avatar_3.png" className="card-Image-top" alt="Lorem Ipsum" width="100%" height="100%" layout="responsive" objectFit="contain"></Image>
+              <div className="card-body team">
+                <h5 className="card-title">Yolo</h5>
+                <p className="card-text">Sensei</p>
+                <a href="https://twitter.com/yoloshiden" className="btn btn-primary" >twitter</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="card mx-auto brand">
+              <Image src="/avatar_2.png" className="card-Image-top" alt="Lorem Ipsum" width="100%" height="100%" layout="responsive" objectFit="contain"></Image>
+              <div className="card-body team">
+                <h5 className="card-title">Semias</h5>
+                <p className="card-text">Grand-sage</p>
+                <a href="https://twitter.com/morfessa" className="btn btn-primary">twitter</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="container" id="faq">
+    <h1 className="text-3xl font-bold items-center">FAQ</h1>
+    </div>
+
+
     </>
   );
 }
