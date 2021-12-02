@@ -13,7 +13,6 @@ const WalletConnectionProvider = dynamic(
 );
 
 function MyApp({ Component, pageProps }: AppProps) {
-  
   return (
     <WalletConnectionProvider>
       <WalletBalanceProvider>

@@ -6,11 +6,11 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import useCandyMachine from "../hooks/useCandyMachine";
 import useWalletBalance from "../hooks/useWalletBalance";
 import { useWallet } from "@solana/wallet-adapter-react";
+
 import { Toaster } from "react-hot-toast";
 import Countdown from "react-countdown";
 import useWalletNfts from "../hooks/useWalletNFTs";
 import AnNFT from "../components/AnNFT/AnNFT";
-import Script from 'next/script'
 
 export default function Home() {
   const [balance] = useWalletBalance();
@@ -45,43 +45,36 @@ export default function Home() {
           disabled={isMinting}
           className="px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
         >
-          {isMinting ? "loading" : `Mint ${mintCount}`}
+          {isMinting ? "loading" : `mint ${mintCount}`}
         </button>
 
         <input
           disabled={isMinting}
           type="number"
           min={2}
-          max={5}
+          max={10}
           className="px-2 mx-auto mt-5 font-bold text-white bg-gray-500"
           value={mintCount}
           onChange={(e) => setMintCount((e.target as any).value)}
         />
-        <p className="mx-auto mt-2">min 2 | max 5</p>
+        <p className="mx-auto mt-2">min 2; max 10;</p>
       </>
     );
   };
 
   return (
     <>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></Script>
-      <link rel="stylesheet" href="/custom.css"></link>
       <Head>
-
-      <title>Waffle Club Mint Page</title>
+        <title>next-candy-machine</title>
         <meta
           name="description"
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
-          charSet="utf-8"
         />
-        <link rel="icon" href="/logo192.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
-
+        <link rel="icon" href="/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
+      <link rel="stylesheet" href="/custom.css"></link>
       </Head>
-
       <nav className="navbar sticky-top navbar-expand-lg navbar-dark">
       <div className="container-fluid">
 
@@ -101,7 +94,8 @@ export default function Home() {
               <a className="nav-link project-text" href="#team">Waffle Team</a>
             </li>
             <li className="nav-item ml-10">
-            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><Image src="/waffledao_rebrand_logo.png" alt="..."/></a>
+            
+            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><Image src="/waffledao_rebrand_logo.png" alt="..." width="100%" height="100%" layout="responsive" objectFit="contain"/></a>
             </li>
             
         
@@ -118,10 +112,11 @@ export default function Home() {
           
 
         </div>
-        {connected && (
+        <div className="flex items-center">
+            {connected && (
               <div className="flex items-end mr-2">
-                <p className="text-xs text-yellow-400 font-bold">Balance :</p>
-                <p className="mx-1 text-yellow-400 font-bold leading-none">
+                <p className="text-xs text-gray-400">balance</p>
+                <p className="mx-1 font-bold leading-none">
                   {balance.toFixed(2)}
                 </p>
                 <p
@@ -135,15 +130,16 @@ export default function Home() {
               </div>
             )}
             <WalletMultiButton />
+          </div>
       </div>
+      
       
 
     </nav>
-    
-    
 
     <div className="titlepage text-4xl font-bold items-center">Waffle Club limited NFTs drop</div>
-    <div className="container" id="about">
+
+<div className="container" id="about">
     <h1 className="text-3xl font-bold items-center">About</h1>
 
     <div id="Deckcarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -151,6 +147,7 @@ export default function Home() {
     <div className="carousel-inner">
     <div className="carousel-item active">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_1.png"
         className="d-block w-100"
         alt="..."
@@ -158,6 +155,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_2.png"
         className="d-block w-100"
         alt="..."
@@ -165,6 +163,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_3.png"
         className="d-block w-100"
         alt="..."
@@ -172,6 +171,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_4.png"
         className="d-block w-100"
         alt="..."
@@ -179,6 +179,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_5.png"
         className="d-block w-100"
         alt="..."
@@ -186,6 +187,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_6.png"
         className="d-block w-100"
         alt="..."
@@ -193,6 +195,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_7.png"
         className="d-block w-100"
         alt="..."
@@ -200,6 +203,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_8.png"
         className="d-block w-100"
         alt="..."
@@ -207,6 +211,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
+        width="100%" height="100%" layout="responsive" objectFit="contain"
         src="/slide_9.png"
         className="d-block w-100"
         alt="..."
@@ -224,11 +229,23 @@ export default function Home() {
     <span className="visually-hidden">Next</span>
   </button>
 </div>
-</div>
 
-    <div className="container" id="mint">
-    <h1 className="text-3xl font-bold items-center"> Mint Date</h1>
-    <div className="flex items-start justify-center w-11/12 my-10">
+<div className="flex flex-col items-center min-h-screen mx-6">
+        <Toaster />
+        <div className="flex items-center justify-between w-full mt-3">
+          <h1 className="text-2xl font-bold">Mint Date</h1>
+
+        </div>
+        {connected && (
+          <p className="mr-auto text-sm">
+            <span className="font-bold">Available/Minted/Total:</span>{" "}
+            {nftsData.itemsRemaining}/{nftsData.itemsRedeemed}/
+            {nftsData.itemsAvailable}
+          </p>
+        )}
+</div>
+        
+        <div className="flex items-start justify-center w-11/12 my-10">
           {connected ? (
             <>
               {new Date(mintStartDate).getTime() < Date.now() ? (
@@ -237,21 +254,16 @@ export default function Home() {
                     <p>SOLD OUT</p>
                   ) : (
                     <>
-                     
-
-        <div className="mint-container">
+                      <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint One</h1>
-        {connected && <p className="mb-3 text-2xl">Total Supply: {nftsData.itemsAvailable}</p>}
-        {connected && <p className="mb-3 text-2xl">Available: {nftsData.itemsRemaining}</p>}
-        {connected && <p className="mb-5 text-2xl">Minted: {nftsData.itemsRedeemed}</p>}
-        <button 
+                        <button
                           onClick={startMint}
                           disabled={isMinting}
-                          className="mb-3 px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
+                          className="px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
                         >
-                          {isMinting ? "loading" : "Mint 1"}
-        </button>
-        </div>
+                          {isMinting ? "loading" : "mint 1"}
+                        </button>
+                      </div>
                       <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint Many</h1>
                         <MintMany />
@@ -268,27 +280,30 @@ export default function Home() {
               )}
             </>
           ) : (
-            <p className="project-text">Connect wallet to mint</p>
+            <p>connect wallet to mint</p>
           )}
         </div>
-    </div>
 
-    <div className="container" id="mynft">
-          <h1 className="text-3xl font-bold items-center">Your Collection</h1>
+        <div className="container" id="mynft">
+        <div className="flex flex-col w-full">
+          <h2 className="text-2xl font-bold">My NFTs</h2>
           <div className="flex mt-3 gap-x-2">
             {(nfts as any).map((nft: any, i: number) => {
               return <AnNFT key={i} nft={nft} />;
             })}
           </div>
-    </div>
-
+        </div>
+        </div>
+            
+      
+      </div>
 
       <div className="container" id="team">
         <h1 className="text-3xl font-bold items-center">Waffle Team</h1>
         <div className="row">
           <div className="col-sm">
             <div className="card mx-auto brand">
-              <Image src="/avatar.png" className="card-Image-top" alt="Lorem Ipsum"></Image>
+              <Image src="/avatar.png" className="card-Image-top" alt="Lorem Ipsum" width="100%" height="100%" layout="responsive" objectFit="contain"></Image>
               <div className="card-body team">
                 <h5 className="card-title">D3v0</h5>
                 <p className="card-text">Guru</p>
@@ -299,18 +314,18 @@ export default function Home() {
 
           <div className="col-sm">
             <div className="card mx-auto brand">
-              <Image src="/avatar_3.png" className="card-Image-top" alt="Lorem Ipsum"></Image>
+              <Image src="/avatar_3.png" className="card-Image-top" alt="Lorem Ipsum" width="100%" height="100%" layout="responsive" objectFit="contain"></Image>
               <div className="card-body team">
                 <h5 className="card-title">Yolo</h5>
                 <p className="card-text">Sensei</p>
-                <a href="https://twitter.com/yoloshiden" className="btn btn-primary">twitter</a>
+                <a href="https://twitter.com/yoloshiden" className="btn btn-primary" >twitter</a>
               </div>
             </div>
           </div>
 
           <div className="col-sm">
             <div className="card mx-auto brand">
-              <Image src="/avatar_2.png" className="card-Image-top" alt="Lorem Ipsum"></Image>
+              <Image src="/avatar_2.png" className="card-Image-top" alt="Lorem Ipsum" width="100%" height="100%" layout="responsive" objectFit="contain"></Image>
               <div className="card-body team">
                 <h5 className="card-title">Semias</h5>
                 <p className="card-text">Grand-sage</p>
@@ -322,9 +337,7 @@ export default function Home() {
         </div>
       </div>
 
-
-
-    <div className="container" id="faq">
+      <div className="container" id="faq">
     <h1 className="text-3xl font-bold items-center">FAQ</h1>
     </div>
 
