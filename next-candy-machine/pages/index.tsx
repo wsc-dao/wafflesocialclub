@@ -11,6 +11,9 @@ import { Toaster } from "react-hot-toast";
 import Countdown from "react-countdown";
 import useWalletNfts from "../hooks/useWalletNFTs";
 import AnNFT from "../components/AnNFT/AnNFT";
+import Image from 'next/image'
+import 'bootstrap/dist/css/bootstrap.css'
+
 
 
 
@@ -78,10 +81,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <link rel="apple-touch-icon" href="/logo192.png" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
-        <link rel="stylesheet" href="/custom.css"></link>
-
+        
       </Head>
 
       <nav className="navbar sticky-top navbar-expand-lg navbar-dark">
@@ -103,7 +103,7 @@ export default function Home() {
               <a className="nav-link project-text" href="#team">Waffle Team</a>
             </li>
             <li className="nav-item ml-10">
-            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><img src="/waffledao_rebrand_logo.png"/></a>
+            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><Image src="/waffledao_rebrand_logo.png" alt="..."/></a>
             </li>
             
         
@@ -152,63 +152,63 @@ export default function Home() {
 
     <div className="carousel-inner">
     <div className="carousel-item active">
-      <img
+      <Image
         src="/slide_1.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_2.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_3.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_4.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_5.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_6.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_7.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_8.png"
         className="d-block w-100"
         alt="..."
       />
     </div>
     <div className="carousel-item">
-      <img
+      <Image
         src="/slide_9.png"
         className="d-block w-100"
         alt="..."
@@ -253,7 +253,6 @@ export default function Home() {
                         >
                           {isMinting ? "loading" : "Mint 1"}
         </button>
-        <p className="text-center">Please don't refresh page while mint is in progress</p>
         </div>
                       <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint Many</h1>
@@ -291,7 +290,7 @@ export default function Home() {
         <div className="row">
           <div className="col-sm">
             <div className="card mx-auto brand">
-              <img src="/avatar.png" className="card-img-top" alt="Lorem Ipsum"></img>
+              <Image src="/avatar.png" className="card-Image-top" alt="Lorem Ipsum"></Image>
               <div className="card-body team">
                 <h5 className="card-title">D3v0</h5>
                 <p className="card-text">Guru</p>
@@ -302,7 +301,7 @@ export default function Home() {
 
           <div className="col-sm">
             <div className="card mx-auto brand">
-              <img src="/avatar_3.png" className="card-img-top" alt="Lorem Ipsum"></img>
+              <Image src="/avatar_3.png" className="card-Image-top" alt="Lorem Ipsum"></Image>
               <div className="card-body team">
                 <h5 className="card-title">Yolo</h5>
                 <p className="card-text">Sensei</p>
@@ -313,7 +312,7 @@ export default function Home() {
 
           <div className="col-sm">
             <div className="card mx-auto brand">
-              <img src="/avatar_2.png" className="card-img-top" alt="Lorem Ipsum"></img>
+              <Image src="/avatar_2.png" className="card-Image-top" alt="Lorem Ipsum"></Image>
               <div className="card-body team">
                 <h5 className="card-title">Semias</h5>
                 <p className="card-text">Grand-sage</p>
