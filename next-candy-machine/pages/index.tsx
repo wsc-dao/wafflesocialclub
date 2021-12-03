@@ -274,7 +274,7 @@ export default function Home() {
               )}
             </>
           ) : (
-            <p className="project-text">Connect wallet to mint</p>
+            <p className="text-3xl font-bold items-center">Connect wallet to mint</p>
           )}
         </div>
     </div>
