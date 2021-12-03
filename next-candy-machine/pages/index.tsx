@@ -52,12 +52,12 @@ export default function Home() {
           disabled={isMinting}
           type="number"
           min={2}
-          max={10}
+          max={5}
           className="px-2 mx-auto mt-5 font-bold text-white bg-gray-500"
           value={mintCount}
           onChange={(e) => setMintCount((e.target as any).value)}
         />
-        <p className="mx-auto mt-2">min 2; max 10;</p>
+        <p className="mx-auto mt-2">[2 ; 5]</p>
       </>
     );
   };
@@ -95,7 +95,7 @@ export default function Home() {
             </li>
             <li className="nav-item ml-10">
             
-            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><Image src="/waffledao_rebrand_logo.png" alt="..." width="100%" height="100%" layout="responsive" objectFit="contain"/></a>
+            <a className="nav-link" aria-current="page" href="https://waffleclub.vercel.app/#/"><Image src="/waffledao_rebrand_logo.png" alt="..." width="261" height="45"/></a>
             </li>
             
         
@@ -147,7 +147,7 @@ export default function Home() {
     <div className="carousel-inner">
     <div className="carousel-item active">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_1.png"
         className="d-block w-100"
         alt="..."
@@ -155,7 +155,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_2.png"
         className="d-block w-100"
         alt="..."
@@ -163,7 +163,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_3.png"
         className="d-block w-100"
         alt="..."
@@ -171,7 +171,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_4.png"
         className="d-block w-100"
         alt="..."
@@ -179,7 +179,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_5.png"
         className="d-block w-100"
         alt="..."
@@ -187,7 +187,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_6.png"
         className="d-block w-100"
         alt="..."
@@ -195,7 +195,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_7.png"
         className="d-block w-100"
         alt="..."
@@ -203,7 +203,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_8.png"
         className="d-block w-100"
         alt="..."
@@ -211,7 +211,7 @@ export default function Home() {
     </div>
     <div className="carousel-item">
       <Image
-        width="100%" height="100%" layout="responsive" objectFit="contain"
+        width="800" height="300" layout="responsive" objectFit="contain"
         src="/slide_9.png"
         className="d-block w-100"
         alt="..."
@@ -232,20 +232,10 @@ export default function Home() {
 
 <div className="flex flex-col items-center min-h-screen mx-6">
         <Toaster />
-        <div className="flex items-center justify-between w-full mt-3">
-          <h1 className="text-2xl font-bold">Mint Date</h1>
+        <div className="container" id="mint">
+          <h1 className="text-2xl font-bold">Mint Date : dd/mm/YYYY</h1>
 
-        </div>
-        {connected && (
-          <p className="mr-auto text-sm">
-            <span className="font-bold">Available/Minted/Total:</span>{" "}
-            {nftsData.itemsRemaining}/{nftsData.itemsRedeemed}/
-            {nftsData.itemsAvailable}
-          </p>
-        )}
-</div>
-        
-        <div className="flex items-start justify-center w-11/12 my-10">
+<div className="flex items-start justify-center w-11/12 my-10">
           {connected ? (
             <>
               {new Date(mintStartDate).getTime() < Date.now() ? (
@@ -254,16 +244,21 @@ export default function Home() {
                     <p>SOLD OUT</p>
                   ) : (
                     <>
-                      <div className="flex flex-col w-1/2">
+                     
+
+        <div className="mint-container">
                         <h1 className="mb-10 text-3xl font-bold">Mint One</h1>
-                        <button
+        {connected && <p className="mb-3 text-2xl">Total Supply: {nftsData.itemsAvailable}</p>}
+        {connected && <p className="mb-3 text-2xl">Available: {nftsData.itemsRemaining}</p>}
+        {connected && <p className="mb-5 text-2xl">Minted: {nftsData.itemsRedeemed}</p>}
+        <button 
                           onClick={startMint}
                           disabled={isMinting}
-                          className="px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
+                          className="mb-3 px-4 py-2 mx-auto font-bold text-white transition-opacity rounded-lg hover:opacity-70 bg-gradient-to-br from-green-300 via-blue-500 to-purple-600"
                         >
-                          {isMinting ? "loading" : "mint 1"}
-                        </button>
-                      </div>
+                          {isMinting ? "loading" : "Mint 1"}
+        </button>
+        </div>
                       <div className="flex flex-col w-1/2">
                         <h1 className="mb-10 text-3xl font-bold">Mint Many</h1>
                         <MintMany />
@@ -280,9 +275,11 @@ export default function Home() {
               )}
             </>
           ) : (
-            <p>connect wallet to mint</p>
+            <p className="project-text">Connect wallet to mint</p>
           )}
         </div>
+    </div>
+</div>
 
         <div className="container" id="mynft">
         <div className="flex flex-col w-full">
