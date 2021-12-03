@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as PDFJS from "pdfjs-dist/build/pdf";
+import context from "react-bootstrap/esm/AccordionContext";
 PDFJS.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS.version}/pdf.worker.min.js`;
 
 const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js');
@@ -7,7 +8,8 @@ const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js')
 
 const Roadmap = () => {
   let renderedPdf;
-  const pageRenderRef = useRef(null);
+  let pageRenderRef = useRef<HTMLDivElement>(null)
+  //const pageRenderRef = useRef(null);
   const DEFAULT_SCALE = 1;
   const [progressTxt, setprogressTxt] = useState("");
 
@@ -116,20 +118,81 @@ const downloadError = () => {
     return new Promise((resolve) => {
       pdf.getPage(pageNo).then(async (page) => {
         const viewport = page.getViewport({ scale: DEFAULT_SCALE });
-
+/*
         let canvasInHTML = {
-          canvas: undefined,
-          ctx: undefined
-        };
+            canvas: useRef<HTMLCanvasElement>(null),
+            ctx: undefined
+          };
+*/
+
+
+
+        /*
+        const canvasInHTML = useRef<HTMLCanvasElement>(null);
+        const [ctx, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
+
+        useEffect(() => {
+            if (canvasInHTML.current) {
+              const ctx = canvasInHTML.current.getContext('2d');
         
+              if (ctx) {
+                setContext(ctx);
+              }
+            }
+          }, [ctx]);
+
+        /*
+        const canvasInHTML = React.useRef<HTMLCanvasElement>(null);
+        
+        const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
+        const renderCtx = canvasInHTML.current.getContext('2d');
+        
+        useEffect(() => {
+            if (canvasInHTML.current) {
+              const renderCtx = canvasInHTML.current.getContext('2d');
+        
+              if (renderCtx) {
+                setContext(renderCtx);
+              }
+            }
+          }, [context]);
+          */
+        /*
+        const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
+        
+        const canvas = canvasInHTML.current;
+          useEffect(() => {
+            if (canvasInHTML.current) {
+                const canvas = canvasInHTML.current;
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    setContext(ctx);
+                  }  
+            }       
+        }, [context]);
+
+        const test = context
+
+        //const canvasInHTML.canvas = React.useRef<HTMLCanvasElement>(null);
+        */
+        let canvasInHTML = {
+             canvas: undefined as HTMLCanvasElement,
+             ctx: undefined
+        } ;
+
         const li = document.createElement("div");
         li.setAttribute("id", "page-" + (page._pageIndex + 1));
         li.setAttribute("style", "position: relative;");
-        /*
-        canvasInHTML.canvas = document.createElement("canvas");
+
+        canvasInHTML.canvas  = document.createElement("canvas") ;
         canvasInHTML.ctx = canvasInHTML.canvas.getContext("2d");
+		
         canvasInHTML.canvas.height = viewport.height;
         canvasInHTML.canvas.width = viewport.width;
+        //let canvas = document.getElementById('canvas') as HTMLCanvasElement;
+        //let ctx = canvas.getContext("2d");
+        //canvas.height = viewport.height;
+        //canvas.width = viewport.width;
 
         li.appendChild(canvasInHTML.canvas);
         container.appendChild(li);
@@ -152,7 +215,7 @@ const downloadError = () => {
           pageRenderRef.current = li;
         
         }
-        */
+        
       });
     });
   };
@@ -163,7 +226,6 @@ const downloadError = () => {
       data = new Blob([data], { type: "application/pdf" });
       fileReader.onload = (evt) => {
         const result = fileReader.result;
-        /*
         try {
           fileReader = null; // clear file reader
           resolve(result);
@@ -171,7 +233,6 @@ const downloadError = () => {
           fileReader = null; // clear file reader
           reject(e);
         }
-        */
       };
       fileReader.readAsDataURL(data);
     });
