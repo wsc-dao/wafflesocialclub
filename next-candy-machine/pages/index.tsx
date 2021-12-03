@@ -234,7 +234,7 @@ export default function Home() {
         <div className="container" id="mint">
           <h1 className="text-2xl font-bold">Mint Date : dd/mm/YYYY</h1>
 
-<div className="flex items-start justify-center w-11/12 my-10">
+<div className="flex items-start justify-center">
           {connected ? (
             <>
               {new Date(mintStartDate).getTime() < Date.now() ? (
@@ -274,7 +274,7 @@ export default function Home() {
               )}
             </>
           ) : (
-            <p className="text-3xl font-bold items-center">Connect wallet to mint</p>
+            <p className="text items-center">Connect wallet to mint</p>
           )}
         </div>
     </div>
