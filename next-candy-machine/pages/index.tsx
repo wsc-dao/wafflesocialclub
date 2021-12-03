@@ -115,8 +115,8 @@ export default function Home() {
         <div className="flex items-center">
             {connected && (
               <div className="flex items-end mr-2">
-                <p className="text-xs text-gray-400">balance</p>
-                <p className="mx-1 font-bold leading-none">
+                <p className="text-xs text-yellow-400">Balance :</p>
+                <p className="mx-1 text-yellow-400 font-bold leading-none">
                   {balance.toFixed(2)}
                 </p>
                 <p
@@ -230,7 +230,6 @@ export default function Home() {
   </button>
 </div>
 
-<div className="flex flex-col items-center min-h-screen mx-6">
         <Toaster />
         <div className="container" id="mint">
           <h1 className="text-2xl font-bold">Mint Date : dd/mm/YYYY</h1>
@@ -279,11 +278,10 @@ export default function Home() {
           )}
         </div>
     </div>
-</div>
 
         <div className="container" id="mynft">
         <div className="flex flex-col w-full">
-          <h2 className="text-2xl font-bold">My NFTs</h2>
+        <h1 className="text-3xl font-bold items-center">Your Collection</h1>
           <div className="flex mt-3 gap-x-2">
             {(nfts as any).map((nft: any, i: number) => {
               return <AnNFT key={i} nft={nft} />;
