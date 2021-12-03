@@ -48,7 +48,14 @@ npx browserslist@latest --update-db
 ```
 
 ## MINT SITE
+
 ```
+$ cd next-candy-machine
+$ yarn install
+$ yarn dev
+
+(yarn buid/start)
+
 solana config set --url https://api.devnet.solana.com
 
 solana airdrop
