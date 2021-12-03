@@ -118,6 +118,7 @@ const downloadError = () => {
     return new Promise((resolve) => {
       pdf.getPage(pageNo).then(async (page) => {
         const viewport = page.getViewport({ scale: DEFAULT_SCALE });
+        
 /*
         let canvasInHTML = {
             canvas: useRef<HTMLCanvasElement>(null),
@@ -174,9 +175,9 @@ const downloadError = () => {
         const test = context
 
         //const canvasInHTML.canvas = React.useRef<HTMLCanvasElement>(null);
-        */
+        /*
         let canvasInHTML = {
-             canvas: undefined as HTMLCanvasElement,
+             canvas: undefined,
              ctx: undefined
         } ;
 
@@ -215,7 +216,7 @@ const downloadError = () => {
           pageRenderRef.current = li;
         
         }
-        
+        */
       });
     });
   };
@@ -227,10 +228,10 @@ const downloadError = () => {
       fileReader.onload = (evt) => {
         const result = fileReader.result;
         try {
-          fileReader = null; // clear file reader
+          //fileReader = null; // clear file reader
           resolve(result);
         } catch (e) {
-          fileReader = null; // clear file reader
+          //fileReader = null; // clear file reader
           reject(e);
         }
       };
