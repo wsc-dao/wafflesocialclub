@@ -6,6 +6,22 @@ html {
   width: 100%;
   overflow-x: hidden;
 }
+
+.parallax-init {
+  /* Set height and width*/
+  height: 100vh;
+  width: 100vw;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-bg1 {
+  background-image: url("/vanishing-stripes.svg");
+}
+
 #root {
   height: 100%;
   font-family: 'Graphik Web', sans-serif;
@@ -21,9 +37,11 @@ html {
   filter: grayscale(100%);
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url("/vanishing-stripes.svg");
 }
 
 body {
+  background-image: url("/vanishing-stripes.svg");
   --row-highlight: @background-color-base;
   margin: 0;
 

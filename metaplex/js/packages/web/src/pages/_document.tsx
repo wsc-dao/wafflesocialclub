@@ -50,6 +50,7 @@ export default class MetaplexDocument extends Document {
           />
         </Head>
         <body>
+        
           <Main />
           <NextScript />
           <script

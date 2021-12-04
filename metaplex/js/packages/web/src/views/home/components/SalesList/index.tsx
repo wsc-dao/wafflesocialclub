@@ -37,7 +37,7 @@ export const SalesListView = () => {
   return (
     <>
       <Banner
-        src="/main-banner.png"
+        src="/vanishing-stripes.svg"
         headingText="Welcome to the first Belgian DAO community."
         subHeadingText="Buy exclusive Waffle Club NFTs."
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
