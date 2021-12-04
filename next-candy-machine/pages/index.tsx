@@ -75,7 +75,7 @@ export default function Home() {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
       <link rel="stylesheet" href="/custom.css"></link>
       </Head>
-      
+      <div className="parallax-init parallax-bg1">
       
 
       
@@ -233,8 +233,13 @@ export default function Home() {
     <span className="visually-hidden">Next</span>
   </button>
 </div>
+</div>
 
-        <Toaster />
+</div>
+
+<div className="parallax-init parallax-bg1">
+
+<Toaster />
         <div className="container" id="mint">
           <h1 className="text-2xl font-bold">Mint Date : dd/mm/YYYY</h1>
 
@@ -283,8 +288,7 @@ export default function Home() {
         </div>
     </div>
 
-        <div className="container" id="mynft">
-        <div className="flex flex-col w-full">
+    <div className="container" id="mynft">
         <h1 className="text-3xl font-bold items-center">Your Collection</h1>
           <div className="flex mt-3 gap-x-2">
             {(nfts as any).map((nft: any, i: number) => {
@@ -292,12 +296,10 @@ export default function Home() {
             })}
           </div>
         </div>
-        </div>
-            
-      
-      </div>
+</div>
 
-      <div className="container" id="team">
+<div className="parallax-init parallax-bg1">
+<div className="container" id="team">
         <h1 className="text-3xl font-bold items-center">Waffle Team</h1>
         <div className="row">
           <div className="col-sm">
@@ -335,10 +337,15 @@ export default function Home() {
 
         </div>
       </div>
-
-      <div className="container" id="faq">
+<div className="container" id="faq">
     <h1 className="text-3xl font-bold items-center">FAQ</h1>
+    
     </div>
+
+</div>
+
+
+
 
 
     </>
