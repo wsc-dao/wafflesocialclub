@@ -18,6 +18,10 @@ html,
   background-image: url(/flat-mountains.svg);
 }
 
+.parallax-bg2 {
+  background: #B8202E;
+}
+
 body {
   padding: 0;
   margin: 0;

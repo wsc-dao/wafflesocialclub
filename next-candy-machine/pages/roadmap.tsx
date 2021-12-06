@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as PDFJS from "pdfjs-dist/build/pdf";
-import context from "react-bootstrap/esm/AccordionContext";
 PDFJS.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS.version}/pdf.worker.min.js`;
 
 const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js');
@@ -60,7 +59,7 @@ const Roadmap = () => {
 
 
 
-/*  
+/*
   const progressFunction = async (event: { lengthComputable: any; loaded: number; total: number; }) => {
     if (event.lengthComputable) {
       const progress = Math.round((event.loaded / event.total) * 100) + "%";
@@ -118,7 +117,7 @@ const downloadError = () => {
     return new Promise((resolve) => {
       pdf.getPage(pageNo).then(async (page) => {
         const viewport = page.getViewport({ scale: DEFAULT_SCALE });
-        
+
 /*
         let canvasInHTML = {
             canvas: useRef<HTMLCanvasElement>(null),
@@ -135,7 +134,7 @@ const downloadError = () => {
         useEffect(() => {
             if (canvasInHTML.current) {
               const ctx = canvasInHTML.current.getContext('2d');
-        
+
               if (ctx) {
                 setContext(ctx);
               }
@@ -144,14 +143,14 @@ const downloadError = () => {
 
         /*
         const canvasInHTML = React.useRef<HTMLCanvasElement>(null);
-        
+
         const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
         const renderCtx = canvasInHTML.current.getContext('2d');
-        
+
         useEffect(() => {
             if (canvasInHTML.current) {
               const renderCtx = canvasInHTML.current.getContext('2d');
-        
+
               if (renderCtx) {
                 setContext(renderCtx);
               }
@@ -160,7 +159,7 @@ const downloadError = () => {
           */
         /*
         const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
-        
+
         const canvas = canvasInHTML.current;
           useEffect(() => {
             if (canvasInHTML.current) {
@@ -168,8 +167,8 @@ const downloadError = () => {
                 const ctx = canvas.getContext('2d');
                 if (ctx) {
                     setContext(ctx);
-                  }  
-            }       
+                  }
+            }
         }, [context]);
 
         const test = context
@@ -187,7 +186,7 @@ const downloadError = () => {
 
         canvasInHTML.canvas  = document.createElement("canvas") ;
         canvasInHTML.ctx = canvasInHTML.canvas.getContext("2d");
-		
+
         canvasInHTML.canvas.height = viewport.height;
         canvasInHTML.canvas.width = viewport.width;
         //let canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -210,11 +209,11 @@ const downloadError = () => {
             resolve(pageNo);
           }
         });
-        
+
 
         if (pageRenderRef.current) {
           pageRenderRef.current = li;
-        
+
         }
         */
       });
