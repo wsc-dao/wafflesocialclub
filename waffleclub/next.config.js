@@ -23,6 +23,7 @@ const withTM = require("next-transpile-modules")([
 module.exports = withTM({
   reactStrictMode: true,
   trailingSlash: true,
+  distDir: 'build',
   webpack: (config) => {
     config.resolve.fallback = {
       fs: false,
