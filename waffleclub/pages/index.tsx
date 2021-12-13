@@ -1,41 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
-import {Component, useEffect, useState} from "react";
-import Image from 'next/image'
+import {useEffect, useState} from "react";
 import useCandyMachine from "../hooks/useCandyMachine";
 import useWalletBalance from "../hooks/useWalletBalance";
 import {useWallet} from "@solana/wallet-adapter-react";
 import Script from 'next/script'
-import {Toaster} from "react-hot-toast";
-import Countdown from "react-countdown";
 import useWalletNfts from "../hooks/useWalletNFTs";
-import AnNFT from "../components/AnNFT/AnNFT";
 import {Header} from "../components/Header";
-import {Images} from "../components/Images";
+import {Hero} from "../components/Hero";
+import {DataCard} from "../components/DataCard";
 
-class Hero extends Component {
-  render() {
-    return <section style={{
-      height: "100vh",
-      backgroundColor: "#f5d8ad",
-      backgroundImage: "url('/flat-mountains.svg')",
-      backgroundPosition: "bottom",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    }}>
-      <h1 style={{fontSize: "35pt", color: "#B8202E", fontWeight: "bold"}}>Have a bite!</h1>
-      <Images sources={["/avatar.png", "/avatar_2.png", "/avatar_3.png"]}/>
-      <div>
-        <h2>Mint date</h2>
-        <time> 12/05/2021 21:00 UTC</time>
-      </div>
-    </section>;
-  }
-}
 
 export default function Home() {
   const [balance] = useWalletBalance();
@@ -108,12 +82,23 @@ export default function Home() {
       <Hero/>
       <section
         style={{
-          paddingTop: '3rem',
-          paddingBlock: '3rem',
+          paddingTop: '6rem',
+          paddingBottom: '6rem',
           maxWidth: '1500px',
           display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          margin: 'auto',
         }}>
-        <div>
+        <div
+          style={{
+            width: '45%',
+            gap: '2rem',
+            display: "flex",
+            flexDirection: 'column',
+            justifyContent: "space-between",
+            alignItems: "baseline"
+          }}>
           <h2>Belgian Waffles</h2>
           <p>Outside of Belgium, Belgian waffles are a variety of waffle with a lighter batter, larger squares, and
             deeper pockets than American waffles. Belgian waffles were originally leavened with yeast, but baking powder
@@ -123,10 +108,40 @@ export default function Home() {
 
             In Belgium itself, there are several kinds of waffle, including the Brussels waffle and the Liège
             waffle.</p>
-          <a href="#collection">View Collection</a>
+          <a
+            style={{
+              color: '#B8202E',
+              background: '#f5d8ad',
+              padding: '12px 16px',
+              borderRadius: '20px',
+              fontWeight: 'bold'
+            }}
+            href="#collection">View Collection</a>
         </div>
-        <img src="" alt=""/>
+        <img style={{
+          width: '45%',
+        }} src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg" alt=""/>
       </section>
+
+      <section style={{maxWidth: '1500px', margin: "auto", paddingBlock: '6rem'}}>
+        <h2 style={{textAlign: 'center', marginBottom: '3rem'}}>Statistics & Data</h2>
+        <div style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: 'center',
+          maxWidth: '100%',
+          fontSize: '1.3rem'
+        }}>
+          <DataCard value={'3'} label={'Eggs'}/>
+          <DataCard value={'375g'} label={'Milk'}/>
+          <DataCard value={'375g'} label={'Water'}/>
+          <DataCard value={'20g'} label={'Fresh Yeast'}/>
+          <DataCard value={'450g'} label={'Flour'}/>
+          <DataCard value={'150g'} label={'Butter'}/>
+        </div>
+      </section>
+
+      {/*
       <div className="parallax-init parallax-bg2">
 
 
@@ -327,7 +342,7 @@ export default function Home() {
         <div className="container" id="faq">
           <h1 className="text-3xl font-bold items-center">FAQ</h1>
         </div>
-      </div>
+      </div>*/}
     </>
   );
 }
