@@ -102,6 +102,7 @@ export default function useCandyMachine() {
 
     const startMint = async () => {
         try {
+            
             setIsMinting(true);
             if (wallet.connected && candyMachine?.program && wallet.publicKey) {
                 const mintTxId = await mintOneToken(
