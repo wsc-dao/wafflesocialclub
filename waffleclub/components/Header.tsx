@@ -3,11 +3,11 @@ import Link from "next/link";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import {useEffect, useState} from "react";
 
-const CustomHeader = styled.header<{scrolled:Boolean}>`
+const CustomHeader = styled.header<{ scrolled: Boolean }>`
   position: fixed;
   width: 100vw;
   z-index: 999;
-  background-color: ${props => !props.color ? 'transparent' : '#b81f2e'};
+  background-color: ${props => !props.scrolled ? 'transparent' : '#b81f2e'};
   transition: background-color 300ms ease-in-out;
 
   ul {
@@ -17,9 +17,10 @@ const CustomHeader = styled.header<{scrolled:Boolean}>`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    list-style-type: none;
 
     a {
-      color: ${props => props.color ? '#f5d8ad' : '#b81f2e'};
+      color: ${props => props.scrolled ? '#f5d8ad' : '#b81f2e'};
       transition: color 300ms ease-in-out;
 
       font-weight: bold;
@@ -76,21 +77,13 @@ export const Header = ({connected, balance}: HeaderProps) => {
   return <CustomHeader scrolled={navbar}>
     <nav>
       <ul>
-        <li>
-          <Link href={'#about'}>About</Link>
-        </li>
-        <li><Link href={'/roadmap'}>Roadmap</Link>
-        </li>
-        <li><Link href={'#team'}>Waffle Team</Link>
-        </li>
-        <li><Link href={'/'}><img src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
-        </li>
-        <li><Link href={'#mint'}>Mint</Link>
-        </li>
-        <li><Link href={'#mynft'}>Collection</Link>
-        </li>
-        <li><Link href={'#faq'}>FAQ</Link>
-        </li>
+        <li><Link href={'#about'}>About</Link></li>
+        <li><Link href={'/roadmap'}>Roadmap</Link></li>
+        <li><Link href={'#team'}>Waffle Team</Link></li>
+        <li><Link href={'/'}><img src="/waffledao_rebrand_logo.png" alt="logo"/></Link></li>
+        <li><Link href={'#mint'}>Mint</Link></li>
+        <li><Link href={'#mynft'}>Collection</Link></li>
+        <li><Link href={'#faq'}>FAQ</Link></li>
       </ul>
     </nav>
     <div className="balance">
