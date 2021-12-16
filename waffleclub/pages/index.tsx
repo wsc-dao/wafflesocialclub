@@ -4,6 +4,10 @@ import {useEffect, useState} from "react";
 import useCandyMachine from "../hooks/useCandyMachine";
 import useWalletBalance from "../hooks/useWalletBalance";
 import {useWallet} from "@solana/wallet-adapter-react";
+import Image from 'next/image'
+import Countdown from "react-countdown";
+import {Toaster} from "react-hot-toast";
+import AnNFT from "../components/AnNFT/AnNFT";
 import Script from 'next/script'
 import useWalletNfts from "../hooks/useWalletNFTs";
 import {Header} from "../components/Header";
@@ -141,7 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/*
+      =
       <div className="parallax-init parallax-bg2">
 
 
@@ -342,7 +346,7 @@ export default function Home() {
         <div className="container" id="faq">
           <h1 className="text-3xl font-bold items-center">FAQ</h1>
         </div>
-      </div>*/}
+      </div>
     </>
   );
 }
