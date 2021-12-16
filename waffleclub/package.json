@@ -20,7 +20,7 @@
     "@solana/wallet-adapter-wallets": "^0.10.0",
     "@solana/web3.js": "^1.29.2",
     "@types/react-pdf": "^5.0.9",
-    "next": "11.1.2",
+    "next": "^12.0.7",
     "pdfjs-dist": "^2.10.377",
     "react": "17.0.2",
     "react-countdown": "^2.3.2",
