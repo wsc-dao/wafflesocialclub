@@ -21,7 +21,10 @@ export const Hero =()=> <section style={{
     "/artwork/Gaufre_5.jpg",
     "/artwork/Gaufre_6.jpg",
     "/artwork/Gaufre_7.jpg",
-    "/artwork/Gaufre_8.jpg",]}/>
+    "/artwork/Gaufre_8.jpg",
+    "/artwork/Gaufre_9.jpg",
+    "/artwork/Gaufre_10.jpg",
+  ]}/>
   <div>
     <h2>Mint date</h2>
     <time> 12/05/2021 21:00 UTC</time>
