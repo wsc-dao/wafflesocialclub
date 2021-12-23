@@ -9,26 +9,25 @@ const Line = styled.div`
   height: 3px;
   position: absolute;
   bottom: 2rem;
-  left:0;
+  left: 0;
   right: 0;
   transform: translateY(50%);
   background: #f5d8ad;
 `;
 
 const StyledTimeline = styled.div`
-  display: flex;
+  // display: grid;
   overflow: auto;
   font-size: 1.3rem;
   padding: 2rem;
   position: relative;
-  gap: 2rem;
+  gap: 0;
 `;
 
-const TimelineElement = styled.div<{ selected: boolean }>`
+const TimelineElement = styled.div<{ selected: boolean; even: boolean; }>`
   position: relative;
-  border-left: 2px solid #f5d8ad;
   color: #B8202E;
-  min-width: max-content;
+  width: 50%;
 
   :before {
     content: ' ';
@@ -42,65 +41,82 @@ const TimelineElement = styled.div<{ selected: boolean }>`
     line-height: 20px;
     text-align: center;
     bottom: 0;
-    left: 0;
-    transform: translate3d(-50%, 50%, 0);
+    z-index: 2;
+    ${p => p.even ? `transform: translate3d(50%, 50%, 0);
+      right: 0;` : `left: 0;
+    transform: translate3d(-50%, 50%, 0);`}
+  }
+
+  :after {
+    content: ' ';
+    position: absolute;
+    width: 2px;
+    top: 0;
+    height: 100%;
+    background: #f5d8ad;
+    ${p => p.even ? `right: 0;
+      transform: translateX(50%);` : `left: 0;
+      transform: translateX(-50%);`}
   }
 
   div {
-    margin-top: 1rem;
+    margin-top: 3rem;
     margin-bottom: 3rem;
     background: #f5d8ad;
     padding: 1rem 2rem;
-
   }
 `;
 
 
-export const Timeline = () => {
-  return <StyledTimeline>
-    {[
-      {
-        title: 'Oktober 2021',
-        description: 'Artwork\nWebsite',
-        selected: true,
-      }, {
-        title: 'November 2021',
-        description: 'Marketing plan\nScaling',
-        selected: true,
-      },
-      {
-        title: 'Oktober 2021',
-        description: 'Artwork\nWebsite',
-        selected: false,
-      }, {
-        title: 'November 2021',
-        description: 'Marketing plan\nScaling',
-        selected: false,
-      }, {
-        title: 'Oktober 2021',
-        description: 'Artwork\nWebsite',
-        selected: true,
-      }, {
-        title: 'November 2021',
-        description: 'Marketing plan\nScaling',
-        selected: true,
-      },
-      {
-        title: 'Oktober 2021',
-        description: 'Artwork\nWebsite',
-        selected: false,
-      }, {
-        title: 'November 2021',
-        description: 'Marketing plan\nScaling',
-        selected: false,
-      },
-    ].map(({title, description, selected}, idx) => (
-      <TimelineElement key={`${title}-${idx}`} selected={selected}>
+export const Timeline = () => <StyledTimeline>
+  {[
+    {
+      title: 'Oktober 2021',
+      description: 'Artwork\nWebsite',
+      selected: true,
+    }, {
+      title: 'November 2021',
+      description: 'Marketing plan\nScaling',
+      selected: true,
+    },
+    {
+      title: 'Oktober 2021',
+      description: 'Artwork\nWebsite',
+      selected: false,
+    }, {
+      title: 'November 2021',
+      description: 'Marketing plan\nScaling',
+      selected: false,
+    }, {
+      title: 'Oktober 2021',
+      description: 'Artwork\nWebsite',
+      selected: true,
+    }, {
+      title: 'November 2021',
+      description: 'Marketing plan\nScaling',
+      selected: true,
+    },
+    {
+      title: 'Oktober 2021',
+      description: 'Artwork\nWebsite',
+      selected: false,
+    }, {
+      title: 'November 2021',
+      description: 'Marketing plan\nScaling',
+      selected: false,
+    },
+  ].map(({title, description, selected}, idx) => (
+    <div key={`${title}-${idx}`} style={{
+      display: 'flex',
+      flexDirection: idx % 2 ? 'row' : 'row-reverse'
+    }}>
+      <div/>
+      <TimelineElement key={`${title}-${idx}`} selected={selected} even={idx % 2}>
         <div>
           <h3>{title}-{idx}</h3>
-          <p>{description}</p>
+          <ul>{description.split('\n').map(el => <li  key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
         </div>
-      </TimelineElement>))}
-    <Line/>
-  </StyledTimeline>
-}
+      </TimelineElement>
+    </div>))}
+  <Line/>
+</StyledTimeline>;
