@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface Props {
   selected: boolean;
+  even: boolean;
 }
 
 const Line = styled.div`
@@ -24,7 +25,7 @@ const StyledTimeline = styled.div`
   gap: 0;
 `;
 
-const TimelineElement = styled.div<{ selected: boolean; even: boolean; }>`
+const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
   position: relative;
   color: #B8202E;
   width: 50%;
@@ -50,7 +51,7 @@ const TimelineElement = styled.div<{ selected: boolean; even: boolean; }>`
   :after {
     content: ' ';
     position: absolute;
-    width: ${p => p.selected ?'6px': '2px'};
+    width: ${p => p.selected ? '6px' : '2px'};
     top: 0;
     height: 100%;
     background: #f5d8ad;
@@ -111,10 +112,14 @@ export const Timeline = () => <StyledTimeline>
       flexDirection: idx % 2 ? 'row' : 'row-reverse'
     }}>
       <div/>
-      <TimelineElement key={`${title}-${idx}`} selected={selected} even={idx % 2}>
+      <TimelineElement
+        key={`${title}-${idx}`}
+        even={!!(idx % 2)}
+        selected={selected}
+      >
         <div>
           <h3>{title}-{idx}</h3>
-          <ul>{description.split('\n').map(el => <li  key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
+          <ul>{description.split('\n').map(el => <li key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
         </div>
       </TimelineElement>
     </div>))}
