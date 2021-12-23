@@ -32,7 +32,7 @@ const TimelineElement = styled.div<{ selected: boolean; even: boolean; }>`
   :before {
     content: ' ';
     position: absolute;
-    background: ${p => p.selected ? '#B8202E' : '#f5d8ad'};
+    background: ${p => p.selected ? '#f5d8ad' : '#B8202E'};
     border: 1px solid white;
     border-radius: 50%;
     aspect-ratio: 1/1;
@@ -50,7 +50,7 @@ const TimelineElement = styled.div<{ selected: boolean; even: boolean; }>`
   :after {
     content: ' ';
     position: absolute;
-    width: 2px;
+    width: ${p => p.selected ?'6px': '2px'};
     top: 0;
     height: 100%;
     background: #f5d8ad;
@@ -90,11 +90,11 @@ export const Timeline = () => <StyledTimeline>
     }, {
       title: 'Oktober 2021',
       description: 'Artwork\nWebsite',
-      selected: true,
+      selected: false,
     }, {
       title: 'November 2021',
       description: 'Marketing plan\nScaling',
-      selected: true,
+      selected: false,
     },
     {
       title: 'Oktober 2021',
