@@ -2,12 +2,12 @@ import {Images} from "./Images";
 import * as THREE from "three";
 // @ts-ignore
 import NET from "vanta/dist/vanta.net.min"
-import {useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 
 export const Hero = () => {
   const [vantaEffect, setVantaEffect] = useState(0)
 
-  const vantaRef=useRef(null);
+  const vantaRef = useRef(null);
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(NET({
@@ -33,7 +33,7 @@ export const Hero = () => {
       }
     }
   }, [vantaEffect])
- return  <>
+  return <>
 
     <section ref={vantaRef} style={{
       height: "100vh",
@@ -55,10 +55,17 @@ export const Hero = () => {
            "/artwork/Gaufre_2.jpg",
            "/artwork/Gaufre_3.jpg",
            "/artwork/Gaufre_4.jpg",
-           "/artwork/Gaufre_5.jpg",*/
-        "/artwork/Gaufre_6.jpg",
-        "/artwork/Gaufre_7.jpg",
-        /*"/artwork/Gaufre_8.jpg",*/]}/>
+           "/artwork/Gaufre_5.jpg",
+           "/artwork/Gaufre_6.jpg",
+           "/artwork/Gaufre_7.jpg",
+           "/artwork/Gaufre_8.jpg",
+           "/artwork/Gaufre_9.jpg",
+           "/artwork/Gaufre_10.jpg",
+       */
+        "/artwork/waffle_french.jpg",
+        "/artwork/waffle_zombie.jpg",
+        "/artwork/waffle_robot.jpg",
+      ]}/>
       <div>
         <h2>Mint date</h2>
         <time> 12/05/2021 21:00 UTC</time>
