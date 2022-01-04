@@ -6,16 +6,6 @@ interface Props {
   even: boolean;
 }
 
-const Line = styled.div`
-  height: 3px;
-  position: absolute;
-  bottom: 2rem;
-  left: 0;
-  right: 0;
-  transform: translateY(50%);
-  background: #f5d8ad;
-`;
-
 const StyledTimeline = styled.div`
   // display: grid;
   overflow: auto;
@@ -65,6 +55,10 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     margin-bottom: 3rem;
     background: #f5d8ad;
     padding: 1rem 2rem;
+    max-width: 450px;
+    &.left{
+      margin-left: auto;
+    }
   }
 `;
 
@@ -117,11 +111,10 @@ export const Timeline = () => <StyledTimeline>
         even={!!(idx % 2)}
         selected={selected}
       >
-        <div>
+        <div className={idx % 2 ? 'left' : 'right'}>
           <h3>{title}-{idx}</h3>
           <ul>{description.split('\n').map(el => <li key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
         </div>
       </TimelineElement>
     </div>))}
-  <Line/>
 </StyledTimeline>;
