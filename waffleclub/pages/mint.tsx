@@ -155,16 +155,24 @@ export default function Home() {
         <Timeline/>
       </Section>
       <Section title={'THE PRIVATE UNDERGROUND CLUB'}>
-        <p>
-          Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also an exclusive
-          membership to a 4000+ members private club.
-        </p>
-        <p>
-          Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads: a
-          permanent gallery to showcase and deal our NFTs, an underground and secret (not so secret anymore heh) fight
-          club for members to meet-up, the privatization of the Atomium for member-exclusive parties, and much more …
-          What we do is what you want as the WaffleDAO.
-        </p>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <div style={{maxWidth: '45%'}}>
+            <p>
+              Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also an exclusive
+              membership to a 4000+ members private club.
+            </p>
+            <p>
+              Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads: a
+              permanent gallery to showcase and deal our NFTs, an underground and secret (not so secret anymore heh)
+              fight
+              club for members to meet-up, the privatization of the Atomium for member-exclusive parties, and much more
+              …
+              What we do is what you want as the WaffleDAO.
+            </p>
+
+          </div>
+          <img style={{maxWidth: '45%'}} src="/table_1.png" alt=""/>
+        </div>
       </Section>
       <Section title={'NFT TRAIT RARITY'}>
         <p>
@@ -214,6 +222,8 @@ export default function Home() {
           </tr>
         </table>
       </Section>
+
+
       <div className="parallax-init parallax-bg2">
 
 
