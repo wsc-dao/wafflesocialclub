@@ -1,7 +1,7 @@
 import {Images} from "./Images";
 import * as THREE from "three";
 // @ts-ignore
-import NET from "vanta/dist/vanta.net.min"
+import FOG from "vanta/dist/vanta.fog.min"
 import {useEffect, useRef, useState} from "react";
 
 export const Hero = () => {
@@ -10,21 +10,21 @@ export const Hero = () => {
   const vantaRef = useRef(null);
   useEffect(() => {
     if (!vantaEffect) {
-      setVantaEffect(NET({
+      setVantaEffect(FOG({
         el: vantaRef.current,
         THREE,
         mouseControls: true,
         touchControls: true,
-        gyroControls: true,
+        gyroControls: false,
         minHeight: 200.00,
         minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0xf5d8ad,
-        backgroundColor: 0xB8202E,
-        points: 18.00,
-        maxDistance: 28.00,
-        spacing: 20.00
+        highlightColor: '#ffb400',
+        midtoneColor: '#ff8a00',
+        lowlightColor: '#ffffff',
+        baseColor: '#ffebeb',
+        blurFactor: 0.40,
+       // zoom: 1.60,
+        speed: 1,
       }))
     }
     return () => {
