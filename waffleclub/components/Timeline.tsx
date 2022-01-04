@@ -66,15 +66,23 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
 export const Timeline = () => <StyledTimeline>
   {[
     {
-      title: 'Oktober 2021',
-      description: 'Artwork\nWebsite',
+      title: 'November 2021',
+      description: 'Final team composition',
       selected: true,
     }, {
-      title: 'November 2021',
-      description: 'Marketing plan\nScaling',
+      title: 'December 2021',
+      description: 'Teammeeting',
       selected: true,
     },
     {
+      title: 'January 2022',
+      description: 'Artist selected\nTrait listing',
+      selected: true,
+    }, {
+      title: 'February 2022',
+      description: 'Coming soon page\n',
+      selected: false,
+    }, {
       title: 'Oktober 2021',
       description: 'Artwork\nWebsite',
       selected: false,
@@ -82,24 +90,7 @@ export const Timeline = () => <StyledTimeline>
       title: 'November 2021',
       description: 'Marketing plan\nScaling',
       selected: false,
-    }, {
-      title: 'Oktober 2021',
-      description: 'Artwork\nWebsite',
-      selected: false,
-    }, {
-      title: 'November 2021',
-      description: 'Marketing plan\nScaling',
-      selected: false,
-    },
-    {
-      title: 'Oktober 2021',
-      description: 'Artwork\nWebsite',
-      selected: false,
-    }, {
-      title: 'November 2021',
-      description: 'Marketing plan\nScaling',
-      selected: false,
-    },
+    }
   ].map(({title, description, selected}, idx) => (
     <div key={`${title}-${idx}`} style={{
       display: 'flex',
@@ -112,7 +103,7 @@ export const Timeline = () => <StyledTimeline>
         selected={selected}
       >
         <div className={idx % 2 ? 'left' : 'right'}>
-          <h3>{title}-{idx}</h3>
+          <h3>{title}</h3>
           <ul>{description.split('\n').map(el => <li key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
         </div>
       </TimelineElement>

@@ -3,9 +3,9 @@ import {HtmlHTMLAttributes, useEffect, useState} from "react";
 
 const Figure = styled.figure`
   position: relative;
-  width: 330px;
-  height: 330px;
-  background: url("https://esquilo.io/png/thumb/ulrkkcGQ6bihENU-Square-Frame-PNG-Transparent-Picture.png") center center no-repeat;
+  width: 450px;
+  height: 450px;
+  // background: url("/frame.png") center center no-repeat;
   background-size: contain;
   img {
     position: absolute;
@@ -16,7 +16,11 @@ const Figure = styled.figure`
     transform: translate3d(-50%, -50%, 0);
     width: 300px;
     height: 300px;
-    border-radius: 7px;
+    //border-radius: 7px;
+    &.frame{
+      width: 450px;
+      height: 450px;
+    }
   }
 `;
 type ImagesProps = {
@@ -37,5 +41,6 @@ export const Images = ({sources}:ImagesProps) => {
   });
   return <Figure>
     <img src={sources[counter % sources.length]} alt="" width={300} height={300}/>
+    <img src="/frame.png" alt="" className={'frame'}/>
   </Figure>
 }
