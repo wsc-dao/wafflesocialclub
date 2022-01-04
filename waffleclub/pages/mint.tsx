@@ -86,49 +86,53 @@ export default function Home() {
       <Header balance={balance} connected={connected}/>
       <Hero/>
       <Section
-        style={{
+        title={'WELCOME TO THE WAFFLE CLUB'}
+      >
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
-        <div
-          style={{
-            width: '45%',
-            gap: '2rem',
-            display: "flex",
-            flexDirection: 'column',
-            justifyContent: "space-between",
-            alignItems: "baseline"
-          }}>
-          <h2>Belgian Waffles</h2>
-          <p>Outside of Belgium, Belgian waffles are a variety of waffle with a lighter batter, larger squares, and
-            deeper pockets than American waffles. Belgian waffles were originally leavened with yeast, but baking powder
-            is now often used. They are often eaten as a breakfast food; toppings vary from whipped cream, confectioners
-            sugar, soft fruit, and chocolate spread, to syrup and butter or margarine. They may also be served with
-            vanilla ice cream and fresh fruit (such as strawberries) as a dessert.
-
-            In Belgium itself, there are several kinds of waffle, including the Brussels waffle and the Liège
-            waffle.</p>
-          <a
+          <div
             style={{
-              color: '#B8202E',
-              background: '#f5d8ad',
-              padding: '12px 16px',
-              borderRadius: '20px',
-              fontWeight: 'bold'
-            }}
-            href="#collection">View Collection</a>
+              width: '45%',
+              gap: '2rem',
+              display: "flex",
+              flexDirection: 'column',
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}>
+            <p>Waffle Club is a collection of 4343 delicious Waffle NFTs - unique and delicious crypto-art, freshly
+              baked
+              on the Solana blockchain. Made with hand-picked ingredients to offer high quality products. It’s best to
+              eat
+              them now when it’s still warm. Go treat yourself!
+            </p>
+            <p>
+              Lekker!
+            </p>
+            <a
+              style={{
+                color: '#B8202E',
+                background: '#f5d8ad',
+                padding: '12px 16px',
+                borderRadius: '20px',
+                fontWeight: 'bold'
+              }}
+              href="#collection">View Collection</a>
+          </div>
+          <img style={{
+            width: '45%',
+          }} src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg" alt=""/>
         </div>
-        <img style={{
-          width: '45%',
-        }} src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg" alt=""/>
       </Section>
 
-      <Section>
-        <h2 style={{textAlign: 'center', marginBottom: '3rem'}}>Statistics & Data</h2>
+      <Section title={'Statistics & Data'}>
         <div style={{
           display: "flex",
           justifyContent: "space-evenly",
+          gap: '1rem',
+          flexWrap: 'wrap',
           alignItems: 'center',
           maxWidth: '100%',
           fontSize: '1.3rem'
@@ -141,11 +145,75 @@ export default function Home() {
           <DataCard value={'150g'} label={'Butter'}/>
         </div>
       </Section>
-      <Section>
-        <h2 style={{textAlign: 'center', marginBottom: '3rem'}}>Roadmap</h2>
+      <Section title={'Roadmap'}>
+        <p>Inspired by BAYC, the Waffle grants you an exclusive membership to the private Waffle Club, giving you
+          decisional power in the WaffleDAO* and access to increasing benefits and projects.
+        </p>
+        <p>
+          The plan is to draw together the roadmap path.
+        </p>
         <Timeline/>
       </Section>
-
+      <Section title={'THE PRIVATE UNDERGROUND CLUB'}>
+        <p>
+          Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also an exclusive
+          membership to a 4000+ members private club.
+        </p>
+        <p>
+          Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads: a
+          permanent gallery to showcase and deal our NFTs, an underground and secret (not so secret anymore heh) fight
+          club for members to meet-up, the privatization of the Atomium for member-exclusive parties, and much more …
+          What we do is what you want as the WaffleDAO.
+        </p>
+      </Section>
+      <Section title={'NFT TRAIT RARITY'}>
+        <p>
+          Although all waffles will be delightful. Some say that a waffle is definitely more savory with some whipped
+          cream or chopped fruits. Others will say that we eat with our eyes. That’s why a rarity system
+          distinguishing the dulcet taste from the more extravagant one was elaborated.
+        </p>
+        <p>
+          Each waffle will be unique and programmatically generated from over 1xx singular and possible traits. All
+          waffles are yummy but some will be rarer and tastier than others.
+        </p>
+        <table style={{margin: 'auto', minWidth: '650px'}}>
+          <tr>
+            <th>COMMON</th>
+            <th>UNCOMMON</th>
+            <th>RARE</th>
+            <th>EPIC</th>
+            <th>LEGENDARY</th>
+          </tr>
+          <tr>
+            <td>Agreeable</td>
+            <td>Flavorful</td>
+            <td>Tasty</td>
+            <td>Delightful</td>
+            <td>Heavenly</td>
+          </tr>
+          <tr>
+            <td>Pleasant</td>
+            <td>Appetizing</td>
+            <td>Yummy</td>
+            <td>Mouthwatering</td>
+            <td>Luscious</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Savory</td>
+            <td>Delicious</td>
+            <td>Ambrosial</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Delish</td>
+            <td></td>
+          </tr>
+        </table>
+      </Section>
       <div className="parallax-init parallax-bg2">
 
 
