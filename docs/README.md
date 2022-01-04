@@ -72,4 +72,4 @@ $ npx ts-node ~/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts cre
 
 $ npx ts-node ~/waffleclub/metaplex/js/packages/cli/src/candy-machine-cli.ts update_candy_machine -e devnet -k .config/solana/devnet.json -p 1 -d "13 Dec 2021 00:00:00 CET"
 
-```
+``` :)
