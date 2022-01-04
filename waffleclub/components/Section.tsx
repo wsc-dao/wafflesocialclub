@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import {
-  ReactChildren
-} from "../../../../../../../Applications/PhpStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react";
 
 const StyledSection = styled.section`
   max-width: 1500px;
@@ -25,7 +22,11 @@ const StyledSection = styled.section`
   }
 `;
 
-export const Section = ({title, children, ...props}: { title: string; children: JSX.Element[]|JSX.Element; style?:any}) =>
+export const Section = ({
+                          title,
+                          children,
+                          ...props
+                        }: { title: string; children: JSX.Element[] | JSX.Element; style?: any }) =>
   <StyledSection {...props}>
     <div className="content">
       <h2>{title}</h2>
