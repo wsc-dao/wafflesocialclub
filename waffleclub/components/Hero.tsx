@@ -55,10 +55,11 @@ export const Hero = () => {
            "/artwork/Gaufre_2.jpg",
            "/artwork/Gaufre_3.jpg",
            "/artwork/Gaufre_4.jpg",
-           "/artwork/Gaufre_5.jpg",*/
-        "/artwork/Gaufre_6.jpg",
-        "/artwork/Gaufre_7.jpg",
-        /*"/artwork/Gaufre_8.jpg",*/]}/>
+           "/artwork/Gaufre_5.jpg",
+           "/artwork/Gaufre_6.jpg",
+           "/artwork/Gaufre_7.jpg",
+           "/artwork/Gaufre_8.jpg",*/
+      "/artwork/waffle_french.jpg","/artwork/waffle_zombie.jpg","/artwork/waffle_robot.jpg",]}/>
       <div>
         <h2>Mint date</h2>
         <time> 12/05/2021 21:00 UTC</time>
