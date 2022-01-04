@@ -13,6 +13,8 @@ import useWalletNfts from "../hooks/useWalletNFTs";
 import {Header} from "../components/Header";
 import {Hero} from "../components/Hero";
 import {DataCard} from "../components/DataCard";
+import {Section} from "../components/Section";
+import {Timeline} from "../components/Timeline";
 
 
 export default function Home() {
@@ -84,15 +86,11 @@ export default function Home() {
       </Head>
       <Header balance={balance} connected={connected}/>
       <Hero/>
-      <section
+      <Section
         style={{
-          paddingTop: '6rem',
-          paddingBottom: '6rem',
-          maxWidth: '1500px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          margin: 'auto',
         }}>
         <div
           style={{
@@ -125,9 +123,9 @@ export default function Home() {
         <img style={{
           width: '45%',
         }} src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg" alt=""/>
-      </section>
+      </Section>
 
-      <section style={{maxWidth: '1500px', margin: "auto", paddingBlock: '6rem'}}>
+      <Section>
         <h2 style={{textAlign: 'center', marginBottom: '3rem'}}>Statistics & Data</h2>
         <div style={{
           display: "flex",
@@ -143,9 +141,12 @@ export default function Home() {
           <DataCard value={'450g'} label={'Flour'}/>
           <DataCard value={'150g'} label={'Butter'}/>
         </div>
-      </section>
+      </Section>
+      <Section>
+        <h2 style={{textAlign: 'center', marginBottom: '3rem'}}>Roadmap</h2>
+        <Timeline/>
+      </Section>
 
-      =
       <div className="parallax-init parallax-bg2">
 
 
