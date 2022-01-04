@@ -55,7 +55,7 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     margin-bottom: 3rem;
     background: #f5d8ad;
     padding: 1rem 2rem;
-    max-width: 450px;
+    max-width: 350px;
     &.left{
       margin-left: auto;
     }
