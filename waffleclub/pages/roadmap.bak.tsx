@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import * as PDFJS from "pdfjs-dist/build/pdf";
+
 PDFJS.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS.version}/pdf.worker.min.js`;
 
 const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js');
@@ -7,7 +8,8 @@ const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js')
 
 const Roadmap = () => {
   let renderedPdf;
-  let pageRenderRef = useRef<HTMLDivElement>(null)
+  const pageRenderRef = useRef<HTMLDivElement>(null)
+  const canvas = useRef<HTMLCanvasElement>(null);
   //const pageRenderRef = useRef(null);
   const DEFAULT_SCALE = 1;
   const [progressTxt, setprogressTxt] = useState("");
@@ -17,13 +19,13 @@ const Roadmap = () => {
     getPDFData();
   });
 
-  const getPDFData = async () => {
+  const getPDFData = () => {
     // can be web URL
     const url = "/sample.pdf";
     downloadPDFFromURL(url);
   };
 
-  const downloadPDFFromURL = (url:any) => {
+  const downloadPDFFromURL = (url: any) => {
     const xhrObj = new XMLHttpRequest();
     xhrObj.open("GET", url, true);
     xhrObj.responseType = "blob";
@@ -58,17 +60,16 @@ const Roadmap = () => {
   };
 
 
+  /*
+    const progressFunction = async (event: { lengthComputable: any; loaded: number; total: number; }) => {
+      if (event.lengthComputable) {
+        const progress = Math.round((event.loaded / event.total) * 100) + "%";
+        setprogressTxt(progress);
+      }
+    };
+  */
 
-/*
-  const progressFunction = async (event: { lengthComputable: any; loaded: number; total: number; }) => {
-    if (event.lengthComputable) {
-      const progress = Math.round((event.loaded / event.total) * 100) + "%";
-      setprogressTxt(progress);
-    }
-  };
-*/
-
-const downloadError = () => {
+  const downloadError = () => {
     console.log("Network Error!");
   };
 
@@ -90,8 +91,8 @@ const downloadError = () => {
   };
 
   const showPDFInCanvas = async (pdfData: string) => {
-    const loadingTask = PDFJS.getDocument({ data: pdfData });
-    loadingTask.promise.then(
+    const loadingTask = PDFJS.getDocument({data: pdfData});
+    await loadingTask.promise.then(
       (pdf: any) => {
         renderedPdf = pdf;
         const container = pageRenderRef.current;
@@ -104,27 +105,25 @@ const downloadError = () => {
     );
   };
 
-  const fetchPageNo = (pageNo:any, pdf:any, container:any) => {
+  const fetchPageNo = async (pageNo: any, pdf: any, container: any) => {
     if (pageNo < pdf._pdfInfo.numPages) {
       pageNo += 1;
-      createContextForCanvas(pdf, container, pageNo).then((page) => {
-        fetchPageNo(page + "1", pdf, container);
-      });
+      const page = await createContextForCanvas(pdf, container, pageNo);
+      fetchPageNo(page + "1", pdf, container);
     }
   };
 
-  const createContextForCanvas = (pdf: { getPage: (arg0: any) => Promise<any>; }, container:any, pageNo:any) => {
+  const createContextForCanvas = async (pdf: { getPage: (arg0: any) => Promise<any>; }, container: any, pageNo: any) => {
     return new Promise((resolve) => {
       pdf.getPage(pageNo).then(async (page) => {
-        const viewport = page.getViewport({ scale: DEFAULT_SCALE });
+        const viewport = page.getViewport({scale: DEFAULT_SCALE});
 
 /*
         let canvasInHTML = {
-            canvas: useRef<HTMLCanvasElement>(null),
-            ctx: undefined
-          };
-*/
-
+          canvas,
+          ctx: undefined
+        };
+        */
 
 
         /*
@@ -174,10 +173,10 @@ const downloadError = () => {
         const test = context
 
         //const canvasInHTML.canvas = React.useRef<HTMLCanvasElement>(null);
-        /*
+        */
         let canvasInHTML = {
-             canvas: undefined,
-             ctx: undefined
+             canvas: undefined as any,
+             ctx: undefined as any
         } ;
 
         const li = document.createElement("div");
@@ -210,12 +209,10 @@ const downloadError = () => {
           }
         });
 
-
         if (pageRenderRef.current) {
-          pageRenderRef.current = li;
-
+          pageRenderRef.current.appendChild(li);
         }
-        */
+
       });
     });
   };
@@ -223,7 +220,7 @@ const downloadError = () => {
   const convertBlobToBase64 = (data: BlobPart) => {
     return new Promise((resolve, reject) => {
       let fileReader = new FileReader();
-      data = new Blob([data], { type: "application/pdf" });
+      data = new Blob([data], {type: "application/pdf"});
       fileReader.onload = (evt) => {
         const result = fileReader.result;
         try {
