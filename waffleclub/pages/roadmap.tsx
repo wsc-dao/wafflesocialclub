@@ -1,249 +1,101 @@
-import React, { useEffect, useRef, useState } from "react";
-import * as PDFJS from "pdfjs-dist/build/pdf";
-PDFJS.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS.version}/pdf.worker.min.js`;
+import React from "react";
+import styled from "styled-components";
+import {DarkGrey, Red, YellowCream} from "../consts";
 
-const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js');
+const FHSectionContainer = styled.div`
+  max-height: 100vh;
+  overflow: auto;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
 
+  section {
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    scroll-snap-align: start;
+    padding: 5vh;
+    background: ${DarkGrey};
 
-const Roadmap = () => {
-  let renderedPdf;
-  let pageRenderRef = useRef<HTMLDivElement>(null)
-  //const pageRenderRef = useRef(null);
-  const DEFAULT_SCALE = 1;
-  const [progressTxt, setprogressTxt] = useState("");
+    .content {
+      background: ${Red};
+      height: 90vh;
+      border-radius: 30px;
+      padding: 10vh;
 
-  useEffect(() => {
-    console.log("load PDF");
-    getPDFData();
-  });
-
-  const getPDFData = async () => {
-    // can be web URL
-    const url = "/sample.pdf";
-    downloadPDFFromURL(url);
-  };
-
-  const downloadPDFFromURL = (url:any) => {
-    const xhrObj = new XMLHttpRequest();
-    xhrObj.open("GET", url, true);
-    xhrObj.responseType = "blob";
-
-    xhrObj.addEventListener("loadstart", loadStartFunction, false);
-    //xhrObj.addEventListener("progress", progressFunction, false);
-    xhrObj.addEventListener("error", downloadError, false);
-    xhrObj.addEventListener("timeout", downloadTimeout, false);
-    xhrObj.addEventListener("abort", downloadAbort, false);
-
-    xhrObj.onreadystatechange = async (event) => {
-      try {
-        if (xhrObj && xhrObj.status === 400) {
-          console.log("download error");
-        } else {
-          if (xhrObj && xhrObj.readyState === XMLHttpRequest.DONE) {
-            console.log("download complete");
-            const pdfData = await convertBlobToBase64(xhrObj.response);
-            loadPDFWithBlob(pdfData);
-          }
-        }
-      } catch (error) {
-        console.error("File upload exception: ", error);
+      h2 {
+        margin: 0;
+        max-width: 60%;
+        font-size: 55pt;
+        line-height: 55pt;
+        font-style: italic;
       }
-    };
 
-    xhrObj.send(null);
-  };
-
-  const loadStartFunction = (event: any) => {
-    console.log("File download started");
-  };
-
-
-
-/*
-  const progressFunction = async (event: { lengthComputable: any; loaded: number; total: number; }) => {
-    if (event.lengthComputable) {
-      const progress = Math.round((event.loaded / event.total) * 100) + "%";
-      setprogressTxt(progress);
-    }
-  };
-*/
-
-const downloadError = () => {
-    console.log("Network Error!");
-  };
-
-  const downloadTimeout = () => {
-    console.log("Network Timeout!");
-  };
-
-  const downloadAbort = () => {
-    console.log("Upload Aborted!");
-  };
-
-  const loadPDFWithBlob = (pdfData: any) => {
-    const encodedPDF = pdfData;
-    const encodedData = encodedPDF.split(",");
-    if (encodedData[1] !== undefined) {
-      const pdfbase64 = atob(encodedData[1]);
-      showPDFInCanvas(pdfbase64);
-    }
-  };
-
-  const showPDFInCanvas = async (pdfData: string) => {
-    const loadingTask = PDFJS.getDocument({ data: pdfData });
-    loadingTask.promise.then(
-      (pdf: any) => {
-        renderedPdf = pdf;
-        const container = pageRenderRef.current;
-        const pageNo = 0;
-        fetchPageNo(pageNo, renderedPdf, container);
-      },
-      (error: string) => {
-        console.log("PDF error");
+      p {
+        max-width: 45%;
+        font-size: 20pt;
       }
-    );
-  };
-
-  const fetchPageNo = (pageNo:any, pdf:any, container:any) => {
-    if (pageNo < pdf._pdfInfo.numPages) {
-      pageNo += 1;
-      createContextForCanvas(pdf, container, pageNo).then((page) => {
-        fetchPageNo(page + "1", pdf, container);
-      });
     }
-  };
+  }
+`;
+const Big = styled.span`
+  font-size: 83pt;
+  max-width: 130%;
+  text-transform: uppercase;
+  color: ${YellowCream}
+`;
+const Roadmap = () => <FHSectionContainer>
 
-  const createContextForCanvas = (pdf: { getPage: (arg0: any) => Promise<any>; }, container:any, pageNo:any) => {
-    return new Promise((resolve) => {
-      pdf.getPage(pageNo).then(async (page) => {
-        const viewport = page.getViewport({ scale: DEFAULT_SCALE });
-
-/*
-        let canvasInHTML = {
-            canvas: useRef<HTMLCanvasElement>(null),
-            ctx: undefined
-          };
-*/
-
-
-
-        /*
-        const canvasInHTML = useRef<HTMLCanvasElement>(null);
-        const [ctx, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
-
-        useEffect(() => {
-            if (canvasInHTML.current) {
-              const ctx = canvasInHTML.current.getContext('2d');
-
-              if (ctx) {
-                setContext(ctx);
-              }
-            }
-          }, [ctx]);
-
-        /*
-        const canvasInHTML = React.useRef<HTMLCanvasElement>(null);
-
-        const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
-        const renderCtx = canvasInHTML.current.getContext('2d');
-
-        useEffect(() => {
-            if (canvasInHTML.current) {
-              const renderCtx = canvasInHTML.current.getContext('2d');
-
-              if (renderCtx) {
-                setContext(renderCtx);
-              }
-            }
-          }, [context]);
-          */
-        /*
-        const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
-
-        const canvas = canvasInHTML.current;
-          useEffect(() => {
-            if (canvasInHTML.current) {
-                const canvas = canvasInHTML.current;
-                const ctx = canvas.getContext('2d');
-                if (ctx) {
-                    setContext(ctx);
-                  }
-            }
-        }, [context]);
-
-        const test = context
-
-        //const canvasInHTML.canvas = React.useRef<HTMLCanvasElement>(null);
-        /*
-        let canvasInHTML = {
-             canvas: undefined,
-             ctx: undefined
-        } ;
-
-        const li = document.createElement("div");
-        li.setAttribute("id", "page-" + (page._pageIndex + 1));
-        li.setAttribute("style", "position: relative;");
-
-        canvasInHTML.canvas  = document.createElement("canvas") ;
-        canvasInHTML.ctx = canvasInHTML.canvas.getContext("2d");
-
-        canvasInHTML.canvas.height = viewport.height;
-        canvasInHTML.canvas.width = viewport.width;
-        //let canvas = document.getElementById('canvas') as HTMLCanvasElement;
-        //let ctx = canvas.getContext("2d");
-        //canvas.height = viewport.height;
-        //canvas.width = viewport.width;
-
-        li.appendChild(canvasInHTML.canvas);
-        container.appendChild(li);
-
-        const renderContext = {
-          canvasContext: canvasInHTML.ctx,
-          viewport
-        };
-
-        let renderTask = page.render(renderContext);
-
-        renderTask.promise.then(() => {
-          if (pageNo !== null) {
-            resolve(pageNo);
-          }
-        });
-
-
-        if (pageRenderRef.current) {
-          pageRenderRef.current = li;
-
-        }
-        */
-      });
-    });
-  };
-
-  const convertBlobToBase64 = (data: BlobPart) => {
-    return new Promise((resolve, reject) => {
-      let fileReader = new FileReader();
-      data = new Blob([data], { type: "application/pdf" });
-      fileReader.onload = (evt) => {
-        const result = fileReader.result;
-        try {
-          //fileReader = null; // clear file reader
-          resolve(result);
-        } catch (e) {
-          //fileReader = null; // clear file reader
-          reject(e);
-        }
-      };
-      fileReader.readAsDataURL(data);
-    });
-  };
-
-  return (
-    <div>
-      <p>Loading: {progressTxt}</p>
-      <div ref={pageRenderRef}></div>
+  <section>
+    <div className="content" style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      background:`linear-gradient(180deg,${YellowCream},#c53535,${Red})`,
+    }}>
+      <h2 style={{fontSize: '110pt', lineHeight: '109pt'}}>THE WAFFLE CLUB</h2>
+      <p style={{
+        maxWidth: ' 80%'
+      }}>Baking a Belgian limited NFT collection to create the WaffleDAO and private club whilst pionering greater
+        ambitions</p>
     </div>
-  );
-};
+  </section>
+  <section>
+    <div className="content">
+      <h2>Welcome to the <Big>WAFFLEDAO</Big></h2>
+      <p>Waffle Club is a collection of 4343 delicious Waffle NFTs - unique and delicious crypto-art, freshly
+        baked
+        on the Solana blockchain. Made with hand-picked ingredients to offer high quality products. It’s best to
+        eat
+        them now when it’s still warm. Go treat yourself!
+      </p>
+      <p style={{fontStyle: 'italic', fontSize: '40pt', fontWeight: 'bolder'}}>
+        Lekkeeer!
+      </p>
+    </div>
+
+  </section>
+  <section>
+    <div className="content">
+      <h2><Big>THE RECIPE</Big><br/>
+        The Waffle private club</h2>
+      <p>Inspired by BAYC, the Waffle grants you an exclusive membership to the private Waffle Club, giving you
+        decisional power in the WaffleDAO* and access to increasing benefits and projects.
+      </p>
+      <p>
+        The plan is to draw together the roadmap path.
+      </p>
+    </div>
+  </section>
+  <section>
+    <div className="content">
+      <h2><Big>when waffle</Big><br/>
+        are all baked</h2>
+      <p>The WaffleDAO chooses the next steps.
+      </p>
+    </div>
+  </section>
+</FHSectionContainer>;
+
 
 export default Roadmap;
