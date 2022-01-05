@@ -236,10 +236,8 @@ const Roadmap = () => {
   };
 
   return (
-    <div>
-      <p>Loading: {progressTxt}</p>
+
       <div ref={pageRenderRef}></div>
-    </div>
   );
 };
 
