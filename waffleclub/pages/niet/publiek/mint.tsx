@@ -46,22 +46,21 @@ export default function Home() {
 
     return (
       <>
-        <Button
-          primary={false}
-          onClick={() => startMintMultiple(mintCount)}
-          disabled={isMinting}
-          label={isMinting ? "loading" : `mint ${mintCount}`}
-        />
         <input
           disabled={isMinting}
           type="number"
           min={1}
           max={5}
-          className="px-2 mx-auto mt-5 font-bold bg-gray-500"
           value={mintCount}
           onChange={(e) => setMintCount((e.target as any).value)}
         />
-        <p className="mx-auto mt-2">max 5</p>
+        <Button
+          style={{marginLeft: '1rem'}}
+          primary={false}
+          onClick={() => startMintMultiple(mintCount)}
+          disabled={isMinting}
+          label={isMinting ? "loading" : `mint`}
+        />
       </>
     );
   };
@@ -207,18 +206,18 @@ export default function Home() {
             <td>Luscious</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
+            <td/>
+            <td/>
             <td>Savory</td>
             <td>Delicious</td>
             <td>Ambrosial</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td/>
+            <td/>
+            <td/>
             <td>Delish</td>
-            <td></td>
+            <td/>
           </tr>
         </table>
       </Section>
@@ -336,22 +335,26 @@ export default function Home() {
                       <p>SOLD OUT</p>
                     ) : (
                       <>
-                        <div className="mint-container">
-                          <h1 className="mb-10 text-3xl font-bold">Mint One</h1>
-                          {connected && <p className="mb-3 text-2xl">Total Supply: {nftsData.itemsAvailable}</p>}
-                          {connected && <p className="mb-3 text-2xl">Available: {nftsData.itemsRemaining}</p>}
-                          {connected && <p className="mb-5 text-2xl">Minted: {nftsData.itemsRedeemed}</p>}
-                          <Button
-                            onClick={startMint}
-                            disabled={isMinting}
-                            label={isMinting ? "loading" : "Mint 1"}
-                          />
+                        {connected &&
+                          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                            <div>
+                              <h1 style={{marginTop: 0, paddingTop: 0}}>Mint One</h1>
+                              <Button
+                                onClick={startMint}
+                                disabled={isMinting}
+                                label={isMinting ? "loading" : "Mint 1"}
+                              />
+                            </div>
+                            <div><p>Total Supply: {nftsData.itemsAvailable}</p>
+                              <p>Available: {nftsData.itemsRemaining}</p>
+                              <p>Minted: {nftsData.itemsRedeemed}</p>
+                            </div>
+                            <div>
+                              <h1 style={{marginTop: 0, paddingTop: 0}}>Mint Many</h1>
+                              <MintMany/>
+                            </div>
+                          </div>}
 
-                        </div>
-                        <div className="flex flex-col w-1/2">
-                          <h1 className="mb-10 text-3xl font-bold">Mint Many</h1>
-                          <MintMany/>
-                        </div>
                       </>
                     )}
                   </>
