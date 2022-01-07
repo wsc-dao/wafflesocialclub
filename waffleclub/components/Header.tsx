@@ -63,7 +63,6 @@ export const Header = ({connected, balance}: HeaderProps) => {
   const [navbar, setNavbar] = useState(false)
 
   const changeBackground = () => {
-    console.log(window.scrollY)
     if (window.scrollY >= 250) {
       setNavbar(true);
     } else {
@@ -71,7 +70,7 @@ export const Header = ({connected, balance}: HeaderProps) => {
     }
   }
   useEffect(() => {
-    changeBackground()
+    changeBackground();
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground)
   })
