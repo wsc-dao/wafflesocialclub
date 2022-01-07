@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 const StyledSection = styled.section`
-  max-width: 1500px;
-  margin: auto;
   padding-block: 6rem;
 
+  h2 {
+    max-width: 1500px;
+    margin: auto;
+    text-align: center;
+    margin-block-end: 3rem;
+  }
+
   .content {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: auto;
 
-    h2 {
-      text-align: center;
-      margin-block-end: 3rem;
-    }
 
     p {
       max-width: 650px;
@@ -25,11 +26,12 @@ const StyledSection = styled.section`
 export const Section = ({
                           title,
                           children,
+                          contentStyle,
                           ...props
-                        }: { title: string; children: JSX.Element[] | JSX.Element; style?: any }) =>
+                        }: { title: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any }) =>
   <StyledSection {...props}>
-    <div className="content">
-      <h2>{title}</h2>
+    <h2>{title}</h2>
+    <div className="content" style={contentStyle || undefined}>
       {children}
     </div>
   </StyledSection>
