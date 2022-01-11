@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const Figure = styled.figure`
   position: relative;
@@ -32,14 +32,16 @@ type ImagesProps = {
 
 export const Images = ({sources}: ImagesProps) => {
   const [counter, setCounter] = useState(0);
+// @ts-ignore
+  const interval = useRef<Timer>();
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    interval.current = setInterval(() => {
       setCounter(counter + 1);
     }, 200);
 
     return () => {
-      clearInterval(interval);
+      clearInterval(interval.current);
     };
   });
   return <Figure>
