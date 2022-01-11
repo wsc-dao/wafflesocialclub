@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import {HtmlHTMLAttributes, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 const Figure = styled.figure`
   position: relative;
   width: 450px;
   height: 450px;
+  max-width: 100%;
   // background: url("/frame.png") center center no-repeat;
   background-size: contain;
+
   img {
     position: absolute;
     top: 50%;
@@ -17,8 +19,9 @@ const Figure = styled.figure`
     width: 300px;
     height: 300px;
     //border-radius: 7px;
-    &.frame{
+    &.frame {
       width: 450px;
+      max-width: 100%;
       height: 450px;
     }
   }
@@ -27,7 +30,7 @@ type ImagesProps = {
   sources: string[];
 };
 
-export const Images = ({sources}:ImagesProps) => {
+export const Images = ({sources}: ImagesProps) => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {

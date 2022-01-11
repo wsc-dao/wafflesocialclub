@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-
-interface Props {
-  selected: boolean;
-  even: boolean;
-}
+import {OffWhite} from "../consts";
 
 const StyledTimeline = styled.div`
   // display: grid;
@@ -13,18 +9,41 @@ const StyledTimeline = styled.div`
   padding: 2rem;
   position: relative;
   gap: 0;
+
+  .row {
+    display: flex;
+
+    @media (min-width: 778px) {
+      &.odd {
+        flex-direction: row-reverse;
+      }
+
+      &.even {
+        flex-direction: row
+      }
+    }
+    .filler {
+      display: none;
+      @media (min-width: 778px) {
+        display: unset;
+      }
+    }
+  }
 `;
 
 const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
   position: relative;
   color: #B8202E;
-  width: 50%;
+  width: 100%;
+  @media (min-width: 778px) {
+    width: 50%;
+  }
 
   :before {
     content: ' ';
     position: absolute;
     background: ${p => p.selected ? '#f5d8ad' : '#B8202E'};
-    border: 1px solid white;
+    border: 1px solid ${OffWhite};
     border-radius: 50%;
     aspect-ratio: 1/1;
     height: 20px;
@@ -33,9 +52,20 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     text-align: center;
     bottom: 0;
     z-index: 2;
-    ${p => p.even ? `transform: translate3d(50%, 50%, 0);
-      right: 0;` : `left: 0;
-    transform: translate3d(-50%, 50%, 0);`}
+    left:0;
+    transform: translate3d(-50%, 50%, 0);
+
+    @media (min-width: 778px) {
+      left:unset;
+      transform: unset;
+      ${p => p.even ? `
+        transform: translate3d(50%, 50%, 0);
+        right: 0;
+      ` : `
+        left: 0;
+        transform: translate3d(-50%, 50%, 0);
+    `}
+    }
   }
 
   :after {
@@ -45,9 +75,15 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     top: 0;
     height: 100%;
     background: #f5d8ad;
-    ${p => p.even ? `right: 0;
+    left: 0;
+    transform: translateX(-50%);
+    @media (min-width: 778px) {
+      left:unset;
+      transform: unset;
+      ${p => p.even ? `right: 0;
       transform: translateX(50%);` : `left: 0;
       transform: translateX(-50%);`}
+    }
   }
 
   div {
@@ -56,8 +92,11 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     background: #f5d8ad;
     padding: 1rem 2rem;
     max-width: 350px;
-    &.left{
-      margin-left: auto;
+
+    &.left {
+      @media (min-width: 778px) {
+        margin-left: auto;
+      }
     }
   }
 `;
@@ -92,11 +131,8 @@ export const Timeline = () => <StyledTimeline>
       selected: false,
     }
   ].map(({title, description, selected}, idx) => (
-    <div key={`${title}-${idx}`} style={{
-      display: 'flex',
-      flexDirection: idx % 2 ? 'row' : 'row-reverse'
-    }}>
-      <div/>
+    <div key={`${title}-${idx}`} className={`row ${idx % 2 ? 'even' : 'odd'}`}>
+      <div className={'filler'}/>
       <TimelineElement
         key={`${title}-${idx}`}
         even={!!(idx % 2)}

@@ -42,6 +42,7 @@ export const Hero = () => {
 
     <section ref={vantaRef} style={{
       height: "100vh",
+      minHeight:'1080px',
       backgroundColor: "#f5d8ad",
       backgroundImage: "url('/flat-mountains.svg')",
       backgroundPosition: "bottom",
@@ -72,7 +73,9 @@ export const Hero = () => {
         "/artwork/waffle_zombie.jpg",
         "/artwork/waffle_robot.jpg",
       ]}/>
-      <div>
+      <div style={{
+        paddingBottom:'250px',
+      }}>
         <h2>Mint date</h2>
         <time> 12/05/2021 21:00 UTC</time>
       </div>
