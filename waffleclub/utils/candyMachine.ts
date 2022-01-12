@@ -31,6 +31,42 @@ interface CandyMachineState {
   goLiveDate: Date;
 }
 
+export async function existsOwnerSPLToken(
+  connection: anchor.web3.Connection,
+  ownerAddress: anchor.web3.PublicKey
+) {
+  // console.log("As TOKEN ");
+  const tokenAccounts = await connection.getParsedTokenAccountsByOwner(
+    ownerAddress,
+    {
+      programId: TOKEN_PROGRAM_ID,
+    }
+  );
+
+  console.log(tokenAccounts);
+  // let multipleAccounts = [];
+  // while (tokenAccounts.length > 0) {
+  //   const lookups = mintPubkeys.splice(0, 100);
+  //   const lookupAccts = await conn.getMultipleAccountsInfo(lookups);
+  //   multipleAccounts.push(...lookupAccts);
+  // }
+
+  for (let index = 0; index < tokenAccounts.value.length; index++) {
+    const tokenAccount = tokenAccounts.value[index];
+    const tokenAmount = tokenAccount.account.data.parsed.info.tokenAmount;
+
+    const mint = tokenAccount.account.data.parsed.info.mint;
+    if (
+      mint === process.env.NEXT_PUBLIC_AIRDROP_TOKEN &&
+      tokenAmount.uiAmount > 0
+    ) {
+      console.log("Found", mint === process.env.NEXT_PUBLIC_AIRDROP_TOKEN);
+      return true;
+    }
+  }
+  return false;
+}
+
 export const awaitTransactionSignatureConfirmation = async (
   txid: anchor.web3.TransactionSignature,
   timeout: number,
@@ -82,8 +118,9 @@ export const awaitTransactionSignatureConfirmation = async (
       // eslint-disable-next-line no-loop-func
       (async () => {
         try {
-          const signatureStatuses =
-          await connection.getSignatureStatuses([txid]);
+          const signatureStatuses = await connection.getSignatureStatuses([
+            txid
+          ]);
           status = signatureStatuses && signatureStatuses.value[0];
           if (!done) {
             if (!status) {
