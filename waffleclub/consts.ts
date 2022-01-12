@@ -1,5 +1,0 @@
-export const DarkGrey= '#111111'
-export const OffWhite= '#ffedcf'
-export const YellowCream= '#fccc7e'
-export const Red= '#be1d2c'
-export const LightRed= '#cc4648'

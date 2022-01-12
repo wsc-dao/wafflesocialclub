@@ -7,7 +7,6 @@ const BalanceContext = createContext(null);
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
 
-console.log(rpcHost);
 const connection = new anchor.web3.Connection(rpcHost);
 
 export default function useWalletBalance() {
