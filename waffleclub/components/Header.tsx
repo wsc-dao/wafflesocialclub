@@ -29,7 +29,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
       }
     }
 
-    img {
+    .logo {
       max-width: 60%;
       @media (min-width: 778px) {
         display: inline-block;
@@ -37,7 +37,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
     }
   }
 
-  ul {
+  .nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -75,7 +75,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
       transform: translateY(101vh);
     }
 
-    img {
+    .logo.mobile {
       display: inline-block;
       @media (min-width: 778px) {
         display: none;
@@ -143,15 +143,15 @@ export const Header = ({connected, balance}: HeaderProps) => {
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
-      <Link href={'/'}><img src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
-      <ul className={open ? 'open' : ''}>
-        <Link href={'/'}><img src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
-        <li><Link href={'/roadmap'}>Roadmap</Link></li>
-        <li><Link href={'/mint'}>Mint</Link></li>
-        <li><Link href={'#about'}>About</Link></li>
-        <li><Link href={'#team'}>Waffle Team</Link></li>
-        <li><Link href={'#mynft'}>Collection</Link></li>
-        <li><Link href={'#faq'}>FAQ</Link></li>
+      <Link href={'/'}><img  className={'logo desktop'} src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
+      <ul className={`nav ${open ? 'open' : ''}`}>
+        <Link href={'/'}><img className={'logo mobile'}  src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
+        <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
+        <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
+        <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
+        <li><Link href={'/niet/publiek/mint#team'}>Waffle Team</Link></li>
+        <li><Link href={'/niet/publiek/mint#collection'}>Collection</Link></li>
+        <li><Link href={'/niet/publiek/mint#faq'}>FAQ</Link></li>
         <li>
           <div className="balance">
             <WalletMultiButton/>

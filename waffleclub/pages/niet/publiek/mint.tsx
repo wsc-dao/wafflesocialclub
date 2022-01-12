@@ -16,6 +16,7 @@ import {Timeline} from "../../../components/Timeline";
 import {Button} from "../../../components/Buttons";
 import {MemberCard} from "../../../components/MemberCard";
 import {OffWhite} from "../../../consts";
+import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 
 
 export default function Home() {
@@ -130,7 +131,7 @@ export default function Home() {
           <DataCard value={'150g'} label={'Butter'}/>
         </div>
       </Section>
-      <Section title={'Roadmap'}>
+      <Section title={'Roadmap'} id={"roadmap"}>
         <p>Inspired by BAYC, the Waffle grants you an exclusive membership to the private Waffle Club, giving you
           decisional power in the WaffleDAO* and access to increasing benefits and projects.
         </p>
@@ -273,19 +274,20 @@ export default function Home() {
       </Section>
 
       <Section title={'Your Collection'} id="collection">
-        <div className="flex mt-3 gap-x-2">
+        {connected ? <div className="flex mt-3 gap-x-2">
           {(nfts as any).map((nft: any, i: number) => {
             return <AnNFT key={i} nft={nft}/>;
           })}
-        </div>
+        </div> : <WalletMultiButton/>
+        }
       </Section>
       <Section title={'Waffle Team'}
                contentStyle={{
                  display: 'grid',
-                 maxWidth:'1500px',
+                 maxWidth: '1500px',
                  gridTemplateColumns: 'repeat( auto-fit, minmax(150px, 1fr) )',
                  gap: '2rem',
-                 alignItems:'baseline',
+                 alignItems: 'baseline',
                }} id={'team'}
       >
         <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Guru'} name={'D3v0'}/>
