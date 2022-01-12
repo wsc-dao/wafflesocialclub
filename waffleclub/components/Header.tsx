@@ -2,25 +2,88 @@ import styled from "styled-components";
 import Link from "next/link";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import {useEffect, useState} from "react";
+import {Red, YellowCream} from "../consts";
 
 const CustomHeader = styled.header<{ scrolled: Boolean }>`
   position: fixed;
+  padding: 1rem;
   width: 100vw;
   z-index: 999;
-  background-color: ${props => !props.scrolled ? 'transparent' : '#b81f2e'};
-  transition: background-color 300ms ease-in-out;
+  background-color: ${props => !props.scrolled ? 'transparent' : Red};
+  box-shadow: ${props => props.scrolled ? '0 10px 10px ' + '#911924' : 'unset'};
+  transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
 
-  ul {
-    max-width: 1300px;
-    padding: 1rem;
-    margin: auto;
+  nav {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    .menu-button {
+      position: absolute;
+      z-index: 2;
+      right: 1rem;
+      top: 1rem;
+      @media (min-width: 778px) {
+        display: none;
+      }
+    }
+
+    .logo {
+      max-width: 60%;
+      @media (min-width: 778px) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
+    margin: 0;
+    background: ${Red};
     list-style-type: none;
+    max-width: 1300px;
+    max-height: 100vh;
+    overflow: auto;
+    padding: 1rem;
+    position: absolute;
+    top: -101vh;
+    right: 0;
+    transition: transform 500ms ease-in-out;
+    width: 100vw;
+
+    @media (min-width: 778px) {
+      background: unset;
+      flex-direction: row;
+      top: unset;
+      right: unset;
+      width: unset;
+      position: unset;
+      transform: unset;
+      padding: unset;
+      
+      &.open {
+        transform: translateY(0);
+      }
+    }
+
+    &.open {
+      transform: translateY(101vh);
+    }
+
+    .logo.mobile {
+      display: inline-block;
+      @media (min-width: 778px) {
+        display: none;
+      }
+    }
 
     a {
-      color: ${props => props.scrolled ? '#f5d8ad' : '#b81f2e'};
+      color: ${YellowCream};
       transition: color 300ms ease-in-out;
 
       font-weight: bold;
@@ -30,15 +93,19 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
   }
 
   .balance {
-    max-width: 300px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #ff9900;
 
+    @media (min-width: 778px) {
+      max-width: 300px;
+    }
+
     .wallet-adapter-button-trigger {
-      background: #f5d8ad;
-      color: #B8202E;
+      background: ${YellowCream};
+      color: ${Red};
     }
 
     p {
@@ -61,9 +128,8 @@ type HeaderProps = {
 
 export const Header = ({connected, balance}: HeaderProps) => {
   const [navbar, setNavbar] = useState(false)
-
+  const [open, setOpen] = useState(false);
   const changeBackground = () => {
-    console.log(window.scrollY)
     if (window.scrollY >= 250) {
       setNavbar(true);
     } else {
@@ -71,20 +137,21 @@ export const Header = ({connected, balance}: HeaderProps) => {
     }
   }
   useEffect(() => {
-    changeBackground()
+    changeBackground();
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground)
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
-      <ul>
-        <li><Link href={'/'}><img src="/waffledao_rebrand_logo.png" alt="logo"/></Link></li>
-        <li><Link href={'/roadmap'}>Roadmap</Link></li>
-        <li><Link href={'/mint'}>Mint</Link></li>
-        <li><Link href={'#about'}>About</Link></li>
-        <li><Link href={'#team'}>Waffle Team</Link></li>
-        <li><Link href={'#mynft'}>Collection</Link></li>
-        <li><Link href={'#faq'}>FAQ</Link></li>
+      <Link href={'/'}><img  className={'logo desktop'} src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
+      <ul className={`nav ${open ? 'open' : ''}`}>
+        <Link href={'/'}><img className={'logo mobile'}  src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
+        <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
+        <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
+        <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
+        <li><Link href={'/niet/publiek/mint#team'}>Waffle Team</Link></li>
+        <li><Link href={'/niet/publiek/mint#collection'}>Collection</Link></li>
+        <li><Link href={'/niet/publiek/mint#faq'}>FAQ</Link></li>
         <li>
           <div className="balance">
             <WalletMultiButton/>
@@ -96,6 +163,7 @@ export const Header = ({connected, balance}: HeaderProps) => {
           </div>
         </li>
       </ul>
+      <button className={'menu-button'} onClick={() => setOpen(!open)}>menu</button>
     </nav>
   </CustomHeader>
 }

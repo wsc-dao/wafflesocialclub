@@ -102,7 +102,7 @@ export default function useCandyMachine() {
 
     const startMint = async () => {
         try {
-            
+
             setIsMinting(true);
             if (wallet.connected && candyMachine?.program && wallet.publicKey) {
                 const mintTxId = await mintOneToken(
@@ -156,6 +156,7 @@ export default function useCandyMachine() {
     };
 
     const startMintMultiple = async (quantity: number) => {
+        quantity = quantity>5? 5 : quantity;
         try {
             setIsMinting(true);
             if (wallet.connected && candyMachine?.program && wallet.publicKey) {
