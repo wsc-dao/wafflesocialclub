@@ -1,6 +1,6 @@
 #!/bin/bash
 commiter_name=$(whoami)
-today_date=$(date +%d-%m-%y-%HH-%MM-%SS)
+today_date=$1
 echo $commiter_name
 echo $today_date
 
