@@ -1,25 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
-html,
-.parallax-init {
-    /* Set height and width*/
-    height: 100vh;
-    width: 100vw;
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.parallax-bg1 {
-    background-image: url(/flat-mountains.svg);
-}
-
-.parallax-bg2 {
-    background: #B8202E;
-}
-
 body {
     padding: 0;
     margin: 0;
@@ -32,10 +12,6 @@ body {
 
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 h1, h2 {
     font-weight: 700;
