@@ -54,7 +54,7 @@ export const Hero = () => {
       justifyContent: "center",
       position: "relative",
     }}>
-      <h1 style={{fontSize: "35pt", color: "#B8202E", fontWeight: "bold"}}>Have a bite!</h1>
+      <h1 style={{fontSize: "35pt", marginTop:'125px', color: YellowCream, fontWeight: "bold"}}>Have a bite!</h1>
       <Images sources={[
         /*
            "/artwork/Gaufre_0.jpg",
