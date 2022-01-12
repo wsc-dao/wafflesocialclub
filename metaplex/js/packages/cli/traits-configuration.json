@@ -1,0 +1,65 @@
+{
+    "name": "Waffle Social Club #DEV",
+    "symbol": "DEV",
+    "description": "Waffle Club PFP",
+    "seller_fee_basis_points": 0,
+    "external_url":  "https://localhost:3030",
+    "creators": [
+        {
+            "address": "2L5DqBrc63qeUB5qeCEsAHsUDoY2c9nKppyyEwMnkgdz",
+            "share": 100
+        }
+    ],
+    "collection": {
+        "name": "Waffle Dev Club",
+        "family": "Waffle Dev Club"
+    },
+    "dnp": {},
+    "premadeCustoms": [],
+    "breakdown": {
+        "Accessories": {
+            "accessories_robot_antenas.png": 40,
+            "nothing.png": 60
+        },
+        "Background": {
+            "blue.png": 25,
+            "brown.png": 25,
+            "flesh.png": 25,
+            "green.png": 25
+        },
+        "Body": {
+            "bath robe.jpg": 10,
+            "black suit.jpg": 20,
+            "body_french_shirt.png": 10,
+            "kimono man.jpg": 10,
+            "kimono_woman.jpg": 10,
+            "spirou.jpg": 20,
+            "tuxedo.jpg": 20
+        },
+        "Eyes": {
+            "eyes_robot.png": 34,
+            "eyes_scared.png": 33,
+            "eyes_zombie_angry.png": 33
+        },
+        "Head": {
+            "head_beret.png": 34,
+            "head_robot_top.png": 33,
+            "head_zombie_drip.png": 33
+        },
+        "Mouth": {
+            "mouth_moustache.png": 34,
+            "mouth_robot.png": 33,
+            "mouth_zombie.png": 33
+        }
+    },
+    "order": [
+        "Background",
+        "Body",
+        "Eyes",
+        "Head",
+        "Mouth",
+        "Accessories"
+    ],
+    "width": 2000,
+    "height": 2000
+}
