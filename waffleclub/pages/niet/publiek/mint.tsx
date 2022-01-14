@@ -4,11 +4,9 @@ import {useEffect, useState} from "react";
 import useCandyMachine from "../../../hooks/useCandyMachine";
 import useWalletBalance from "../../../hooks/useWalletBalance";
 import {useWallet} from "@solana/wallet-adapter-react";
-import Image from 'next/image'
 import Countdown from "react-countdown";
 import {Toaster} from "react-hot-toast";
 import AnNFT from "../../../components/AnNFT/AnNFT";
-import Script from 'next/script'
 import useWalletNfts from "../../../hooks/useWalletNFTs";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
@@ -17,6 +15,8 @@ import {Section} from "../../../components/Section";
 import {Timeline} from "../../../components/Timeline";
 import {Button} from "../../../components/Buttons";
 import {MemberCard} from "../../../components/MemberCard";
+import {OffWhite} from "../../../consts";
+import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 
 
 export default function Home() {
@@ -68,68 +68,57 @@ export default function Home() {
 
   return (
     <>
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-              integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-              crossOrigin="anonymous"/>
       <Head>
         <title>Waffle Club Collection</title>
         <meta
           name="description"
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
         />
-        <link rel="icon" href="/favicon.ico"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-              crossOrigin="anonymous"/>
       </Head>
       <Header balance={balance} connected={connected}/>
       <Hero/>
-      <Section title={'WELCOME TO THE WAFFLE CLUB'}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-          <div
+      <Section title={'WELCOME TO THE WAFFLE CLUB'} flex>
+        <div
+          style={{
+            gap: '2rem',
+            display: "flex",
+            flexDirection: 'column',
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
+          <p>Waffle Club is a collection of 4343 delicious Waffle NFTs - unique and delicious crypto-art, freshly
+            baked
+            on the Solana blockchain. Made with hand-picked ingredients to offer high quality products. It’s best to
+            eat
+            them now when it’s still warm. Go treat yourself!
+          </p>
+          <p>
+            Lekker!
+          </p>
+          <a
             style={{
-              width: '45%',
-              gap: '2rem',
-              display: "flex",
-              flexDirection: 'column',
-              justifyContent: "space-between",
-              alignItems: "center"
-            }}>
-            <p>Waffle Club is a collection of 4343 delicious Waffle NFTs - unique and delicious crypto-art, freshly
-              baked
-              on the Solana blockchain. Made with hand-picked ingredients to offer high quality products. It’s best to
-              eat
-              them now when it’s still warm. Go treat yourself!
-            </p>
-            <p>
-              Lekker!
-            </p>
-            <a
-              style={{
-                color: '#B8202E',
-                background: '#f5d8ad',
-                padding: '12px 16px',
-                borderRadius: '20px',
-                fontWeight: 'bold'
-              }}
-              href="#collection">View Collection</a>
-          </div>
-          <img style={{
-            width: '45%',
-          }} src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg" alt=""/>
+              color: '#B8202E',
+              background: '#f5d8ad',
+              padding: '12px 16px',
+              borderRadius: '20px',
+              fontWeight: 'bold'
+            }}
+            href="#collection">View Collection</a>
         </div>
+        <img
+          style={{
+            boxShadow: `0 0 20px ${OffWhite}`,
+          }}
+          src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg"
+          alt=""
+        />
       </Section>
 
       <Section title={'Statistics & Data'}>
         <div style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          gap: '1rem',
-          flexWrap: 'wrap',
+          display: "grid",
+          gridTemplateColumns: 'repeat( auto-fit, minmax(100px, 1fr) )',
+          gap: '2rem',
           alignItems: 'center',
           maxWidth: '100%',
           fontSize: '1.3rem'
@@ -142,7 +131,7 @@ export default function Home() {
           <DataCard value={'150g'} label={'Butter'}/>
         </div>
       </Section>
-      <Section title={'Roadmap'}>
+      <Section title={'Roadmap'} id={"roadmap"}>
         <p>Inspired by BAYC, the Waffle grants you an exclusive membership to the private Waffle Club, giving you
           decisional power in the WaffleDAO* and access to increasing benefits and projects.
         </p>
@@ -151,25 +140,29 @@ export default function Home() {
         </p>
         <Timeline/>
       </Section>
-      <Section title={'THE PRIVATE UNDERGROUND CLUB'}>
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-          <div style={{maxWidth: '45%'}}>
-            <p>
-              Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also an exclusive
-              membership to a 4000+ members private club.
-            </p>
-            <p>
-              Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads: a
-              permanent gallery to showcase and deal our NFTs, an underground and secret (not so secret anymore heh)
-              fight
-              club for members to meet-up, the privatization of the Atomium for member-exclusive parties, and much more
-              …
-              What we do is what you want as the WaffleDAO.
-            </p>
+      <Section title={'THE PRIVATE UNDERGROUND CLUB'} flex>
+        <div>
+          <p>
+            Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also an exclusive
+            membership to a 4000+ members private club.
+          </p>
+          <p>
+            Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads: a
+            permanent gallery to showcase and deal our NFTs, an underground and secret (not so secret anymore heh)
+            fight
+            club for members to meet-up, the privatization of the Atomium for member-exclusive parties, and much more
+            …
+            What we do is what you want as the WaffleDAO.
+          </p>
 
-          </div>
-          <img style={{maxWidth: '45%'}} src="/table_1.png" alt=""/>
         </div>
+        <img
+          style={{
+            boxShadow: `0 0 20px ${OffWhite}`,
+          }}
+          src="/table_1.png"
+          alt=""
+        />
       </Section>
       <Section title={'NFT TRAIT RARITY'}>
         <p>
@@ -181,140 +174,57 @@ export default function Home() {
           Each waffle will be unique and programmatically generated from over 1xx singular and possible traits. All
           waffles are yummy but some will be rarer and tastier than others.
         </p>
-        <table style={{margin: 'auto', minWidth: '650px'}}>
-          <thead>
-          <tr>
-            <th>COMMON</th>
-            <th>UNCOMMON</th>
-            <th>RARE</th>
-            <th>EPIC</th>
-            <th>LEGENDARY</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Agreeable</td>
-            <td>Flavorful</td>
-            <td>Tasty</td>
-            <td>Delightful</td>
-            <td>Heavenly</td>
-          </tr>
-          <tr>
-            <td>Pleasant</td>
-            <td>Appetizing</td>
-            <td>Yummy</td>
-            <td>Mouthwatering</td>
-            <td>Luscious</td>
-          </tr>
-          <tr>
-            <td/>
-            <td/>
-            <td>Savory</td>
-            <td>Delicious</td>
-            <td>Ambrosial</td>
-          </tr>
-          <tr>
-            <td/>
-            <td/>
-            <td/>
-            <td>Delish</td>
-            <td/>
-          </tr>
-          </tbody>
-        </table>
+        <div style={{overflow: 'auto'}}>
+          <table style={{
+            margin: 'auto',
+            width: '650px',
+            maxWidth: '100%',
+          }}>
+            <thead>
+            <tr>
+              <th>COMMON</th>
+              <th>UNCOMMON</th>
+              <th>RARE</th>
+              <th>EPIC</th>
+              <th>LEGENDARY</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Agreeable</td>
+              <td>Flavorful</td>
+              <td>Tasty</td>
+              <td>Delightful</td>
+              <td>Heavenly</td>
+            </tr>
+            <tr>
+              <td>Pleasant</td>
+              <td>Appetizing</td>
+              <td>Yummy</td>
+              <td>Mouthwatering</td>
+              <td>Luscious</td>
+            </tr>
+            <tr>
+              <td/>
+              <td/>
+              <td>Savory</td>
+              <td>Delicious</td>
+              <td>Ambrosial</td>
+            </tr>
+            <tr>
+              <td/>
+              <td/>
+              <td/>
+              <td>Delish</td>
+              <td/>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </Section>
 
       <Section title={'Waffle Club limited NFTs drop'}/>
 
-      <Section title={'About'} id="about">
-
-        <div id="Deckcarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
-
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_1.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_2.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_3.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_4.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_5.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_6.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_7.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_8.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <Image
-                width="800" height="300" layout="responsive" objectFit="contain"
-                src="/slide_9.png"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-          </div>
-
-          <button className="carousel-control-prev" type="button" data-bs-target="#Deckcarousel" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"/>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#Deckcarousel" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"/>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      </Section>
       <Section title="Mint Date : dd/mm/YYYY" id="mint">
         <Toaster/>
         <div className="flex items-start justify-center">
@@ -364,17 +274,21 @@ export default function Home() {
       </Section>
 
       <Section title={'Your Collection'} id="collection">
-        <div className="flex mt-3 gap-x-2">
+        {connected ? <div className="flex mt-3 gap-x-2">
           {(nfts as any).map((nft: any, i: number) => {
             return <AnNFT key={i} nft={nft}/>;
           })}
-        </div>
+        </div> : <WalletMultiButton/>
+        }
       </Section>
-      <Section title={'Waffle Team'} contentStyle={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr',
-        gap: '2rem'
-      }} id={'team'}
+      <Section title={'Waffle Team'}
+               contentStyle={{
+                 display: 'grid',
+                 maxWidth: '1500px',
+                 gridTemplateColumns: 'repeat( auto-fit, minmax(150px, 1fr) )',
+                 gap: '2rem',
+                 alignItems: 'baseline',
+               }} id={'team'}
       >
         <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Guru'} name={'D3v0'}/>
         <MemberCard middle url={"https://twitter.com/yoloshiden"} avatar={"/avatar_2.png"} title={'Sensei'}
@@ -411,7 +325,8 @@ export default function Home() {
           The answer to your question should be here somewhere, keep looking...
         </details>
         <details>
-          <summary><h3 style={{display: 'inline'}}>I got a DM with a link from someone claiming to be a team member, can I
+          <summary><h3 style={{display: 'inline'}}>I got a DM with a link from someone claiming to be a team member, can
+            I
             trust it?</h3></summary>
           The answer to your question should be here somewhere, keep looking...
         </details>

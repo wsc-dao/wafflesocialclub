@@ -10,19 +10,20 @@ export const MemberCard = ({
                            }: { name?: string; url?: string; title?: string; avatar?: string; middle?: boolean }) =>
   <Member>
     <img src={avatar} alt={`${name} - ${title}`} className={middle ? 'middle' : 'outer'}/>
-    <article>
+    <div>
       <h3>#{name}</h3>
       <p>{title}</p>
       {url && <a href={url} target={'_blank'} className="btn btn-primary" rel="noreferrer">twitter</a>}
-    </article>
+    </div>
   </Member>;
 
-const Member = styled.div`
+const Member = styled.article`
 
   img {
     object-fit: contain;
     background: ${DarkGrey};
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     aspect-ratio: 1/1;
     &.outer {
       border-radius: 5px 50px;
