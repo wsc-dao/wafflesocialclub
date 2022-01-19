@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import styled from "styled-components";
-import { Container, Snackbar } from "@material-ui/core";
-import { toDate } from "../helpers/utils";
+import {useEffect, useMemo, useState} from "react";
+import {Container, Snackbar} from "@material-ui/core";
+import {AlertState, toDate} from "../helpers/utils";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Countdown from "react-countdown";
@@ -9,23 +8,20 @@ import Alert from "@material-ui/lab/Alert";
 
 import * as anchor from "@project-serum/anchor";
 
-import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import {PublicKey} from "@solana/web3.js";
 // import useWalletBalance from "../hooks/useWalletBalance";
-import { useWallet } from "@solana/wallet-adapter-react";
+import {useWallet} from "@solana/wallet-adapter-react";
 import useSplToken from "../hooks/useSplToken";
 import ReactCountdown from "./ReactCountdown";
 import {
   awaitTransactionSignatureConfirmation,
-  CandyMachineAccount,
   CANDY_MACHINE_PROGRAM,
+  CandyMachineAccount,
   getCandyMachineState,
   mintOneToken,
 } from "../helpers/candy-machine";
-
-import { AlertState } from "../helpers/utils";
-import { MintButton } from "./MintButton";
-import { PhaseHeader } from "./PhaseHeader";
-import { GatewayProvider } from "@civic/solana-gateway-react";
+import {MintButton} from "./MintButton";
+import {GatewayProvider} from "@civic/solana-gateway-react";
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -77,7 +73,7 @@ const MintContainer = (props: HomeProps) => {
           await mintOneToken(candyMachine, wallet.publicKey)
         )[0];
 
-        let status: any = { err: true };
+        let status: any = {err: true};
         if (mintTxId) {
           status = await awaitTransactionSignatureConfirmation(
             mintTxId,
@@ -162,12 +158,12 @@ const MintContainer = (props: HomeProps) => {
   }, [anchorWallet, props.candyMachineId, props.connection]);
 
   const renderer = ({
-    days,
-    hours,
-    minutes,
-    seconds,
-    completed,
-  }: {
+                      days,
+                      hours,
+                      minutes,
+                      seconds,
+                      completed,
+                    }: {
     days: any;
     hours: any;
     minutes: any;
@@ -181,7 +177,7 @@ const MintContainer = (props: HomeProps) => {
         "font-monstmedium text-4xl w-2/3 mx-auto mt-6 h-20 rounded-lg bg-pink-500 text-white";
       return (
         <div className="flex flex-col mt-32 justify-center">
-          <Container maxWidth="xs" style={{ position: "relative" }}>
+          <Container maxWidth="xs" style={{position: "relative"}}>
             <Paper
               style={{
                 padding: 24,
@@ -223,7 +219,7 @@ const MintContainer = (props: HomeProps) => {
                         } // This is the ignite (captcha) network
                         /// Don't need this for mainnet
                         clusterUrl={rpcUrl}
-                        options={{ autoShowModal: false }}
+                        options={{autoShowModal: false}}
                       >
                         <MintButton
                           candyMachine={candyMachine}
@@ -262,36 +258,36 @@ const MintContainer = (props: HomeProps) => {
   const candyMachineGoLive = toDate(candyMachine?.state.goLiveDate)?.getTime();
 
   return (
-      <Container style={{ marginTop: 100 }}>
-        {candyMachineGoLive && wallet.connected && (
-          <Countdown
-            date={isSPLExists ? 1640199600000 : candyMachineGoLive}
-            renderer={renderer}
-          />
-        )}
-        {!candyMachine && wallet.connected && (
-          <div className="text-white text-center mt-36 mb-6 text-2xl">
-            Loading
-          </div>
-        )}
-        {!wallet.connected && (
-          <div className="text-white font-sans text-center text-4xl mt-36">
-            Connect Wallet <br /> To Initiate Countdown
-          </div>
-        )}
-        <Snackbar
-          open={alertState.open}
-          autoHideDuration={6000}
-          onClose={() => setAlertState({ ...alertState, open: false })}
+    <Container style={{marginTop: 100}}>
+      {candyMachineGoLive && wallet.connected && (
+        <Countdown
+          date={isSPLExists ? 1640199600000 : candyMachineGoLive}
+          renderer={renderer}
+        />
+      )}
+      {!candyMachine && wallet.connected && (
+        <div className="text-white text-center mt-36 mb-6 text-2xl">
+          Loading
+        </div>
+      )}
+      {!wallet.connected && (
+        <div className="text-white font-sans text-center text-4xl mt-36">
+          Connect Wallet <br/> To Initiate Countdown
+        </div>
+      )}
+      <Snackbar
+        open={alertState.open}
+        autoHideDuration={6000}
+        onClose={() => setAlertState({...alertState, open: false})}
+      >
+        <Alert
+          onClose={() => setAlertState({...alertState, open: false})}
+          severity={alertState.severity}
         >
-          <Alert
-            onClose={() => setAlertState({ ...alertState, open: false })}
-            severity={alertState.severity}
-          >
-            {alertState.message}
-          </Alert>
-        </Snackbar>
-      </Container>
+          {alertState.message}
+        </Alert>
+      </Snackbar>
+    </Container>
   );
 };
 

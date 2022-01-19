@@ -208,8 +208,7 @@ export const getCandyMachineState = async (
     const itemsRedeemed = state.itemsRedeemed.toNumber();
     const itemsRemaining = itemsAvailable - itemsRedeemed;
 
-    let goLiveDate = state.data.goLiveDate.toNumber();
-    goLiveDate = new Date(goLiveDate * 1000);
+    const goLiveDate =  state.data.goLiveDate? new Date(state.data.goLiveDate.toNumber() * 1000): new Date();
 
     return {
       candyMachine,

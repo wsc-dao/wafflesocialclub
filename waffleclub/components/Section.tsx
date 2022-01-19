@@ -45,9 +45,9 @@ export const Section = ({
                           contentStyle,
                           flex,
                           ...props
-                        }: { flex?: boolean; title: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any }) =>
+                        }: { flex?: boolean; title?: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any }) =>
   <StyledSection flex={flex} {...props}>
-    <h2>{title}</h2>
+    {title && <h2>{title}</h2>}
     <div className="content" style={contentStyle || undefined}>
       {children}
     </div>
