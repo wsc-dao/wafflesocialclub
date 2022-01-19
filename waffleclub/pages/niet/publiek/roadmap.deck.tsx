@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import * as PDFJS from "pdfjs-dist/build/pdf";
+import * as PDFJS from "pdfjs-dist";
 
 PDFJS.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS.version}/pdf.worker.min.js`;
 
