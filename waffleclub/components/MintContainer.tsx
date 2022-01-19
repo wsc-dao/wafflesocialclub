@@ -1,8 +1,6 @@
 import {useEffect, useMemo, useState} from "react";
 import {Container, Snackbar} from "@material-ui/core";
 import {AlertState, toDate} from "../helpers/utils";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import Countdown from "react-countdown";
 import Alert from "@material-ui/lab/Alert";
 
@@ -22,6 +20,7 @@ import {
 } from "../helpers/candy-machine";
 import {MintButton} from "./MintButton";
 import {GatewayProvider} from "@civic/solana-gateway-react";
+import {Section} from "./Section";
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -169,91 +168,54 @@ const MintContainer = (props: HomeProps) => {
     minutes: any;
     seconds: any;
     completed: any;
-  }) => {
-    if (completed) {
-      const disabled =
-        "cursor-not-allowed font-monstmedium text-4xl w-2/3 mx-auto mt-6 h-20 rounded-lg text-white";
-      const notDisabled =
-        "font-monstmedium text-4xl w-2/3 mx-auto mt-6 h-20 rounded-lg bg-pink-500 text-white";
-      return (
-        <div className="flex flex-col mt-32 justify-center">
-          <Container maxWidth="xs" style={{position: "relative"}}>
-            <Paper
-              style={{
-                padding: 24,
-                backgroundColor: "#151A1F",
-                borderRadius: 6,
+  }) =>
+    completed ? (
+      <Section>
+        <div>
+          {candyMachine?.state.isActive &&
+          candyMachine?.state.gatekeeper &&
+          wallet.publicKey &&
+          wallet.signTransaction ? (
+            <GatewayProvider
+              wallet={{
+                publicKey:
+                  wallet.publicKey ||
+                  new PublicKey(CANDY_MACHINE_PROGRAM),
+                //@ts-ignore
+                signTransaction: wallet.signTransaction,
               }}
+              // // Replace with following when added
+              // gatekeeperNetwork={candyMachine.state.gatekeeper_network}
+              gatekeeperNetwork={
+                candyMachine?.state?.gatekeeper?.gatekeeperNetwork
+              } // This is the ignite (captcha) network
+              /// Don't need this for mainnet
+              clusterUrl={rpcUrl}
+              options={{autoShowModal: false}}
             >
-              <div className="">
-                <img
-                  src="/images/.png"
-                  className="mb-6 border-2 rounded border-gray-700"
-                />
-              </div>
-              <Grid container justifyContent="center" direction="column">
-                {/*<PhaseHeader
-                  candyMachine={candyMachine}
-                  rpcUrl={rpcUrl}
-                  whiteList={isSPLExists}
-                />*/}
-
-                <>
-                  <div>
-                    {candyMachine?.state.isActive &&
-                    candyMachine?.state.gatekeeper &&
-                    wallet.publicKey &&
-                    wallet.signTransaction ? (
-                      <GatewayProvider
-                        wallet={{
-                          publicKey:
-                            wallet.publicKey ||
-                            new PublicKey(CANDY_MACHINE_PROGRAM),
-                          //@ts-ignore
-                          signTransaction: wallet.signTransaction,
-                        }}
-                        // // Replace with following when added
-                        // gatekeeperNetwork={candyMachine.state.gatekeeper_network}
-                        gatekeeperNetwork={
-                          candyMachine?.state?.gatekeeper?.gatekeeperNetwork
-                        } // This is the ignite (captcha) network
-                        /// Don't need this for mainnet
-                        clusterUrl={rpcUrl}
-                        options={{autoShowModal: false}}
-                      >
-                        <MintButton
-                          candyMachine={candyMachine}
-                          isMinting={isMinting}
-                          onMint={onMint}
-                        />
-                      </GatewayProvider>
-                    ) : (
-                      <MintButton
-                        candyMachine={candyMachine}
-                        isMinting={isMinting}
-                        onMint={onMint}
-                      />
-                    )}
-                  </div>
-                </>
-
-                {/* {wallet.connected && <p>Balance: {balance || 0}SOL</p>} */}
-              </Grid>
-            </Paper>
-          </Container>
+              <MintButton
+                candyMachine={candyMachine}
+                isMinting={isMinting}
+                onMint={onMint}
+              />
+            </GatewayProvider>
+          ) : (
+            <MintButton
+              candyMachine={candyMachine}
+              isMinting={isMinting}
+              onMint={onMint}
+            />
+          )}
         </div>
-      );
-    } else {
-      return (
-        <ReactCountdown
-          days={days}
-          minutes={minutes}
-          hours={hours}
-          seconds={seconds}
-        />
-      );
-    }
-  };
+      </Section>
+    ) : (
+      <ReactCountdown
+        days={days}
+        minutes={minutes}
+        hours={hours}
+        seconds={seconds}
+      />
+    );
 
   const candyMachineGoLive = toDate(candyMachine?.state.goLiveDate)?.getTime();
 

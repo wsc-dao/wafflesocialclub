@@ -39,7 +39,7 @@ const useWalletNfts = (props: any) => {
       // console.log(nftsForOwner);
       setIsLoading(false);
     })();
-  }, [wallet]);
+  }, [isSPLExists, wallet]);
 
   return [isLoading, nfts, isSPLExists];
 };

@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import {Red, YellowCream} from "../consts";
 
 const StyledSection = styled.section<{ flex?: boolean }>`
   padding-block: 6rem;
+
+  &:nth-of-type(even) {
+    background: ${YellowCream};
+    color: ${Red};
+  }
 
   h2 {
     max-width: 1500px;

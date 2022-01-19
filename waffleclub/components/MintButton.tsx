@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { CandyMachineAccount } from "../helpers/candy-machine";
-import { CircularProgress } from "@material-ui/core";
 import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
 import { useEffect, useState } from "react";
 
@@ -57,7 +56,7 @@ export const MintButton = ({
       {candyMachine?.state.isSoldOut ? (
         "SOLD OUT"
       ) : isMinting ? (
-        <CircularProgress />
+        'loading'
       ) : (
         "MINT"
       )}

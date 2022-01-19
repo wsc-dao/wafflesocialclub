@@ -6,9 +6,21 @@ body {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #FFFFFF;
+    color: #ffedcf;
     background: #B8202E;
     font-size: 16pt;
+    text-align: center;
+}
+
+details {
+    text-align: left;
+    margin-top: 1rem;
+
+    padding-left: 1rem;
+}
+
+summary {
+    margin-left: -1rem;
 }
 
 h1, h2 {
@@ -18,9 +30,11 @@ h1, h2 {
 h3, h4 {
     font-weight: 600;
 }
-p{
+
+p {
     font-size: 16pt;
 }
+
 a {
     color: blue;
     text-decoration: none;

@@ -1,50 +1,43 @@
-import { Paper } from '@material-ui/core';
 import Countdown from 'react-countdown';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import { useState } from 'react';
+import React, {useState} from 'react';
+import styled from "styled-components";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      padding: theme.spacing(0),
-      '& > *': {
-        margin: theme.spacing(0.5),
-        marginRight: 0,
-        width: theme.spacing(6),
-        height: theme.spacing(6),
-        display: 'flex',
-        flexDirection: 'column',
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#384457',
-        color: 'white',
-        borderRadius: 5,
-        fontSize: 10,
-      },
-    },
-    done: {
-      display: 'flex',
-      margin: theme.spacing(1),
-      marginRight: 0,
-      padding: theme.spacing(1),
-      flexDirection: 'column',
-      alignContent: 'center',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: '#384457',
-      color: 'white',
-      borderRadius: 5,
-      fontWeight: 'bold',
-      fontSize: 18,
-    },
-    item: {
-      fontWeight: 'bold',
-      fontSize: 18,
-    }
-  }),
-);
+const Root = styled.div`
+  display: flex;
+  padding: 0;
+
+  & > * {
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: #384457;
+    color: white;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .item {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .done {
+    display: flex;
+    margin-right: 0;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: #384457;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+`;
 
 
 interface PhaseCountdownProps {
@@ -65,55 +58,54 @@ interface CountdownRender {
 }
 
 export const PhaseCountdown: React.FC<PhaseCountdownProps> = ({
-  date,
-  status,
-  style,
-  start,
-  end,
-  onComplete,
-}) => {
-  const classes = useStyles();
+                                                                date,
+                                                                status,
+                                                                style,
+                                                                start,
+                                                                end,
+                                                                onComplete,
+                                                              }) => {
 
   const [isFixed, setIsFixed] = useState(start && end && date ? start.getTime() - Date.now() < 0 : false);
 
-  const renderCountdown = ({ days, hours, minutes, seconds, completed }: CountdownRender) => {
+  const renderCountdown = ({days, hours, minutes, seconds, completed}: CountdownRender) => {
     hours += days * 24
     if (completed) {
-      return status ? <span className={classes.done}  >{status}</span> : null;
+      return status ? <span className={'done'}>{status}</span> : null;
     } else {
       return (
-        <div className={classes.root} style={style} >
-          {isFixed && <Paper elevation={0}>
-            <span className={classes.item}>
+        <Root style={style}>
+          {isFixed && <div>
+            <span className={'item'}>
               +
             </span>
-          </Paper>}
-          <Paper elevation={0}>
-            <span className={classes.item}>
+          </div>}
+          <div>
+            <span className={'item'}>
               {hours < 10 ? `0${hours}` : hours}
             </span>
             <span>hrs</span>
-          </Paper>
-          <Paper elevation={0}>
-            <span className={classes.item}>
+          </div>
+          <div>
+            <span className={'item'}>
               {minutes < 10 ? `0${minutes}` : minutes}
             </span>
             <span>mins</span>
-          </Paper>
-          <Paper elevation={0}>
-            <span className={classes.item}>
+          </div>
+          <div>
+            <span className={'item'}>
               {seconds < 10 ? `0${seconds}` : seconds}
             </span>
             <span>secs</span>
-          </Paper>
-        </div>
+          </div>
+        </Root>
       )
     }
   }
 
   if (date && start && end) {
     if (isFixed) {
-      <Countdown
+      return <Countdown
         date={start}
         now={() => end.getTime()}
         onComplete={() => setIsFixed(false)}

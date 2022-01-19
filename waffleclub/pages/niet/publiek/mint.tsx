@@ -6,8 +6,6 @@ import useWalletBalance from "../../../hooks/useWalletBalance";
 import {useWallet} from "@solana/wallet-adapter-react";
 import Countdown from "react-countdown";
 import {Toaster} from "react-hot-toast";
-import AnNFT from "../../../components/AnNFT";
-import useWalletNfts from "../../../hooks/useWalletNFTs";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
 import {DataCard} from "../../../components/DataCard";
@@ -19,6 +17,7 @@ import {OffWhite} from "../../../consts";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import MintContainer from "../../../components/MintContainer";
 import * as anchor from "@project-serum/anchor";
+import {Footer} from "../../../components/Footer";
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
 const candyMachineId = process.env.NEXT_PUBLIC_CANDY_MACHINE_ID
@@ -346,6 +345,7 @@ export default function Home() {
           The answer to your question should be here somewhere, keep looking...
         </details>
       </Section>
+      <Footer/>
     </>
   );
 }
