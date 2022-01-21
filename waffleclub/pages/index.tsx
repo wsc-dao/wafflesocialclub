@@ -1,7 +1,15 @@
-import {Section} from "../components/Section";
+import styled from "styled-components";
 
-const App = () => <Section style={{width: "100%", height: '100vh',  background:"url('/banner.png') no-repeat cover",backgroundSize:'cover', backgroundPosition:'center'}}>
-  <h1 style={{textAlign: "center",}}>Baking Waffles</h1>
-</Section>
+const Intro = styled.section`
+  background: url("/banner.png") center center / cover no-repeat;
+  padding-top: 9rem;
+  width: 100%;
+  height: 100vh;
+
+`;
+
+const App = () => <Intro>
+  <h1 style={{textAlign: "center", margin: 0,}}>Mixing dough</h1>
+</Intro>
 
 export default App;
