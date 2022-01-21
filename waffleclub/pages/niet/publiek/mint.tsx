@@ -304,6 +304,7 @@ export default function Home() {
                  alignItems: 'baseline',
                }} id={'team'}
       >
+        <MemberCard name={'WaffleClub DAO'} title={"DAO is the new CEO"}/>
         <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Guru'} name={'D3v0'}/>
         <MemberCard middle url={"https://twitter.com/yoloshiden"} avatar={"/avatar_2.png"} title={'Sensei'}
                     name={'Yolo'}/>
@@ -311,6 +312,7 @@ export default function Home() {
                     name={'Semias'}/>
         <MemberCard name={'Anas'}/>
         <MemberCard middle/>
+
       </Section>
 
       <Section title={'FAQ'} id="faq">
