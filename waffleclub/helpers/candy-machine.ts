@@ -11,6 +11,7 @@ import {
   getNetworkToken,
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
 } from './utils';
+import {Idl} from "@project-serum/anchor";
 
 export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey(
   'cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ',
@@ -158,7 +159,7 @@ export const getCandyMachineState = async (
     preflightCommitment: 'recent',
   });
 
-  const idl = await anchor.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider);
+  const idl:Idl = await anchor.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider) as Idl;
 
   const program = new anchor.Program(idl, CANDY_MACHINE_PROGRAM, provider);
 
