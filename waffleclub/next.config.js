@@ -30,7 +30,7 @@ module.exports = withTM({
       os: false,
       path: false,
       crypto: false,
-      querystring: false,
+      querystring:false,
     };
 
     return config;

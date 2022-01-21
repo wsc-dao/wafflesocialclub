@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import {Red, YellowCream} from "../consts";
 
 const StyledSection = styled.section<{ flex?: boolean }>`
   padding-block: 6rem;
+
+  &:nth-of-type(even) {
+    background: ${YellowCream};
+    color: ${Red};
+  }
 
   h2 {
     max-width: 1500px;
@@ -45,9 +51,9 @@ export const Section = ({
                           contentStyle,
                           flex,
                           ...props
-                        }: { flex?: boolean; title: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any }) =>
+                        }: { flex?: boolean; title?: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any }) =>
   <StyledSection flex={flex} {...props}>
-    <h2>{title}</h2>
+    {title && <h2>{title}</h2>}
     <div className="content" style={contentStyle || undefined}>
       {children}
     </div>

@@ -1,10 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
-import * as PDFJS from "pdfjs-dist/build/pdf";
+import {getDocument, GlobalWorkerOptions, version} from "pdfjs-dist";
 
-PDFJS.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS.version}/pdf.worker.min.js`;
-
-const pdfjsLib: typeof import('pdfjs-dist') = require('pdfjs-dist/build/pdf.js');
-
+GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.min.js`;
 
 const Roadmap = () => {
   let renderedPdf;
@@ -91,7 +88,7 @@ const Roadmap = () => {
   };
 
   const showPDFInCanvas = async (pdfData: string) => {
-    const loadingTask = PDFJS.getDocument({data: pdfData});
+    const loadingTask = getDocument({data: pdfData});
     await loadingTask.promise.then(
       (pdf: any) => {
         renderedPdf = pdf;
@@ -118,12 +115,12 @@ const Roadmap = () => {
       pdf.getPage(pageNo).then(async (page) => {
         const viewport = page.getViewport({scale: DEFAULT_SCALE});
 
-/*
-        let canvasInHTML = {
-          canvas,
-          ctx: undefined
-        };
-        */
+        /*
+                let canvasInHTML = {
+                  canvas,
+                  ctx: undefined
+                };
+                */
 
 
         /*
@@ -175,15 +172,15 @@ const Roadmap = () => {
         //const canvasInHTML.canvas = React.useRef<HTMLCanvasElement>(null);
         */
         let canvasInHTML = {
-             canvas: undefined as any,
-             ctx: undefined as any
-        } ;
+          canvas: undefined as any,
+          ctx: undefined as any
+        };
 
         const li = document.createElement("div");
         li.setAttribute("id", "page-" + (page._pageIndex + 1));
         li.setAttribute("style", "position: relative;");
 
-        canvasInHTML.canvas  = document.createElement("canvas") ;
+        canvasInHTML.canvas = document.createElement("canvas");
         canvasInHTML.ctx = canvasInHTML.canvas.getContext("2d");
 
         canvasInHTML.canvas.height = viewport.height;
@@ -237,7 +234,7 @@ const Roadmap = () => {
 
   return (
 
-      <div ref={pageRenderRef}></div>
+    <div ref={pageRenderRef}></div>
   );
 };
 
