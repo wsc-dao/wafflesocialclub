@@ -7,7 +7,6 @@ const BalanceContext = createContext(null);
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
 
-console.log(rpcHost);
 const connection = new anchor.web3.Connection(rpcHost);
 
 export default function useWalletBalance() {
@@ -35,7 +34,7 @@ export const WalletBalanceProvider: React.FC<{}> = ({ children }) => {
         setBalance(balance / LAMPORTS_PER_SOL);
       }
     })();
-  }, [wallet, connection]);
+  }, [wallet]);
 
   return (
     <BalanceContext.Provider value={[balance, setBalance] as any}>
