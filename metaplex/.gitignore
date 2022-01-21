@@ -15,6 +15,7 @@ docs/lockup-ui/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.css
 *.css.map
 !js/packages/metaplex/src/fonts/fonts.css
 !js/packages/metaplex/src/utils/globals.css
@@ -32,6 +33,7 @@ hfuzz_workspace
 **/.DS_Store
 .cache
 js/packages/web/.env
-#traits
-#traits-configuration.json
-#*.css
+js/packages/candy-machine-ui/.env
+traits
+traits-configuration.json
+js/packages/cli/test/assets

@@ -6,8 +6,6 @@ import useWalletBalance from "../../../hooks/useWalletBalance";
 import {useWallet} from "@solana/wallet-adapter-react";
 import Countdown from "react-countdown";
 import {Toaster} from "react-hot-toast";
-import AnNFT from "../../../components/AnNFT/AnNFT";
-import useWalletNfts from "../../../hooks/useWalletNFTs";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
 import {DataCard} from "../../../components/DataCard";
@@ -17,7 +15,17 @@ import {Button} from "../../../components/Buttons";
 import {MemberCard} from "../../../components/MemberCard";
 import {OffWhite} from "../../../consts";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
+import MintContainer from "../../../components/MintContainer";
+import * as anchor from "@project-serum/anchor";
+import {Footer} from "../../../components/Footer";
 
+const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
+const candyMachineId = process.env.NEXT_PUBLIC_CANDY_MACHINE_ID
+  ? new anchor.web3.PublicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID)
+  : undefined;
+const connection = new anchor.web3.Connection(rpcHost);
+const startDateSeed = parseInt(process.env.NEXT_PUBLIC_CANDY_START_DATE!, 10);
+const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 export default function Home() {
   const [balance] = useWalletBalance();
@@ -30,7 +38,7 @@ export default function Home() {
     nftsData,
   } = useCandyMachine();
 
-  const [isLoading, nfts] = useWalletNfts();
+  // const [isLoading, nfts] = useWalletNfts();
 
   const {connected} = useWallet();
 
@@ -224,7 +232,13 @@ export default function Home() {
       </Section>
 
       <Section title={'Waffle Club limited NFTs drop'}/>
-
+      <MintContainer
+        candyMachineId={candyMachineId}
+        connection={connection}
+        startDate={startDateSeed}
+        txTimeout={txTimeout}
+        rpcHost={rpcHost}
+      />
       <Section title="Mint Date : dd/mm/YYYY" id="mint">
         <Toaster/>
         <div className="flex items-start justify-center">
@@ -275,9 +289,9 @@ export default function Home() {
 
       <Section title={'Your Collection'} id="collection">
         {connected ? <div className="flex mt-3 gap-x-2">
-          {(nfts as any).map((nft: any, i: number) => {
-            return <AnNFT key={i} nft={nft}/>;
-          })}
+          {/*{(nfts as any).map((nft: any, i: number) => {*/}
+          {/*  return <AnNFT key={i} nft={nft}/>;*/}
+          {/*})}*/}
         </div> : <WalletMultiButton/>
         }
       </Section>
@@ -290,6 +304,7 @@ export default function Home() {
                  alignItems: 'baseline',
                }} id={'team'}
       >
+        <MemberCard name={'WaffleClub DAO'} title={"DAO is the new CEO"}/>
         <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Guru'} name={'D3v0'}/>
         <MemberCard middle url={"https://twitter.com/yoloshiden"} avatar={"/avatar_2.png"} title={'Sensei'}
                     name={'Yolo'}/>
@@ -297,6 +312,7 @@ export default function Home() {
                     name={'Semias'}/>
         <MemberCard name={'Anas'}/>
         <MemberCard middle/>
+
       </Section>
 
       <Section title={'FAQ'} id="faq">
@@ -331,6 +347,7 @@ export default function Home() {
           The answer to your question should be here somewhere, keep looking...
         </details>
       </Section>
+      <Footer/>
     </>
   );
 }
