@@ -31,7 +31,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
 
     .logo {
       max-width: 60%;
-      max-height: 100px;
+      max-height: 70px;
       @media (min-width: 778px) {
         display: inline-block;
       }
