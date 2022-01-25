@@ -149,7 +149,7 @@ export const Header = ({connected, balance}: HeaderProps) => {
     <nav>
       <Link href={'/'}><img  className={'logo desktop'} src="/waffle-icon-black.png" alt="logo"/></Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
-        <Link href={'/'}><img className={'logo mobile'}  src="/waffle-icon-black.png.png" alt="logo"/></Link>
+        <Link href={'/'}><img className={'logo mobile'}  src="/waffle-icon-black.png" alt="logo"/></Link>
         <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
         <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
         <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
