@@ -31,7 +31,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
 
     .logo {
       max-width: 60%;
-      max-height: 100px;
+      max-height: 70px;
       @media (min-width: 778px) {
         display: inline-block;
       }
@@ -147,9 +147,9 @@ export const Header = ({connected, balance}: HeaderProps) => {
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
-      <Link href={'/'}><img  className={'logo desktop'} src="/logo-black.png" alt="logo"/></Link>
+      <Link href={'/'}><img  className={'logo desktop'} src="/waffle-icon-black.png" alt="logo"/></Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
-        <Link href={'/'}><img className={'logo mobile'}  src="/waffledao_rebrand_logo.png" alt="logo"/></Link>
+        <Link href={'/'}><img className={'logo mobile'}  src="/waffle-icon-black.png.png" alt="logo"/></Link>
         <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
         <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
         <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
