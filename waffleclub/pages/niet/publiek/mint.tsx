@@ -305,13 +305,11 @@ export default function Home() {
                }} id={'team'}
       >
         <MemberCard name={'WaffleClub DAO'} title={"DAO is the new CEO"}/>
-        <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Guru'} name={'D3v0'}/>
-        <MemberCard middle url={"https://twitter.com/yoloshiden"} avatar={"/avatar_2.png"} title={'Sensei'}
-                    name={'Yolo'}/>
-        <MemberCard url={"https://twitter.com/morfessa"} avatar={"/avatar_3.png"} title={'Grand-sage'}
-                    name={'Semias'}/>
-        <MemberCard name={'Anas'}/>
-        <MemberCard middle/>
+        <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Waffle Maker'} name={'D3v0'}/>
+        <MemberCard middle url={"https://twitter.com/yoloshiden"} avatar={"/avatar_2.png"} title={'Pastry Chef'} name={'Yolo'}/>
+        <MemberCard url={"https://twitter.com/morfessa"} avatar={"/avatar_3.png"} title={'Chocolatier'} name={'Semias'}/>
+        <MemberCard name={'Anas'} title={'Ice Cream Maker'}/>
+        <MemberCard middle title={'Candy Confectioner'}/>
 
       </Section>
 
