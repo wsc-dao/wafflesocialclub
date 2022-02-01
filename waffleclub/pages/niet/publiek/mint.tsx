@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Waffle Club Collection</title>
+        <title>Waffle Social Club Collection</title>
         <meta
           name="description"
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
@@ -295,21 +295,52 @@ export default function Home() {
         </div> : <WalletMultiButton/>
         }
       </Section>
-      <Section title={'Waffle Team'}
-               contentStyle={{
-                 display: 'grid',
-                 maxWidth: '1500px',
-                 gridTemplateColumns: 'repeat( auto-fit, minmax(150px, 1fr) )',
-                 gap: '2rem',
-                 alignItems: 'baseline',
-               }} id={'team'}
+      <Section
+        title={'Waffle Team'}
+        contentStyle={{
+          display: 'grid',
+          maxWidth: '1500px',
+          gridTemplateColumns: 'repeat(3, minmax(150px, 1fr) )',
+          gap: '6rem',
+          alignItems: 'baseline',
+        }} id={'team'}
       >
-        <MemberCard name={'WaffleClub DAO'} title={"DAO is the new CEO"}/>
-        <MemberCard url={"https://twitter.com/Devob3ast"} avatar={"/avatar.png"} title={'Waffle Maker'} name={'D3v0'}/>
-        <MemberCard middle url={"https://twitter.com/yoloshiden"} avatar={"/avatar_2.png"} title={'Pastry Chef'} name={'Yolo'}/>
-        <MemberCard url={"https://twitter.com/morfessa"} avatar={"/avatar_3.png"} title={'Chocolatier'} name={'Semias'}/>
-        <MemberCard name={'Anas'} title={'Ice Cream Maker'}/>
-        <MemberCard middle title={'Candy Confectioner'}/>
+        <MemberCard
+          name={'WaffleClub DAO'}
+          title={"DAO is the new CEO"}
+        />
+        <MemberCard
+          url={"https://twitter.com/D3v0_WSC"}
+          avatar={"/avatar.png"}
+          title={'Waffle Maker'}
+          role={'Co-founder/DevOps & Crypto Early Adopter'}
+          name={'D3v0'}
+        />
+        <MemberCard
+          middle
+          url={"https://twitter.com/yoloshiden"}
+          avatar={"/avatar_2.png"}
+          title={'Pastry Chef'}
+          role={"Co-founder / Project Manager & NFT Connoisseur"}
+          name={'Yolo'}
+        />
+        <MemberCard
+          url={"https://twitter.com/morfessa"}
+          avatar={"/avatar_3.png"}
+          role={'DevOps & DAO Facilitator'}
+          title={'Chocolatier'}
+          name={'Semias'}
+        />
+        <MemberCard
+          name={'Anas'}
+          title={'Ice Cream Maker'}
+          role={"Marketing Officer & Jpeg Maximalist"}
+        />
+        <MemberCard
+          middle
+          title={'Candy Confectioner'}
+          role={'Developer & Hodler'}
+        />
 
       </Section>
 
@@ -339,9 +370,11 @@ export default function Home() {
           The answer to your question should be here somewhere, keep looking...
         </details>
         <details>
-          <summary><h3 style={{display: 'inline'}}>I got a DM with a link from someone claiming to be a team member, can
-            I
-            trust it?</h3></summary>
+          <summary>
+            <h3 style={{display: 'inline'}}>
+              I got a DM with a link from someone claiming to be a team member, can I trust it?
+            </h3>
+          </summary>
           The answer to your question should be here somewhere, keep looking...
         </details>
       </Section>

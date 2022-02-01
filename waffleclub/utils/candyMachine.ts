@@ -1,9 +1,9 @@
 import * as anchor from "@project-serum/anchor";
-import { Metadata } from "@metaplex/js";
+import {Metadata} from "@metaplex/js";
 
-import { MintLayout, TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
-import { sendTransactions, sleep } from ".";
-import { fetchHashTable } from "../hooks/useHashTable";
+import {MintLayout, Token, TOKEN_PROGRAM_ID} from "@solana/spl-token";
+import {sendTransactions, sleep} from ".";
+import {fetchHashTable} from "../hooks/useHashTable";
 
 export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey(
   "cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ"
@@ -43,7 +43,6 @@ export async function existsOwnerSPLToken(
     }
   );
 
-  console.log(tokenAccounts);
   // let multipleAccounts = [];
   // while (tokenAccounts.length > 0) {
   //   const lookups = mintPubkeys.splice(0, 100);
@@ -88,7 +87,7 @@ export const awaitTransactionSignatureConfirmation = async (
       }
       done = true;
       console.log("Rejecting for timeout...");
-      reject({ timeout: true });
+      reject({timeout: true});
     }, timeout);
     try {
       subId = connection.onSignature(
@@ -162,16 +161,16 @@ const createAssociatedTokenAccountInstruction = (
   splTokenMintAddress: anchor.web3.PublicKey
 ) => {
   const keys = [
-    { pubkey: payer, isSigner: true, isWritable: true },
-    { pubkey: associatedTokenAddress, isSigner: false, isWritable: true },
-    { pubkey: walletAddress, isSigner: false, isWritable: false },
-    { pubkey: splTokenMintAddress, isSigner: false, isWritable: false },
+    {pubkey: payer, isSigner: true, isWritable: true},
+    {pubkey: associatedTokenAddress, isSigner: false, isWritable: true},
+    {pubkey: walletAddress, isSigner: false, isWritable: false},
+    {pubkey: splTokenMintAddress, isSigner: false, isWritable: false},
     {
       pubkey: anchor.web3.SystemProgram.programId,
       isSigner: false,
       isWritable: false,
     },
-    { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+    {pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false},
     {
       pubkey: anchor.web3.SYSVAR_RENT_PUBKEY,
       isSigner: false,
@@ -208,7 +207,7 @@ export const getCandyMachineState = async (
     const itemsRedeemed = state.itemsRedeemed.toNumber();
     const itemsRemaining = itemsAvailable - itemsRedeemed;
 
-    const goLiveDate =  state.data.goLiveDate? new Date(state.data.goLiveDate.toNumber() * 1000): new Date();
+    const goLiveDate = state.data.goLiveDate ? new Date(state.data.goLiveDate.toNumber() * 1000) : new Date();
 
     return {
       candyMachine,
@@ -269,9 +268,7 @@ export async function getNFTsForOwner(
   connection: anchor.web3.Connection,
   ownerAddress: anchor.web3.PublicKey
 ) {
-  const allMintsCandyMachine = await fetchHashTable(
-    process.env.NEXT_PUBLIC_CANDY_MACHINE_ID!
-  );
+  const allMintsCandyMachine = await fetchHashTable(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID!);
   const allTokens = [];
   const tokenAccounts = await connection.getParsedTokenAccountsByOwner(
     ownerAddress,
@@ -323,7 +320,7 @@ export const mintOneToken = async (
 ): Promise<string> => {
   const mint = anchor.web3.Keypair.generate();
   const token = await getTokenWallet(payer, mint.publicKey);
-  const { connection, program } = candyMachine;
+  const {connection, program} = candyMachine;
   const metadata = await getMetadata(mint.publicKey);
   const masterEdition = await getMasterEdition(mint.publicKey);
 
@@ -395,7 +392,7 @@ export const mintMultipleToken = async (
   for (let index = 0; index < quantity; index++) {
     const mint = anchor.web3.Keypair.generate();
     const token = await getTokenWallet(payer, mint.publicKey);
-    const { connection } = candyMachine;
+    const {connection} = candyMachine;
     const rent = await connection.getMinimumBalanceForRentExemption(
       MintLayout.span
     );
