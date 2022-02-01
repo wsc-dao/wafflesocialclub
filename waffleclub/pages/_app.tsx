@@ -17,6 +17,7 @@ function MyApp({Component, pageProps}: AppProps) {
   return (<>
       <Head>
         <link rel="icon" href="/favicon.png"/>
+        <title>Waffle Social Club</title>
       </Head>
       <WalletConnectionProvider>
         <WalletBalanceProvider>
