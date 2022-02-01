@@ -35,7 +35,6 @@ const MintContainer = (props: HomeProps) => {
   const rpcUrl = props.rpcHost;
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const wallet = useWallet();
-  console.log(wallet)
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [isLoading, isSPLExists] = useSplToken();
   // const [refresh, setRefresh] = useState(false);

@@ -159,11 +159,11 @@ export const Header = ({connected, balance}: HeaderProps) => {
         <li>
           <div className="balance">
             <WalletMultiButton/>
-            {connected && (<p className="">Balance:
+            {/*connected && (<p className="">Balance:
                 <span className="value">{' '}{balance.toFixed(2)}</span>
                 <span className="currency">{' '}SOL</span>
               </p>
-            )}
+            )*/}
           </div>
         </li>
       </ul>
