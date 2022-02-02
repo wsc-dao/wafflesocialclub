@@ -9,6 +9,10 @@ import useWalletBalance from "../../../hooks/useWalletBalance";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
 import {Section} from "../../../components/Section";
+import AnNFT from "../../../components/AnNFT";
+import useWalletNfts from "../../../hooks/useWalletNFTs";
+import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
+
 // import {
 //   getPhantomWallet,
 //   getSolflareWallet,
@@ -25,7 +29,7 @@ import {Section} from "../../../components/Section";
 
 export default function Home() {
   const [balance] = useWalletBalance();
-  // const [isLoading, nfts] = useWalletNfts();
+  //const [nfts] = useWalletNfts();
 
   const {connected} = useWallet();
 
@@ -67,6 +71,15 @@ export default function Home() {
       />
         </div>
     </Section>
+
+    <Section title={'Your Collection'} id="collection">
+      {connected ? <div className="flex mt-3 gap-x-2">
+        {/*{(nfts as any).map((nft: any, i: number) => {*/}
+        {/*  return <AnNFT key={i} nft={nft}/>;*/}
+        {/*})}*/}
+        </div> : <WalletMultiButton/>
+        }  
+      </Section>
     </>
 );
 }

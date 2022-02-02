@@ -36,12 +36,12 @@ const useWalletNfts = (props: any) => {
       const nftsForOwner = await getNFTsForOwner(connection, wallet.publicKey);
 
       setNfts(nftsForOwner as any);
-      // console.log(nftsForOwner);
+      console.log(nftsForOwner);
       setIsLoading(false);
     })();
   }, [isSPLExists, wallet]);
 
-  return [isLoading, nfts, isSPLExists];
+  return [nfts, isSPLExists];
 };
 
 export default useWalletNfts;

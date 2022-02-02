@@ -42,6 +42,7 @@ export async function existsOwnerSPLToken(
       programId: TOKEN_PROGRAM_ID,
     }
   );
+  console.log(tokenAccounts);
 
   // let multipleAccounts = [];
   // while (tokenAccounts.length > 0) {
