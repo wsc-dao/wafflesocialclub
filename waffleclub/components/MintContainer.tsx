@@ -135,21 +135,6 @@ const MintContainer = (props: HomeProps) => {
     }
   };
 
-  const refreshCandyMachineState = () => {
-    (async () => {
-      if (!wallet) return;
-
-      const itemsAvailable = await getCandyMachineState(
-        anchorWallet,
-        props.candyMachineId,
-        props.connection
-      );
-
-      setItemsAvailable(itemsAvailable);
-      setCandyMachine(candyMachine);
-    })();
-  };
-
   useEffect(() => {
     (async () => {
       if (!anchorWallet) {
@@ -256,7 +241,6 @@ const MintContainer = (props: HomeProps) => {
                 </>
 
                 {wallet.connected && <p> Balance  : {  balance || 0}SOL</p>} 
-                {wallet.connected && <p>Total Available: {itemsAvailable}</p>}
               </Grid>
             </Paper>
           </Container>
