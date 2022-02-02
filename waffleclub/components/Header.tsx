@@ -147,14 +147,14 @@ export const Header = ({connected, balance}: HeaderProps) => {
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
-      <Link href={'/'}><img  className={'logo desktop'} src="/waffle-icon-black.png" alt="logo"/></Link>
+      <Link href={'/niet/publiek/mint'}><img  className={'logo desktop'} src="/waffle-icon-black.png" alt="logo"/></Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
-        <Link href={'/'}><img className={'logo mobile'}  src="/waffle-icon-black.png" alt="logo"/></Link>
-        <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
-        <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
+        <Link href={'/niet/publiek/mint'}><img className={'logo mobile'}  src="/waffle-icon-black.png" alt="logo"/></Link>
         <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
-        <li><Link href={'/niet/publiek/mint#team'}>Waffle Team</Link></li>
+        <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
+        <li><Link href={'/niet/publiek/newmint'}>Mint</Link></li>
         <li><Link href={'/niet/publiek/mint#collection'}>Collection</Link></li>
+        <li><Link href={'/niet/publiek/mint#team'}>Waffle Team</Link></li>
         <li><Link href={'/niet/publiek/mint#faq'}>FAQ</Link></li>
         <li>
           <div className="balance">
