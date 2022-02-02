@@ -32,8 +32,7 @@ export default function Home() {
   // const [isLoading, nfts] = useWalletNfts();
 
   const {connected} = useWallet();
-
-
+  
   return (
     <>
       <Head>
@@ -191,14 +190,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title={'Your Collection'} id="collection">
-      {connected ? <div className="flex mt-3 gap-x-2">
-        {/*{(nfts as any).map((nft: any, i: number) => {*/}
-        {/*  return <AnNFT key={i} nft={nft}/>;*/}
-        {/*})}*/}
-        </div> : <WalletMultiButton/>
-        }  
-      </Section>
+
       
       <Section
         title={'Waffle Team'}
