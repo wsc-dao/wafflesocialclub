@@ -10,7 +10,7 @@ import Alert from "@material-ui/lab/Alert";
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-// import useWalletBalance from "../hooks/useWalletBalance";
+import useWalletBalance from "../hooks/useWalletBalance";
 import { useWallet } from "@solana/wallet-adapter-react";
 import useSplToken from "../hooks/useSplToken";
 import ReactCountdown from "./ReactCountdown";
@@ -38,11 +38,12 @@ const MintContainer = (props: HomeProps) => {
   const [yourSOLBalance, setYourSOLBalance] = useState<number | null>(null);
   const rpcUrl = props.rpcHost;
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
+  const [itemsAvailable, setItemsAvailable] = useState(0);
   const wallet = useWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [isLoading, isSPLExists] = useSplToken();
   // const [refresh, setRefresh] = useState(false);
-  // const balance = useWalletBalance();
+  const balance = useWalletBalance();
   const anchorWallet = useMemo(() => {
     if (
       !wallet ||
@@ -66,6 +67,8 @@ const MintContainer = (props: HomeProps) => {
     severity: undefined,
   });
 
+
+  
   const onMint = async () => {
     try {
       setIsMinting(true);
@@ -183,7 +186,7 @@ const MintContainer = (props: HomeProps) => {
             <Paper
               style={{
                 padding: 24,
-                backgroundColor: "#151A1F",
+                backgroundColor: "#B8202E",
                 borderRadius: 6,
               }}
             >
@@ -237,7 +240,7 @@ const MintContainer = (props: HomeProps) => {
           )}
                 </>
 
-                {/* {wallet.connected && <p> Balance  : {  balance || 0}SOL</p>} */}
+                {wallet.connected && <p> Balance  : {  balance || 0}SOL</p>} 
               </Grid>
             </Paper>
           </Container>
