@@ -1,25 +1,29 @@
 import {useEffect, useMemo, useState} from "react";
-import {Container, Snackbar} from "@material-ui/core";
+
+import { Container, Snackbar } from "@material-ui/core";
 import {AlertState, toDate} from "../helpers/utils";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Countdown from "react-countdown";
 import Alert from "@material-ui/lab/Alert";
 
 import * as anchor from "@project-serum/anchor";
 
-import {PublicKey} from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 // import useWalletBalance from "../hooks/useWalletBalance";
-import {useWallet} from "@solana/wallet-adapter-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import useSplToken from "../hooks/useSplToken";
 import ReactCountdown from "./ReactCountdown";
 import {
   awaitTransactionSignatureConfirmation,
-  CANDY_MACHINE_PROGRAM,
   CandyMachineAccount,
+  CANDY_MACHINE_PROGRAM,
   getCandyMachineState,
   mintOneToken,
 } from "../helpers/candy-machine";
-import {MintButton} from "./MintButton";
-import {GatewayProvider} from "@civic/solana-gateway-react";
+import { MintButton } from "./MintButton";
+import { PhaseHeader } from "./PhaseHeader";
+import { GatewayProvider } from "@civic/solana-gateway-react";
 import {Section} from "./Section";
 
 export interface HomeProps {
@@ -71,7 +75,7 @@ const MintContainer = (props: HomeProps) => {
           await mintOneToken(candyMachine, wallet.publicKey)
         )[0];
 
-        let status: any = {err: true};
+        let status: any = { err: true };
         if (mintTxId) {
           status = await awaitTransactionSignatureConfirmation(
             mintTxId,
@@ -133,7 +137,7 @@ const MintContainer = (props: HomeProps) => {
       if (!anchorWallet) {
         return;
       }
-
+      
       const balance = await props.connection.getBalance(anchorWallet.publicKey);
       setYourSOLBalance(balance);
 
@@ -167,10 +171,36 @@ const MintContainer = (props: HomeProps) => {
     minutes: any;
     seconds: any;
     completed: any;
-  }) =>
-    completed ? (
-      <Section>
-        <div>
+  }) => {
+    if (completed) {
+      const disabled =
+        "cursor-not-allowed font-monstmedium text-4xl w-2/3 mx-auto mt-6 h-20 rounded-lg text-white";
+      const notDisabled =
+        "font-monstmedium text-4xl w-2/3 mx-auto mt-6 h-20 rounded-lg bg-pink-500 text-white";
+      return (
+        <div className="flex flex-col mt-32 justify-center">
+          <Container maxWidth="xs" style={{ position: "relative" }}>
+            <Paper
+              style={{
+                padding: 24,
+                backgroundColor: "#151A1F",
+                borderRadius: 6,
+              }}
+            >
+              <div className="">
+                <img
+                  src="/images/.png"
+                  className="mb-6 border-2 rounded border-gray-700"
+                />
+              </div>
+              <Grid container justifyContent="center" direction="column">
+                <PhaseHeader
+                  candyMachine={candyMachine}
+                  rpcUrl={rpcUrl}
+                  whiteList={isSPLExists}
+                />
+
+                <>
           {candyMachine?.state.isActive &&
           candyMachine?.state.gatekeeper &&
           wallet.publicKey &&
@@ -190,7 +220,7 @@ const MintContainer = (props: HomeProps) => {
               } // This is the ignite (captcha) network
               /// Don't need this for mainnet
               clusterUrl={rpcUrl}
-              options={{autoShowModal: false}}
+              options={{ autoShowModal: false }}
             >
               <MintButton
                 candyMachine={candyMachine}
@@ -205,50 +235,61 @@ const MintContainer = (props: HomeProps) => {
               onMint={onMint}
             />
           )}
+                </>
+
+                {/* {wallet.connected && <p> Balance  : {  balance || 0}SOL</p>} */}
+              </Grid>
+            </Paper>
+          </Container>
         </div>
-      </Section>
-    ) : (
-      <ReactCountdown
-        days={days}
-        minutes={minutes}
-        hours={hours}
-        seconds={seconds}
-      />
-    );
+      );
+    } else {
+      return (
+        <ReactCountdown
+          days={days}
+          minutes={minutes}
+          hours={hours}
+          seconds={seconds}
+        />
+      );
+    }
+  };
 
   const candyMachineGoLive = toDate(candyMachine?.state.goLiveDate)?.getTime();
 
   return (
-    <Container style={{marginTop: 100}}>
-      {candyMachineGoLive && wallet.connected && (
-        <Countdown
-          date={isSPLExists ? 1640199600000 : candyMachineGoLive}
-          renderer={renderer}
-        />
-      )}
-      {!candyMachine && wallet.connected && (
-        <div className="text-white text-center mt-36 mb-6 text-2xl">
-          Loading
-        </div>
-      )}
-      {!wallet.connected && (
-        <div className="text-white font-sans text-center text-4xl mt-36">
-          Connect Wallet <br/> To Initiate Countdown
-        </div>
-      )}
-      <Snackbar
-        open={alertState.open}
-        autoHideDuration={6000}
-        onClose={() => setAlertState({...alertState, open: false})}
-      >
-        <Alert
-          onClose={() => setAlertState({...alertState, open: false})}
-          severity={alertState.severity}
+    <div className="bg-container">
+      <Container style={{ marginTop: 100 }}>
+        {candyMachineGoLive && wallet.connected && (
+          <Countdown
+            date={isSPLExists ? 1640199600000 : candyMachineGoLive}
+            renderer={renderer}
+          />
+        )}
+        {!candyMachine && wallet.connected && (
+          <div className="text-white text-center mt-36 mb-6 text-2xl">
+            Loading
+          </div>
+        )}
+        {!wallet.connected && (
+          <div className="text-white font-sans text-center text-4xl mt-36">
+            Connect Wallet <br /> To Initiate Countdown
+          </div>
+        )}
+        <Snackbar
+          open={alertState.open}
+          autoHideDuration={6000}
+          onClose={() => setAlertState({ ...alertState, open: false })}
         >
-          {alertState.message}
-        </Alert>
-      </Snackbar>
-    </Container>
+          <Alert
+            onClose={() => setAlertState({ ...alertState, open: false })}
+            severity={alertState.severity}
+          >
+            {alertState.message}
+          </Alert>
+        </Snackbar>
+      </Container>
+    </div>
   );
 };
 
