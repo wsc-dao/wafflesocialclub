@@ -29,50 +29,10 @@ const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 export default function Home() {
   const [balance] = useWalletBalance();
-  const {
-    isSoldOut,
-    mintStartDate,
-    isMinting,
-    startMint,
-    startMintMultiple,
-    nftsData,
-  } = useCandyMachine();
-
   // const [isLoading, nfts] = useWalletNfts();
 
   const {connected} = useWallet();
 
-  const [isMintLive, setIsMintLive] = useState(false);
-
-  useEffect(() => {
-    if (new Date(mintStartDate).getTime() < Date.now()) {
-      setIsMintLive(true);
-    }
-  }, []);
-
-  const MintMany = () => {
-    const [mintCount, setMintCount] = useState(5);
-
-    return (
-      <>
-        <input
-          disabled={isMinting}
-          type="number"
-          min={1}
-          max={5}
-          value={mintCount}
-          onChange={(e) => setMintCount((e.target as any).value)}
-        />
-        <Button
-          style={{marginLeft: '1rem'}}
-          primary={false}
-          onClick={() => startMintMultiple(mintCount)}
-          disabled={isMinting}
-          label={isMinting ? "loading" : `mint`}
-        />
-      </>
-    );
-  };
 
   return (
     <>
@@ -231,70 +191,15 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title={'Waffle Club limited NFTs drop'}/>
-      <MintContainer
-        candyMachineId={candyMachineId}
-        connection={connection}
-        startDate={startDateSeed}
-        txTimeout={txTimeout}
-        rpcHost={rpcHost}
-      />
-      <Section title="Mint Date : dd/mm/YYYY" id="mint">
-        <Toaster/>
-        <div className="flex items-start justify-center">
-          {connected ? (
-            <>
-              {new Date(mintStartDate).getTime() < Date.now() ? (
-                <>
-                  {isSoldOut ? (
-                    <p>SOLD OUT</p>
-                  ) : (
-                    <>
-                      {connected &&
-                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-                          <div>
-                            <h1 style={{marginTop: 0, paddingTop: 0}}>Mint One</h1>
-                            <Button
-                              onClick={startMint}
-                              disabled={isMinting}
-                              label={isMinting ? "loading" : "Mint 1"}
-                            />
-                          </div>
-                          <div><p>Total Supply: {nftsData.itemsAvailable}</p>
-                            <p>Available: {nftsData.itemsRemaining}</p>
-                            <p>Minted: {nftsData.itemsRedeemed}</p>
-                          </div>
-                          <div>
-                            <h1 style={{marginTop: 0, paddingTop: 0}}>Mint Many</h1>
-                            <MintMany/>
-                          </div>
-                        </div>}
-
-                    </>
-                  )}
-                </>
-              ) : (
-                <Countdown
-                  date={mintStartDate}
-                  onMount={({completed}) => completed && setIsMintLive(true)}
-                  onComplete={() => setIsMintLive(true)}
-                />
-              )}
-            </>
-          ) : (
-            <p className="text items-center">Connect wallet to mint</p>
-          )}
-        </div>
-      </Section>
-
       <Section title={'Your Collection'} id="collection">
-        {connected ? <div className="flex mt-3 gap-x-2">
-          {/*{(nfts as any).map((nft: any, i: number) => {*/}
-          {/*  return <AnNFT key={i} nft={nft}/>;*/}
-          {/*})}*/}
+      {connected ? <div className="flex mt-3 gap-x-2">
+        {/*{(nfts as any).map((nft: any, i: number) => {*/}
+        {/*  return <AnNFT key={i} nft={nft}/>;*/}
+        {/*})}*/}
         </div> : <WalletMultiButton/>
-        }
+        }  
       </Section>
+      
       <Section
         title={'Waffle Team'}
         contentStyle={{
