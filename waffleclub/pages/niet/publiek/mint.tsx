@@ -311,9 +311,9 @@ export default function Home() {
         />
         <MemberCard
           url={"https://twitter.com/D3v0_WSC"}
-          avatar={"/avatar.png"}
+          avatar={"/avatar_1.png"}
           title={'Waffle Maker'}
-          role={'Co-founder/DevOps & Crypto Early Adopter'}
+          role={'Co-founder & Technical Lead'}
           name={'D3v0'}
         />
         <MemberCard
@@ -332,12 +332,14 @@ export default function Home() {
           name={'Semias'}
         />
         <MemberCard
-          name={'Anas'}
+          name={'Kahtael'}
+          avatar={"/avatar_4.png"}
           title={'Ice Cream Maker'}
           role={"Marketing Officer & Jpeg Maximalist"}
         />
         <MemberCard
           middle
+          avatar={"/avatar_5.png"}
           title={'Candy Confectioner'}
           role={'Developer & Hodler'}
         />
