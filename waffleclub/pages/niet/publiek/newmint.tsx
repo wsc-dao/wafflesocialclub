@@ -74,9 +74,9 @@ export default function Home() {
 
     <Section title={'Your Collection'} id="collection">
       {connected ? <div className="flex mt-3 gap-x-2">
-        {(nfts as any).map((nft: any, i: number) => {
-          return <AnNFT key={i} nft={nft}/>;
-        })}
+        {/*{(nfts as any).map((nft: any, i: number) => {*/}
+        {/*  return <AnNFT key={i} nft={nft}/>;*/}
+        {/*})}*/}
         </div> : <WalletMultiButton/>
         }  
       </Section>

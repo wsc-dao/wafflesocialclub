@@ -189,7 +189,7 @@ const MintContainer = (props: HomeProps) => {
             >
               <div className="">
                 <img
-                  src="/images/.png"
+                  src="/avatar_1.png"
                   className="mb-6 border-2 rounded border-gray-700"
                 />
               </div>
