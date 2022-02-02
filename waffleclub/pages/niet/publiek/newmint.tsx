@@ -29,7 +29,7 @@ import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 
 export default function Home() {
   const [balance] = useWalletBalance();
-  const [nfts] = useWalletNfts();
+  //const [nfts] = useWalletNfts();
 
   const {connected} = useWallet();
 
