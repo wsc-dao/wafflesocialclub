@@ -8,7 +8,7 @@ const connection = new anchor.web3.Connection(rpcHost);
 
 const useWalletNfts = () => {
   const wallet = useWallet();
-  const [setIsLoading] = useState(false);
+  // const [_, setIsLoading] = useState(false);
   const [isSPLExists, setSPLExists] = useState(false);
 
   const [nfts, setNfts] = useState<Array<any>>([]);
@@ -22,7 +22,7 @@ const useWalletNfts = () => {
     ) {
       return;
     }
-    setIsLoading(true);
+    // setIsLoading(true);
     console.log(connection)
     existsOwnerSPLToken(
       connection,
@@ -34,7 +34,7 @@ const useWalletNfts = () => {
     getNFTsForOwner(connection, wallet.publicKey as anchor.web3.PublicKey).then(nftsForOwner => {
       console.log('Arne: nftsForOwner', nftsForOwner);
       setNfts(nftsForOwner);
-      setIsLoading(false);
+      // setIsLoading(false);
     });
   });
   }, [isSPLExists, wallet]);
