@@ -1,20 +1,36 @@
 import styled from "styled-components";
 import {useMemo} from "react";
+import {Socials} from "./Socials";
 
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 6rem;
+  padding: 6rem 0;
   gap: 2rem;
 
   img {
     width: 200px;
   }
 
-  caption {
+  p {
     width: 100%;
+    text-align: center;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 900px;
+    width: 50vw;
+    a {
+      width: 25px;
+      svg {
+        
+      }
+    }
   }
 `;
 
@@ -23,6 +39,7 @@ export const Footer = () => {
 
   return <StyledFooter>
     <img src="/logo-black.png" alt=""/>
-    <caption>©WaffleSocialClub {year}. All Rights Reserved.</caption>
+    <Socials/>
+    <p>©WaffleSocialClub {year}. All Rights Reserved.</p>
   </StyledFooter>;
 }
