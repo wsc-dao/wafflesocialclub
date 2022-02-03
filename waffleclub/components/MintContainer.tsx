@@ -35,10 +35,12 @@ export interface HomeProps {
 }
 
 const MintContainer = (props: HomeProps) => {
-  const [yourSOLBalance, setYourSOLBalance] = useState<number | null>(null);
+  // const [balance, setYourSOLBalance] = useState<number | null>(null);
   const rpcUrl = props.rpcHost;
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [itemsAvailable, setItemsAvailable] = useState(0);
+  const [itemsRedeemed, setItemsRedeemed] = useState(0);
+  const [itemsRemaining, setItemsRemaining] = useState(0);
   const wallet = useWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [isLoading, isSPLExists] = useSplToken();
@@ -74,9 +76,7 @@ const MintContainer = (props: HomeProps) => {
       setIsMinting(true);
       document.getElementById("#identity")?.click();
       if (wallet.connected && candyMachine?.program && wallet.publicKey) {
-        const mintTxId = (
-          await mintOneToken(candyMachine, wallet.publicKey)
-        )[0];
+        const mintTxId = (await mintOneToken(candyMachine, wallet.publicKey))[0];
 
         let status: any = { err: true };
         if (mintTxId) {
@@ -135,14 +135,16 @@ const MintContainer = (props: HomeProps) => {
     }
   };
 
+
   useEffect(() => {
     (async () => {
       if (!anchorWallet) {
         return;
       }
       
-      const balance = await props.connection.getBalance(anchorWallet.publicKey);
-      setYourSOLBalance(balance);
+      // const balance = await props.connection.getBalance(anchorWallet.publicKey);
+      // setYourSOLBalance(balance);
+          
 
       if (props.candyMachineId) {
         try {
@@ -150,8 +152,16 @@ const MintContainer = (props: HomeProps) => {
             anchorWallet,
             props.candyMachineId,
             props.connection
-          );
+          )
+          // setItemsAvailable(test);
+          const itemsAvailable = await cndy.state.itemsAvailable
+          const itemsRedeemed = await cndy.state.itemsRedeemed
+          const itemsRemaining = await cndy.state.itemsRemaining
+          // console.log(cndy)
           setCandyMachine(cndy);
+          setItemsAvailable(itemsAvailable);
+          setItemsRemaining(itemsRemaining);
+          setItemsRedeemed(itemsRedeemed);
         } catch (e) {
           console.log("Problem getting candy machine state");
           console.log(e);
@@ -183,19 +193,20 @@ const MintContainer = (props: HomeProps) => {
       return (
         <div className="flex flex-col mt-32 justify-center">
           <Container maxWidth="xs" style={{ position: "relative" }}>
-            <Paper
+             <Paper 
               style={{
                 padding: 24,
                 backgroundColor: "#B8202E",
                 borderRadius: 6,
               }}
             >
-              <div className="">
+              <div className="justify-center">
                 <img
                   src="/avatar_1.png"
-                  className="mb-6 border-2 rounded border-gray-700"
+                  className="justify-center"
                 />
               </div>
+
               <Grid container justifyContent="center" direction="column">
                 <PhaseHeader
                   candyMachine={candyMachine}
@@ -241,6 +252,9 @@ const MintContainer = (props: HomeProps) => {
                 </>
 
                 {wallet.connected && <p> Balance  : {  balance || 0}SOL</p>} 
+                {wallet.connected && <p>Total Available: {itemsAvailable}</p>}
+                {wallet.connected && <p>Redeemed: {itemsRedeemed}</p>}
+                {wallet.connected && <p>Remaining: {itemsRemaining}</p>}
               </Grid>
             </Paper>
           </Container>
