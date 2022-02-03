@@ -1,6 +1,4 @@
 import Head from "next/head";
-import useWalletBalance from "../../../hooks/useWalletBalance";
-import {useWallet} from "@solana/wallet-adapter-react";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
 import {DataCard} from "../../../components/DataCard";
@@ -12,19 +10,12 @@ import {Footer} from "../../../components/Footer";
 
 
 export default function Home() {
-  const [balance] = useWalletBalance();
-  const {connected} = useWallet();
-
   return (
     <>
       <Head>
-        <title>Waffle Social Club Collection</title>
-        <meta
-          name="description"
-          content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
-        />
+        <title>Waffle Social Club</title>
       </Head>
-      <Header balance={balance} connected={connected}/>
+      <Header/>
       <Hero/>
       <Section title={'WELCOME TO THE WAFFLE CLUB'} flex>
         <div
@@ -216,6 +207,7 @@ export default function Home() {
         />
         <MemberCard
           middle
+          name={'Agent'}
           avatar={"/avatar_5.png"}
           title={'Candy Confectioner'}
           role={'Developer & Hodler'}
