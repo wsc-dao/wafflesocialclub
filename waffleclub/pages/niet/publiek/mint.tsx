@@ -3,15 +3,13 @@ import MintContainer from "../../../components/MintContainer";
 import * as anchor from "@project-serum/anchor";
 import {WalletAdapterNetwork} from "@solana/wallet-adapter-base";
 import {useWallet} from "@solana/wallet-adapter-react";
-import useWalletBalance from "../../../hooks/useWalletBalance";
 import {Header} from "../../../components/Header";
 import {Section} from "../../../components/Section";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
+import {Footer} from "../../../components/Footer";
 
 export default function Home() {
-  const [balance] = useWalletBalance();
   const {connected} = useWallet();
-
 
   const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK as WalletAdapterNetwork;
 
@@ -30,10 +28,6 @@ export default function Home() {
     <>
       <Head>
         <title>Waffle Social Club Collection</title>
-        <meta
-          name="description"
-          content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
-        />
       </Head>
       <Header/>
       <Section title={'Waffle Club limited NFTs drop'}/>
@@ -57,6 +51,7 @@ export default function Home() {
         </div> : <WalletMultiButton/>
         }
       </Section>
+      <Footer/>
     </>
   );
 }

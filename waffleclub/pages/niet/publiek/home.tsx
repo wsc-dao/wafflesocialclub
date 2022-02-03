@@ -15,7 +15,7 @@ export default function Home() {
       <Head>
         <title>Waffle Social Club</title>
       </Head>
-      <Header/>
+      <Header home={true}/>
       <Hero/>
       <Section title={'WELCOME TO THE WAFFLE CLUB'} flex>
         <div

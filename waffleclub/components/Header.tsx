@@ -125,9 +125,12 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
     }
   }
 `
+type HeaderProps = {
+  home?: Boolean;
+};
 
-export const Header = () => {
-  const [navbar, setNavbar] = useState(false)
+export const Header = ({home,}: HeaderProps) => {
+  const [navbar, setNavbar] = useState(!home)
   const [open, setOpen] = useState(false);
   const changeBackground = useCallback(() => {
     if (window.scrollY >= 250) {
@@ -137,9 +140,12 @@ export const Header = () => {
     }
   }, []);
   useEffect(() => {
-    changeBackground();
-    // adding the event when scroll change background
-    window.addEventListener("scroll", changeBackground)
+    if (home) {
+      changeBackground();
+      // adding the event when scroll change background
+      window.addEventListener("scroll", changeBackground)
+      return () => window.removeEventListener('scroll', changeBackground);
+    }
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
