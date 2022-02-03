@@ -1,78 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
-import {useEffect, useState} from "react";
-import useCandyMachine from "../../../hooks/useCandyMachine";
 import useWalletBalance from "../../../hooks/useWalletBalance";
 import {useWallet} from "@solana/wallet-adapter-react";
-import Countdown from "react-countdown";
-import {Toaster} from "react-hot-toast";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
 import {DataCard} from "../../../components/DataCard";
 import {Section} from "../../../components/Section";
 import {Timeline} from "../../../components/Timeline";
-import {Button} from "../../../components/Buttons";
 import {MemberCard} from "../../../components/MemberCard";
 import {OffWhite} from "../../../consts";
-import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
-import MintContainer from "../../../components/MintContainer";
-import * as anchor from "@project-serum/anchor";
 import {Footer} from "../../../components/Footer";
 
-const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
-const candyMachineId = process.env.NEXT_PUBLIC_CANDY_MACHINE_ID
-  ? new anchor.web3.PublicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID)
-  : undefined;
-const connection = new anchor.web3.Connection(rpcHost);
-const startDateSeed = parseInt(process.env.NEXT_PUBLIC_CANDY_START_DATE!, 10);
-const txTimeout = 30000; // milliseconds (confirm this works for your project)
 
 export default function Home() {
   const [balance] = useWalletBalance();
-  // const [isLoading, nfts] = useWalletNfts();
-//  const {
-//    isSoldOut,
-//    mintStartDate,
-//    isMinting,
-//    startMint,
-//    startMintMultiple,
-//    nftsData,
-//  } = useCandyMachine();
-// const [isLoading, nfts] = useWalletNfts();
-
   const {connected} = useWallet();
 
-// const [isMintLive, setIsMintLive] = useState(false);
-//useEffect(() => {
-//  if (new Date(mintStartDate).getTime() < Date.now()) {
-//    setIsMintLive(true);
-//  }
-//}, []);
-
-//const MintMany = () => {
-//  const [mintCount, setMintCount] = useState(5);
-
-// return (
-//   <>
-//     <input
-//       disabled={isMinting}
-//       type="number"
-//       min={1}
-//       max={5}
-//       value={mintCount}
-//       onChange={(e) => setMintCount((e.target as any).value)}
-//     />
-//     <Button
-//       style={{marginLeft: '1rem'}}
-//       primary={false}
-//       onClick={() => startMintMultiple(mintCount)}
-//       disabled={isMinting}
-//       label={isMinting ? "loading" : `mint`}
-//     />
-//   </>
-// );
-// };
-  
   return (
     <>
       <Head>
@@ -229,73 +171,6 @@ export default function Home() {
           </table>
         </div>
       </Section>
-
-      {/* Section title={'Waffle Club limited NFTs drop'}/>
-      <MintContainer
-        candyMachineId={candyMachineId}
-        connection={connection}
-        startDate={startDateSeed}
-        txTimeout={txTimeout}
-        rpcHost={rpcHost}
-      />
-      <Section title="Mint Date : dd/mm/YYYY" id="mint">
-        <Toaster/>
-        <div className="flex items-start justify-center">
-          {connected ? (
-            <>
-              {new Date(mintStartDate).getTime() < Date.now() ? (
-                <>
-                  {isSoldOut ? (
-                    <p>SOLD OUT</p>
-                  ) : (
-                    <>
-                      {connected &&
-                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-                          <div>
-                            <h1 style={{marginTop: 0, paddingTop: 0}}>Mint One</h1>
-                            <Button
-                              onClick={startMint}
-                              disabled={isMinting}
-                              label={isMinting ? "loading" : "Mint 1"}
-                            />
-                          </div>
-                          <div><p>Total Supply: {nftsData.itemsAvailable}</p>
-                            <p>Available: {nftsData.itemsRemaining}</p>
-                            <p>Minted: {nftsData.itemsRedeemed}</p>
-                          </div>
-                          <div>
-                            <h1 style={{marginTop: 0, paddingTop: 0}}>Mint Many</h1>
-                            <MintMany/>
-                          </div>
-                        </div>}
-
-                    </>
-                  )}
-                </>
-              ) : (
-                <Countdown
-                  date={mintStartDate}
-                  onMount={({completed}) => completed && setIsMintLive(true)}
-                  onComplete={() => setIsMintLive(true)}
-                />
-              )}
-            </>
-          ) : (
-            <p className="text items-center">Connect wallet to mint</p>
-          )}
-        </div>
-      </Section>
-
-      <Section title={'Your Collection'} id="collection">
-        {connected ? <div className="flex mt-3 gap-x-2"> */}
-          {/*{(nfts as any).map((nft: any, i: number) => {*/}
-          {/*  return <AnNFT key={i} nft={nft}/>;*/}
-          {/*})}*/}
-        {/* </div> : <WalletMultiButton/>
-        }
-      </Section> */}
-      
-
 
       <Section
         title={'Waffle Team'}
