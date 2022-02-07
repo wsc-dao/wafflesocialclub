@@ -41,12 +41,12 @@ export const DarkContainer = ({
           justifyContent: "center",
           background: "#384457",
           color: "white",
-          borderRadius: 5,
+          borderRadius: 1,
           fontWeight: "bold",
           fontSize: 18,
         }}
       >
-        <div className="flex flex-col mr-4">
+        <div className="flex flex-col mr-3">
           <div>Price</div>
           <div className="text-l font-normal">
             {whiteList
@@ -55,7 +55,7 @@ export const DarkContainer = ({
             &nbsp; SOL
           </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col mr-40">
           <div>Balance</div>{" "}
           <div className="text-l font-normal">{balance} &nbsp; SOL</div>
         </div>
@@ -151,8 +151,8 @@ export const PhaseHeader = ({ candyMachine, whiteList }: PhaseHeaderProps) => {
 
       {phase === Phase.Live && (
         <Header
-          phaseName={`Project`}
-          desc={"Project description"}
+          phaseName={`Waffle Social Club`}
+          desc={"4444 delicious and unique waffles"}
           date={candyMachine?.state.goLiveDate}
           status={whiteList ? "White List Activated" : "LIVE"}
           whiteList={whiteList}

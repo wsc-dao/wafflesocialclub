@@ -1,25 +1,27 @@
 {
-  "short_name": "Mint Page",
-  "name": "Waffle Club Mint Page",
+  "name": "Waffle Social Club",
+  "short_name": "WSC",
+  "theme_color": "#be1d2c",
+  "background_color": "#be1d2c",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
-      "src": "logo192.png",
+      "src": "logo-red.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo-red.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo-red.png",
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#12034b"
+  ]
 }

@@ -1,44 +1,42 @@
-import { useWallet } from "@solana/wallet-adapter-react";
-import { useEffect, useState } from "react";
+import {useWallet} from "@solana/wallet-adapter-react";
+import {useEffect, useState} from "react";
 import * as anchor from "@project-serum/anchor";
-import { existsOwnerSPLToken, getNFTsForOwner } from "../utils/candyMachine";
+import {existsOwnerSPLToken, getNFTsForOwner} from "../utils/candyMachine";
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
 const connection = new anchor.web3.Connection(rpcHost);
 
-const useWalletNfts = (props: any) => {
+const useWalletNfts = () => {
   const wallet = useWallet();
-  const [isLoading, setIsLoading] = useState(false);
+  // const [_, setIsLoading] = useState(false);
   const [isSPLExists, setSPLExists] = useState(false);
 
   const [nfts, setNfts] = useState<Array<any>>([]);
 
   useEffect(() => {
-    (async () => {
-      if (
-        !wallet ||
-        !wallet.publicKey ||
-        !wallet.signAllTransactions ||
-        !wallet.signTransaction
-      ) {
-        return;
-      }
-
-      setIsLoading(true);
-
-      const isExistSPLToken = await existsOwnerSPLToken(
-        connection,
-        wallet.publicKey
-      );
-      console.log("isSPLExists " + isSPLExists);
+    if (
+      !wallet ||
+      !wallet.publicKey ||
+      !wallet.signAllTransactions ||
+      !wallet.signTransaction
+    ) {
+      return;
+    }
+    // setIsLoading(true);
+    console.log(connection)
+    existsOwnerSPLToken(
+      connection,
+      wallet.publicKey
+    ).then(isExistSPLToken => {
       setSPLExists(isExistSPLToken);
 
-      const nftsForOwner = await getNFTsForOwner(connection, wallet.publicKey);
 
-      setNfts(nftsForOwner as any);
-      console.log(nftsForOwner);
-      setIsLoading(false);
-    })();
+    getNFTsForOwner(connection, wallet.publicKey as anchor.web3.PublicKey).then(nftsForOwner => {
+      console.log('Arne: nftsForOwner', nftsForOwner);
+      setNfts(nftsForOwner);
+      // setIsLoading(false);
+    });
+  });
   }, [isSPLExists, wallet]);
 
   return [nfts, isSPLExists];

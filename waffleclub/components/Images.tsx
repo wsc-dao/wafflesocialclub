@@ -1,28 +1,58 @@
 import styled from "styled-components";
 import {useEffect, useRef, useState} from "react";
+import Image from "next/image";
+import frame from "../public/frame.png";
 
 const Figure = styled.figure`
   position: relative;
-  width: 450px;
-  height: 450px;
-  max-width: 100%;
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 450px;
   // background: url("/frame.png") center center no-repeat;
   background-size: contain;
 
+  span {
+    position: absolute !important;
+    top: 50% !important;
+    bottom: 50% !important;
+    right: 50% !important;
+    left: 50% !important;
+    margin: 0 !important;
+    transform: translate3d(-50%, -50%, 0);
+
+    &:first-of-type {
+      height: unset !important;
+      width: 66% !important;
+      max-width: 300px !important;
+      max-height: 300px !important;
+      aspect-ratio: 1 / 1;
+    }
+
+    &:nth-of-type(2) {
+      height: unset !important;
+      width: 100% !important;
+      max-width: 450px !important;
+      max-height: 450px !important;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
   img {
     position: absolute;
-    top: 50%;
-    bottom: 50%;
-    right: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    width: 300px;
-    height: 300px;
-    //border-radius: 7px;
+    aspect-ratio: 1/1;
+    width: 100%;
+    //height: 100%;
+    max-width: 300px;
+    //max-height: 300px;
+
     &.frame {
-      width: 450px;
-      max-width: 100%;
-      height: 450px;
+      aspect-ratio: 1/1;
+      width: 100%;
+      //height: 100%;
+      max-width: 450px;
+      //max-height: 450px;
     }
   }
 `;
@@ -45,7 +75,7 @@ export const Images = ({sources}: ImagesProps) => {
     };
   });
   return <Figure>
-    <img src={sources[counter % sources.length]} alt="" width={300} height={300}/>
-    <img src="/frame.png" alt="" className={'frame'}/>
+    <Image src={sources[counter % sources.length]} alt="" layout={"fixed"} width={300} height={300}/>
+    <Image src={frame} alt="" className={'frame'} layout={"fixed"} width={450} height={450}/>
   </Figure>
 }

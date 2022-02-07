@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {Red, YellowCream} from "../consts";
 
 const CustomHeader = styled.header<{ scrolled: Boolean }>`
@@ -65,7 +65,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
       position: unset;
       transform: unset;
       padding: unset;
-      
+
       &.open {
         transform: translateY(0);
       }
@@ -126,44 +126,44 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
   }
 `
 type HeaderProps = {
-  connected: Boolean;
-  balance: number;
+  home?: Boolean;
 };
-
-export const Header = ({connected, balance}: HeaderProps) => {
-  const [navbar, setNavbar] = useState(false)
+const waffleIconBlack = "/waffle-icon-black.png";
+export const Header = ({home,}: HeaderProps) => {
+  const [navbar, setNavbar] = useState(!home)
   const [open, setOpen] = useState(false);
-  const changeBackground = () => {
+  const changeBackground = useCallback(() => {
     if (window.scrollY >= 250) {
       setNavbar(true);
     } else {
       setNavbar(false);
     }
-  }
+  }, []);
   useEffect(() => {
-    changeBackground();
-    // adding the event when scroll change background
-    window.addEventListener("scroll", changeBackground)
+    if (home) {
+      changeBackground();
+      // adding the event when scroll change background
+      window.addEventListener("scroll", changeBackground)
+      return () => window.removeEventListener('scroll', changeBackground);
+    }
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
-      <Link href={'/niet/publiek/mint'}><img  className={'logo desktop'} src="/waffle-icon-black.png" alt="logo"/></Link>
+      <Link href={'/niet/publiek/home'}>
+        <img className={'logo desktop'} src={waffleIconBlack} alt="logo"/>
+      </Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
-        <Link href={'/niet/publiek/mint'}><img className={'logo mobile'}  src="/waffle-icon-black.png" alt="logo"/></Link>
+        <Link href={'/niet/publiek/home'}>
+          <img className={'logo mobile'} src={waffleIconBlack} alt="logo"/>
+        </Link>
         <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
-        <li><Link href={'/niet/publiek/mint#roadmap'}>Roadmap</Link></li>
-        <li><Link href={'/niet/publiek/newmint'}>Mint</Link></li>
-        <li><Link href={'/niet/publiek/mint#collection'}>Collection</Link></li>
-        <li><Link href={'/niet/publiek/mint#team'}>Waffle Team</Link></li>
-        <li><Link href={'/niet/publiek/mint#faq'}>FAQ</Link></li>
+        <li><Link href={'/niet/publiek/home#roadmap'}>Roadmap</Link></li>
+        <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
+        <li><Link href={'/niet/publiek/home#team'}>Waffle Team</Link></li>
+        <li><Link href={'/niet/publiek/home#faq'}>FAQ</Link></li>
         <li>
           <div className="balance">
             <WalletMultiButton/>
-            {/*connected && (<p className="">Balance:
-                <span className="value">{' '}{balance.toFixed(2)}</span>
-                <span className="currency">{' '}SOL</span>
-              </p>
-            )*/}
           </div>
         </li>
       </ul>
