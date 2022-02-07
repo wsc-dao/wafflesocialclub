@@ -1,12 +1,14 @@
 import Head from "next/head";
+import Image from "next/image";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
 import {DataCard} from "../../../components/DataCard";
 import {Section} from "../../../components/Section";
 import {Timeline} from "../../../components/Timeline";
 import {MemberCard} from "../../../components/MemberCard";
-import {OffWhite} from "../../../consts";
 import {Footer} from "../../../components/Footer";
+import waffles from "../../../public/waffles.jpeg";
+import table from "../../../public/table_1.png";
 
 
 export default function Home() {
@@ -45,12 +47,10 @@ export default function Home() {
             }}
             href="#collection">View Collection</a>
         </div>
-        <img
-          style={{
-            boxShadow: `0 0 20px ${OffWhite}`,
-          }}
-          src="https://upload.travelawaits.com/ta/uploads/2021/04/99c0f5627140db6db1e78cc6594c099c0f5.jpg"
+        <Image
+          src={waffles}
           alt=""
+          layout={"responsive"}
         />
       </Section>
 
@@ -96,11 +96,9 @@ export default function Home() {
           </p>
 
         </div>
-        <img
-          style={{
-            boxShadow: `0 0 20px ${OffWhite}`,
-          }}
-          src="/table_1.png"
+        <Image
+          layout={"responsive"}
+          src={table}
           alt=""
         />
       </Section>

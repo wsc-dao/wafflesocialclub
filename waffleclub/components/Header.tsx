@@ -128,7 +128,7 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
 type HeaderProps = {
   home?: Boolean;
 };
-
+const waffleIconBlack = "/waffle-icon-black.png";
 export const Header = ({home,}: HeaderProps) => {
   const [navbar, setNavbar] = useState(!home)
   const [open, setOpen] = useState(false);
@@ -149,10 +149,12 @@ export const Header = ({home,}: HeaderProps) => {
   })
   return <CustomHeader scrolled={navbar}>
     <nav>
-      <Link href={'/niet/publiek/home'}><img className={'logo desktop'} src="/waffle-icon-black.png" alt="logo"/></Link>
+      <Link href={'/niet/publiek/home'}>
+        <img className={'logo desktop'} src={waffleIconBlack} alt="logo"/>
+      </Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
         <Link href={'/niet/publiek/home'}>
-          <img className={'logo mobile'} src="/waffle-icon-black.png" alt="logo"/>
+          <img className={'logo mobile'} src={waffleIconBlack} alt="logo"/>
         </Link>
         <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
         <li><Link href={'/niet/publiek/home#roadmap'}>Roadmap</Link></li>

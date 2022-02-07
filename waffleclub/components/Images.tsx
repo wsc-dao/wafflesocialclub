@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {useEffect, useRef, useState} from "react";
+import Image from "next/image";
+import frame from "../public/frame.png";
 
 const Figure = styled.figure`
   position: relative;
@@ -9,16 +11,21 @@ const Figure = styled.figure`
   // background: url("/frame.png") center center no-repeat;
   background-size: contain;
 
+  span {
+    position: absolute !important;
+    top: 50% !important;
+    bottom: 50% !important;
+    right: 50% !important;
+    left: 50% !important;
+    margin: 0 !important;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
   img {
     position: absolute;
-    top: 50%;
-    bottom: 50%;
-    right: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
     width: 300px;
     height: 300px;
-    //border-radius: 7px;
+
     &.frame {
       width: 450px;
       max-width: 100%;
@@ -45,7 +52,7 @@ export const Images = ({sources}: ImagesProps) => {
     };
   });
   return <Figure>
-    <img src={sources[counter % sources.length]} alt="" width={300} height={300}/>
-    <img src="/frame.png" alt="" className={'frame'}/>
+    <Image src={sources[counter % sources.length]} alt="" layout={"fixed"} width={300} height={300}/>
+    <Image src={frame} alt="" className={'frame'} layout={"fixed"} width={450} height={450}/>
   </Figure>
 }

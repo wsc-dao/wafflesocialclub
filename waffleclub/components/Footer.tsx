@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {useMemo} from "react";
 import {Socials} from "./Socials";
+import Image from "next/image";
+import logoBlack from "../public/logo-black.png";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -25,10 +27,12 @@ const StyledFooter = styled.footer`
     align-items: center;
     max-width: 900px;
     width: 50vw;
+
     a {
       width: 25px;
+
       svg {
-        
+
       }
     }
   }
@@ -38,7 +42,12 @@ export const Footer = () => {
   const year = useMemo(() => new Date().getFullYear(), []);
 
   return <StyledFooter>
-    <img src="/logo-black.png" alt=""/>
+    <Image
+      src={logoBlack}
+      alt=""
+      width={200}
+      height={200}
+    />
     <Socials/>
     <p>©WaffleSocialClub {year}. All Rights Reserved.</p>
   </StyledFooter>;
