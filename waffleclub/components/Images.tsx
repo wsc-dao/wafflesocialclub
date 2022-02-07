@@ -5,9 +5,11 @@ import frame from "../public/frame.png";
 
 const Figure = styled.figure`
   position: relative;
-  width: 450px;
-  height: 450px;
-  max-width: 100%;
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 450px;
   // background: url("/frame.png") center center no-repeat;
   background-size: contain;
 
@@ -19,17 +21,38 @@ const Figure = styled.figure`
     left: 50% !important;
     margin: 0 !important;
     transform: translate3d(-50%, -50%, 0);
+
+    &:first-of-type {
+      height: unset !important;
+      width: 66% !important;
+      max-width: 300px !important;
+      max-height: 300px !important;
+      aspect-ratio: 1 / 1;
+    }
+
+    &:nth-of-type(2) {
+      height: unset !important;
+      width: 100% !important;
+      max-width: 450px !important;
+      max-height: 450px !important;
+      aspect-ratio: 1 / 1;
+    }
   }
 
   img {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    aspect-ratio: 1/1;
+    width: 100%;
+    //height: 100%;
+    max-width: 300px;
+    //max-height: 300px;
 
     &.frame {
-      width: 450px;
-      max-width: 100%;
-      height: 450px;
+      aspect-ratio: 1/1;
+      width: 100%;
+      //height: 100%;
+      max-width: 450px;
+      //max-height: 450px;
     }
   }
 `;

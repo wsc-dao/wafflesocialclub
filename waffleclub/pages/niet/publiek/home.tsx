@@ -166,10 +166,11 @@ export default function Home() {
         contentStyle={{
           display: 'grid',
           maxWidth: '1500px',
-          gridTemplateColumns: 'repeat(3, minmax(150px, 1fr) )',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr) )',
           gap: '6rem',
           alignItems: 'baseline',
-        }} id={'team'}
+        }}
+        id={'team'}
       >
         <MemberCard
           name={'WaffleClub DAO'}
