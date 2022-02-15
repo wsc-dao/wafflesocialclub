@@ -44,6 +44,8 @@ const Intro = styled.section`
 `;
 
 const App = () => <Intro>
+  {/*<h1>19th March - 14H</h1>*/}
+
   <Socials/>
   <h1>Currently mixing dough...</h1>
 </Intro>

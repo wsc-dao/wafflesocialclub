@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import {Red, YellowCream} from "../consts";
+import {OffWhite, Red, YellowCream} from "../consts";
 
 const StyledSection = styled.section<{ flex?: boolean }>`
-  padding-block: 6rem;
+  padding-block: 9rem;
+  position: relative;
 
   &:nth-of-type(even) {
     background: ${YellowCream};
@@ -35,9 +36,11 @@ const StyledSection = styled.section<{ flex?: boolean }>`
       margin-block-end: 1rem;
     }
 
-    img {
-      border-radius: 20px;
+    > span {
       max-width: 90%;
+      width: 100%!important;
+      box-shadow: 0 0 20px ${OffWhite};
+      border-radius: 20px;
       @media (min-width: 778px) {
         max-width: 45%;
       }

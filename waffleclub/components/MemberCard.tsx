@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {DarkGrey} from "../consts";
+import Image from "next/image";
 
 export const MemberCard = ({
                              name = 'TBD',
@@ -10,33 +11,34 @@ export const MemberCard = ({
                              middle
                            }: { name?: string; role?: string; url?: string; title?: string; avatar?: string; middle?: boolean }) =>
   <Member>
-    <img src={avatar} alt={`${name} - ${title}`} className={middle ? 'middle' : 'outer'}/>
+    <Image src={avatar} alt={`${name} - ${title}`} className={middle ? 'middle' : 'outer'} width={400} height={400}/>
     <div>
-      <h3>{name}</h3>
+      {url ? <a href={url} target={'_blank'} rel="noreferrer"><h3>{name}</h3></a> : <h3>{name}</h3>}
       <p>
         aka <strong>{title}</strong><br/>
         {role}
       </p>
-      {url && <a href={url} target={'_blank'} className="btn btn-primary" rel="noreferrer">twitter</a>}
     </div>
   </Member>;
 
 const Member = styled.article`
-text-align: center;
-  img {
-    object-fit: contain;
-    background: ${DarkGrey};
-    width: 100% !important;
-    max-width: 100% !important;
-    aspect-ratio: 1/1;
-    border-radius: 5px;
-    
-    &.outer {
-    //  border-radius: 5px 50px;
-    }
+  text-align: center;
 
-    &.middle {
-     // border-radius: 50px 5px;
+  span {
+    border-radius: 20px;
+
+    img {
+      object-fit: contain;
+      background: ${DarkGrey};
+      width: 100% !important;
+      max-width: 100% !important;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  a:hover {
+    h3 {
+      color: #FDCD7E;
     }
   }
 
@@ -44,6 +46,7 @@ text-align: center;
     margin-top: .5rem;
     margin-bottom: 0;
     letter-spacing: 1px;
+    color: #ffedcf;
   }
 
   p {

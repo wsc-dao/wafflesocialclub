@@ -1,6 +1,25 @@
-export const DataCard = ({label, value}: { label: string; value: string; }) => <div
-  style={{display: "grid", gridTemplateColumns: "50px auto", alignItems: "center"}}>
-  <img src="https://freesvg.org/img/1543140976.png" alt="" style={{gridRow: "span 2", width: "50px"}}/>
+import Image from "next/image";
+import icon from "../public/chantilly.png"
+import styled from "styled-components";
+
+const StyledDataCard = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  div {
+    grid-column: 1 / span 2;
+    width: 110px;
+    margin: auto;
+  }
+`;
+export const DataCard = ({label, value}: { label: string; value: string; }) => <StyledDataCard>
+  <div>
+    <Image src={icon} alt=""/>
+
+  </div>
   <b>{value}</b>
   <span>{label}</span>
-</div>;
+</StyledDataCard>;

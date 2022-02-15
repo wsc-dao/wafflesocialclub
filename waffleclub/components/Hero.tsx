@@ -17,18 +17,11 @@ export const Hero = () => {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        //minHeight: '120vh',
-        // minWidth: 200.00,
         highlightColor: LightRed,
         midtoneColor: YellowCream,
         lowlightColor: OffWhite,
         baseColor: Red,
-        // highlightColor: '#ffb400',
-        // midtoneColor: '#ff8a00',
-        // lowlightColor: '#ffffff',
-        // baseColor: '#ffebeb',
         blurFactor: 0.5,
-        // zoom: 1.60,
         speed: 0.6,
       }))
     }
@@ -42,7 +35,7 @@ export const Hero = () => {
 
     <section ref={vantaRef} style={{
       height: "100vh",
-      minHeight:'1080px',
+      minHeight: '1080px',
       backgroundColor: "#f5d8ad",
       backgroundImage: "url('/flat-mountains.svg')",
       backgroundPosition: "bottom",
@@ -54,7 +47,7 @@ export const Hero = () => {
       justifyContent: "center",
       position: "relative",
     }}>
-      <h1 style={{fontSize: "35pt", marginTop:'125px', color: YellowCream, fontWeight: "bold"}}>Have a bite!</h1>
+      <h1 style={{fontSize: "35pt", marginTop: '125px', color: YellowCream, fontWeight: "bold"}}>Have a bite!</h1>
       <Images sources={[
         /*
            "/artwork/Gaufre_0.jpg",
@@ -69,12 +62,24 @@ export const Hero = () => {
            "/artwork/Gaufre_9.jpg",
            "/artwork/Gaufre_10.jpg",
        */
-        "/artwork/waffle_french.jpg",
-        "/artwork/waffle_zombie.jpg",
-        "/artwork/waffle_robot.jpg",
+        /*
+           "/artwork/waffle_french.jpg",
+           "/artwork/waffle_zombie.jpg",
+           "/artwork/waffle_robot.jpg",
+        */
+        "/transparent/0.png",
+        "/transparent/1.png",
+        "/transparent/2.png",
+        "/transparent/3.png",
+        "/transparent/4.png",
+        "/transparent/5.png",
+        "/transparent/6.png",
+        "/transparent/7.png",
+        "/transparent/8.png",
+        "/transparent/9.png",
       ]}/>
       <div style={{
-        paddingBottom:'250px',
+        paddingBottom: '250px',
       }}>
         <h2>Mint date</h2>
         <time> 12/05/2021 21:00 UTC</time>
@@ -84,7 +89,7 @@ export const Hero = () => {
         bottom: 0,
         left: 0,
         right: 0,
-        transform:'translateY(20%)',
+        transform: 'translateY(20%)',
         width: '100%',
         height: '263px',
         background: `url('/chantilly.pat.png')`,
