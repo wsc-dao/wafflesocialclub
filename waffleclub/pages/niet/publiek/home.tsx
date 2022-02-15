@@ -7,7 +7,7 @@ import {Section} from "../../../components/Section";
 import {Timeline} from "../../../components/Timeline";
 import {MemberCard} from "../../../components/MemberCard";
 import {Footer} from "../../../components/Footer";
-import waffles from "../../../public/waffles.jpeg";
+import truck from "../../../public/banner.png";
 import table from "../../../public/table_1.png";
 
 
@@ -37,18 +37,30 @@ export default function Home() {
           <p>
             Lekker!
           </p>
-          <a
-            style={{
-              color: '#B8202E',
-              background: '#f5d8ad',
-              padding: '12px 16px',
-              borderRadius: '20px',
-              fontWeight: 'bold'
-            }}
-            href="#collection">View Collection</a>
+          <div style={{display: 'flex', justifyContent: 'space-evenly', width: '100%'}}>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a
+              style={{
+                background: '#B8202E',
+                color: '#f5d8ad',
+                padding: '12px 16px',
+                borderRadius: '20px',
+                fontWeight: 'bold'
+              }}
+              href="/niet/publiek/roadmap.deck">View ou roadmap</a>
+            <a
+              style={{
+                color: '#B8202E',
+                background: '#f5d8ad',
+                padding: '12px 16px',
+                borderRadius: '20px',
+                fontWeight: 'bold'
+              }}
+              href="#collection">View collection</a>
+          </div>
         </div>
         <Image
-          src={waffles}
+          src={truck}
           alt=""
           layout={"responsive"}
         />
@@ -173,8 +185,9 @@ export default function Home() {
         id={'team'}
       >
         <MemberCard
-          name={'WaffleClub DAO'}
-          title={"DAO is the new CEO"}
+          name={'WaffleDAO'}
+          title={"our new CEO"}
+          url={'https://twitter.com/WaffleSoClubNFT'}
         />
         <MemberCard
           url={"https://twitter.com/D3v0_WSC"}

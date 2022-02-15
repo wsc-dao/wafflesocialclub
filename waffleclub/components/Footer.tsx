@@ -3,6 +3,7 @@ import {useMemo} from "react";
 import {Socials} from "./Socials";
 import Image from "next/image";
 import logoBlack from "../public/logo-black.png";
+import {YellowCream} from "../consts";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -11,6 +12,7 @@ const StyledFooter = styled.footer`
   align-items: center;
   padding: 6rem 0;
   gap: 2rem;
+  color: ${YellowCream};
 
   img {
     width: 200px;
@@ -32,7 +34,7 @@ const StyledFooter = styled.footer`
       width: 25px;
 
       svg {
-
+        fill: ${YellowCream};
       }
     }
   }

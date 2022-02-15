@@ -13,12 +13,11 @@ export const MemberCard = ({
   <Member>
     <Image src={avatar} alt={`${name} - ${title}`} className={middle ? 'middle' : 'outer'} width={400} height={400}/>
     <div>
-      <h3>{name}</h3>
+      {url ? <a href={url} target={'_blank'} rel="noreferrer"><h3>{name}</h3></a> : <h3>{name}</h3>}
       <p>
         aka <strong>{title}</strong><br/>
         {role}
       </p>
-      {url && <a href={url} target={'_blank'} className="btn btn-primary" rel="noreferrer">twitter</a>}
     </div>
   </Member>;
 
@@ -37,11 +36,17 @@ const Member = styled.article`
     }
   }
 
+  a:hover {
+    h3 {
+      color: #FDCD7E;
+    }
+  }
 
   h3 {
     margin-top: .5rem;
     margin-bottom: 0;
     letter-spacing: 1px;
+    color: #ffedcf;
   }
 
   p {

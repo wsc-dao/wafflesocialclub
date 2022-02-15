@@ -156,7 +156,7 @@ export const Header = ({home,}: HeaderProps) => {
         <Link href={'/niet/publiek/home'}>
           <img className={'logo mobile'} src={waffleIconBlack} alt="logo"/>
         </Link>
-        <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
+        <li><Link href={'/niet/publiek/roadmap.deck'}>Lite paper</Link></li>
         <li><Link href={'/niet/publiek/home#roadmap'}>Roadmap</Link></li>
         <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
         <li><Link href={'/niet/publiek/home#team'}>Waffle Team</Link></li>
