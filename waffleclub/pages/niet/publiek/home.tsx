@@ -9,6 +9,7 @@ import {MemberCard} from "../../../components/MemberCard";
 import {Footer} from "../../../components/Footer";
 import truck from "../../../public/banner.png";
 import table from "../../../public/table_1.png";
+import {Details} from "../../../components/Details";
 
 
 export default function Home() {
@@ -227,39 +228,40 @@ export default function Home() {
 
       </Section>
 
-      <Section title={'FAQ'} id="faq">
-        <details>
-          <summary><h3 style={{display: 'inline'}}>How many Waffle will be minted ?</h3></summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
-        <details>
-          <summary><h3 style={{display: 'inline'}}>What can i dot with my waffle Club ?</h3></summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
-        <details>
-          <summary><h3 style={{display: 'inline'}}> When will it be revealed?</h3></summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
-        <details>
-          <summary><h3 style={{display: 'inline'}}> After minting?</h3></summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
-        <details>
-          <summary><h3 style={{display: 'inline'}}> When on the secondary market?</h3></summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
-        <details>
-          <summary><h3 style={{display: 'inline'}}> Can I see the contract adress ?</h3></summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
-        <details>
-          <summary>
-            <h3 style={{display: 'inline'}}>
-              I got a DM with a link from someone claiming to be a team member, can I trust it?
-            </h3>
-          </summary>
-          The answer to your question should be here somewhere, keep looking...
-        </details>
+      <Section title={'FAQ'} id="faq" contentStyle={{
+        display: 'grid',
+        maxWidth: '1500px',
+        gridTemplateColumns: 'repeat(2, minmax(250px, 1fr) )',
+        gap: '2rem',
+        alignItems: 'baseline',
+      }}>
+        <Details
+          question={"How many Waffle will be minted?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}/>
+        <Details
+          question={"What can i dot with my waffle Club ?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}
+        />
+        <Details
+          question={"When will it be revealed?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}
+        />
+        <Details
+          question={"After minting?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}
+        />
+        <Details
+          question={"When on the secondary market?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}
+        />
+        <Details
+          question={"Can I see the contract adress ?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}
+        />
+        <Details
+          question={"I got a DM with a link from someone claiming to be a team member, can I trust it?"}
+          content={"The answer to your question should be here somewhere, keep looking..."}
+        />
       </Section>
       <Footer/>
     </>
