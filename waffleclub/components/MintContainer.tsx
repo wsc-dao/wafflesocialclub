@@ -186,7 +186,7 @@ const MintContainer = (props: HomeProps) => {
     if (completed) {
       return (
         <div className="flex flex-col mt-32 justify-center" style={{color: YellowCream}}>
-          <Container maxWidth="sm" style={{position: "relative"}}>
+          <Container maxWidth="xs" style={{position: "relative"}}>
             <Paper
               style={{
                 padding: 24,
@@ -245,11 +245,7 @@ const MintContainer = (props: HomeProps) => {
                     />
                   )}
                 </>
-                <Progress max={itemsAvailable}  value={itemsRemaining}/>
-                {wallet.connected && <p> Balance : {balance || 0}SOL</p>}
-                {wallet.connected && <p>Total Available: {itemsAvailable}</p>}
-                {wallet.connected && <p>Redeemed: {itemsRedeemed}</p>}
-                {wallet.connected && <p>Remaining: {itemsRemaining}</p>}
+                {wallet.connected && <Progress max={itemsAvailable}  value={itemsRemaining}/>}
               </div>
             </Paper>
           </Container>

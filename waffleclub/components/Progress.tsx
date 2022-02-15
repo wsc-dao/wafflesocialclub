@@ -4,13 +4,16 @@ import {Red} from "../consts";
 export const Progress = (props: { value: number; max: number; }) => (
   <CustomProgress style={{}}>
         <span
-          style={{width: `${(props.value / props.max) * 100}%`}}>{`${(props.value / props.max) * 100}%`}</span>
+          style={{width: `${(props.value / props.max) * 100}%`}}
+        >
+          {`${props.value} / ${props.max}`}
+        </span>
   </CustomProgress>
 )
 const CustomProgress = styled.div`
   appearance: none;
   width: 100%;
-  height: 26px;
+  height: 30px;
   font-weight: bold;
   border-radius: 20px;
   overflow: hidden;
@@ -26,6 +29,7 @@ const CustomProgress = styled.div`
     background-color: #f5d8ad;
     border-radius: 20px;
     text-align: center;
+    height: 100%;
     display: block;
   }
 `

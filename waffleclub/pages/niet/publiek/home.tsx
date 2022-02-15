@@ -228,13 +228,17 @@ export default function Home() {
 
       </Section>
 
-      <Section title={'FAQ'} id="faq" contentStyle={{
-        display: 'grid',
-        maxWidth: '1500px',
-        gridTemplateColumns: 'repeat(2, minmax(250px, 1fr) )',
-        gap: '2rem',
-        alignItems: 'baseline',
-      }}>
+      <Section
+        title={'FAQ'}
+        id="faq"
+        contentStyle={{
+          display: 'grid',
+          maxWidth: '1500px',
+          gridTemplateColumns: 'repeat(2, minmax(250px, 1fr) )',
+          gap: '2rem',
+          alignItems: 'baseline',
+        }}
+      >
         <Details
           question={"How many Waffle will be minted?"}
           content={"The answer to your question should be here somewhere, keep looking..."}/>
