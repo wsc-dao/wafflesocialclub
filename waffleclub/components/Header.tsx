@@ -150,7 +150,7 @@ export const Header = ({home,}: HeaderProps) => {
   return <CustomHeader scrolled={navbar}>
     <nav>
       <Link href={'/niet/publiek/home'}>
-        <img className={'logo desktop'} src={waffleIconBlack} alt="logo"/>
+        <img className={'logo desktop'} src={waffleIconBlack} alt="logo" width={70} height={70}/>
       </Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
         <Link href={'/niet/publiek/home'}>
