@@ -22,6 +22,7 @@ const StyledTimeline = styled.div`
         flex-direction: row
       }
     }
+
     .filler {
       display: none;
       @media (min-width: 778px) {
@@ -39,34 +40,6 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     width: 50%;
   }
 
-  :before {
-    content: ' ';
-    position: absolute;
-    background: ${p => p.selected ? '#f5d8ad' : '#B8202E'};
-    border: 1px solid ${OffWhite};
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    height: 20px;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    bottom: 0;
-    z-index: 2;
-    left:0;
-    transform: translate3d(-50%, 50%, 0);
-
-    @media (min-width: 778px) {
-      left:unset;
-      transform: unset;
-      ${p => p.even ? `
-        transform: translate3d(50%, 50%, 0);
-        right: 0;
-      ` : `
-        left: 0;
-        transform: translate3d(-50%, 50%, 0);
-    `}
-    }
-  }
 
   :after {
     content: ' ';
@@ -78,7 +51,7 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     left: 0;
     transform: translateX(-50%);
     @media (min-width: 778px) {
-      left:unset;
+      left: unset;
       transform: unset;
       ${p => p.even ? `right: 0;
       transform: translateX(50%);` : `left: 0;
@@ -87,15 +60,50 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
   }
 
   div {
+    position: relative;
+    z-index: 4;
     margin-top: 3rem;
     margin-bottom: 3rem;
     background: #f5d8ad;
     padding: 1rem 2rem;
     max-width: 350px;
+    border-radius: 10px;
+    box-shadow: #c9b99f 0 0 25px 0;
+    margin-left: 25px;
 
     &.left {
       @media (min-width: 778px) {
         margin-left: auto;
+        margin-right: 25px;
+      }
+    }
+
+    :before {
+      content: ' ';
+      position: absolute;
+      background: ${p => p.selected ? '#f5d8ad' : '#B8202E'};
+      border: 1px solid ${OffWhite};
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      height: 20px;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      top: 0;
+      z-index: 2;
+      left: 0;
+      transform: translate3d(-50%, 50%, 0);
+
+      @media (min-width: 778px) {
+        left: unset;
+        transform: unset;
+        ${p => p.even ? `
+        transform: translate3d(50%, 50%, 0);
+        right: -25px;
+      ` : `
+        left: -25px;
+        transform: translate3d(-50%, 50%, 0);
+    `}
       }
     }
   }
