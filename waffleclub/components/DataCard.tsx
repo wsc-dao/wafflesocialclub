@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Chantilly from "../public/chantilly.png";
-import Eggs from "../public/ingredients/Eggs.svg";
-import Butter from "../public/ingredients/Butter.svg";
-import Milk from "../public/ingredients/Milk.svg";
-import Water from "../public/ingredients/Water.svg";
-import Flour from "../public/ingredients/Flour.svg";
+import Eggs from "../public/ingredients/Eggs.png";
+import Butter from "../public/ingredients/Butter.png";
+import Milk from "../public/ingredients/Milk.png";
+import Water from "../public/ingredients/Water.png";
+import Flour from "../public/ingredients/Flour.png";
+import Yeast from "../public/ingredients/Yeast.png";
 import styled from "styled-components";
 import {useMemo} from "react";
 
@@ -14,6 +15,7 @@ const StyledDataCard = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-top: 3rem;
 
   div {
     grid-column: 1 / span 2;
@@ -32,8 +34,10 @@ export const DataCard = ({label, value}: { label: string; value: string; }) => {
         return Milk;
       case 'Butter':
         return Butter;
-        case 'Flour':
+      case 'Flour':
         return Flour;
+      case 'Fresh Yeast':
+        return Yeast;
       default:
         return Chantilly;
     }
