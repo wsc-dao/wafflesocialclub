@@ -236,20 +236,14 @@ export default function Home() {
         />
 
       </Section>
-      <Section contentStyle={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, 300 )',
-        alignItems: 'baseline',
-      }}>
-        {showcase.map(src => <Image key={src} src={src} width={300} height={300}/>)}
-      </Section>
+
       <Section
         title={'FAQ'}
         id="faq"
         contentStyle={{
           display: 'grid',
           maxWidth: '1500px',
-          gridTemplateColumns: 'repeat(2, minmax(250px, 1fr) )',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr) )',
           gap: '2rem',
           alignItems: 'baseline',
         }}
@@ -282,6 +276,13 @@ export default function Home() {
           content={"The answer to your question should be here somewhere, keep looking..."}
         />
       </Section>
+      <Section contentStyle={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, 300px )',
+      alignItems: 'baseline',
+    }}>
+      {showcase.map(src => <Image key={src} src={src} width={300} height={300} alt={""}/>)}
+    </Section>
       <Footer/>
     </>
   );
