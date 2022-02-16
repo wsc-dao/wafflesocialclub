@@ -11,7 +11,16 @@ import truck from "../../../public/banner.png";
 import table from "../../../public/table_1.png";
 import {Details} from "../../../components/Details";
 
-
+const showcase = ["/transparent/0.png",
+  "/transparent/1.png",
+  "/transparent/2.png",
+  "/transparent/3.png",
+  "/transparent/4.png",
+  "/transparent/5.png",
+  "/transparent/6.png",
+  "/transparent/7.png",
+  "/transparent/8.png",
+  "/transparent/9.png"];
 export default function Home() {
   return (
     <>
@@ -227,7 +236,13 @@ export default function Home() {
         />
 
       </Section>
-
+      <Section contentStyle={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, 300 )',
+        alignItems: 'baseline',
+      }}>
+        {showcase.map(src => <Image key={src} src={src} width={300} height={300}/>)}
+      </Section>
       <Section
         title={'FAQ'}
         id="faq"
