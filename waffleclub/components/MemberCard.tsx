@@ -23,6 +23,15 @@ export const MemberCard = ({
 
 const Member = styled.article`
   text-align: center;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    left: 55%;
+  }
 
   span {
     border-radius: 20px;

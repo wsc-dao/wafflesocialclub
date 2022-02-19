@@ -2,7 +2,6 @@ import {useEffect, useMemo, useState} from "react";
 
 import {Container, Snackbar} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import Countdown from "react-countdown";
 import Alert from "@material-ui/lab/Alert";
 import * as anchor from "@project-serum/anchor";
@@ -23,6 +22,8 @@ import {
 } from "../helpers/candy-machine";
 import {MintButton} from "./MintButton";
 import {PhaseHeader} from "./PhaseHeader";
+import {YellowCream} from "../consts";
+import {Progress} from "./Progress";
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -184,7 +185,7 @@ const MintContainer = (props: HomeProps) => {
   }) => {
     if (completed) {
       return (
-        <div className="flex flex-col mt-32 justify-center">
+        <div className="flex flex-col mt-32 justify-center" style={{color: YellowCream}}>
           <Container maxWidth="xs" style={{position: "relative"}}>
             <Paper
               style={{
@@ -201,7 +202,7 @@ const MintContainer = (props: HomeProps) => {
                 />
               </div>
 
-              <Grid container justifyContent="center" direction="column">
+              <div>
                 <PhaseHeader
                   candyMachine={candyMachine}
                   rpcUrl={rpcUrl}
@@ -244,12 +245,8 @@ const MintContainer = (props: HomeProps) => {
                     />
                   )}
                 </>
-
-                {wallet.connected && <p> Balance : {balance || 0}SOL</p>}
-                {wallet.connected && <p>Total Available: {itemsAvailable}</p>}
-                {wallet.connected && <p>Redeemed: {itemsRedeemed}</p>}
-                {wallet.connected && <p>Remaining: {itemsRemaining}</p>}
-              </Grid>
+                {wallet.connected && <Progress max={itemsAvailable}  value={itemsRemaining}/>}
+              </div>
             </Paper>
           </Container>
         </div>
