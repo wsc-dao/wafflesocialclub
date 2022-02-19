@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {OffWhite} from "../consts";
+import {motion} from "framer-motion";
 
 const StyledTimeline = styled.div`
   // display: grid;
@@ -59,7 +60,7 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     }
   }
 
-  div {
+  .card {
     position: relative;
     z-index: 4;
     margin-top: 3rem;
@@ -108,7 +109,43 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     }
   }
 `;
+const cardVariants = {
+  offscreen: {
+    y: 300
+  },
+  onscreen: {
+    y: 50,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    }
+  }
+};
 
+function AnimatedTimelineElement(props: { idx: number, selected: boolean, title: string, description: string, callbackfn: (el:any) => JSX.Element }) {
+  return (
+    <TimelineElement
+      even={!!(props.idx % 2)}
+      selected={props.selected}
+    >
+      <motion.div
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}
+    >
+      <motion.div
+        className={`card ${props.idx % 2 ? "left" : "right"}`}
+        variants={cardVariants}>
+
+          <h3>{props.title}</h3>
+          <ul>{props.description.split("\n").map(props.callbackfn)}</ul>
+    </motion.div>
+    </motion.div>
+    </TimelineElement>
+
+);
+}
 
 export const Timeline = () => <StyledTimeline>
   {[
@@ -141,15 +178,8 @@ export const Timeline = () => <StyledTimeline>
   ].map(({title, description, selected}, idx) => (
     <div key={`${title}-${idx}`} className={`row ${idx % 2 ? 'even' : 'odd'}`}>
       <div className={'filler'}/>
-      <TimelineElement
-        key={`${title}-${idx}`}
-        even={!!(idx % 2)}
-        selected={selected}
-      >
-        <div className={idx % 2 ? 'left' : 'right'}>
-          <h3>{title}</h3>
-          <ul>{description.split('\n').map(el => <li key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
-        </div>
-      </TimelineElement>
+      <AnimatedTimelineElement key={`${title}-${idx}`} idx={idx} selected={selected} title={title}
+                               description={description}
+                               callbackfn={el => <li key={`${title}-${idx}-${el}`}>{el}</li>}/>
     </div>))}
 </StyledTimeline>;

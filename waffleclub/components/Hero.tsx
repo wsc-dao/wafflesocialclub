@@ -5,7 +5,7 @@ import FOG from "vanta/dist/vanta.fog.min"
 import {useEffect, useRef, useState} from "react";
 import {LightRed, OffWhite, Red, YellowCream} from "../consts";
 
-export const Hero = () => {
+export const Hero = ({artworks}: { artworks: string[] }) => {
   const [vantaEffect, setVantaEffect] = useState(0)
 
   const vantaRef = useRef(null);
@@ -48,36 +48,7 @@ export const Hero = () => {
       position: "relative",
     }}>
       <h1 style={{fontSize: "35pt", marginTop: '125px', color: YellowCream, fontWeight: "bold"}}>Have a bite!</h1>
-      <Images sources={[
-        /*
-           "/artwork/Gaufre_0.jpg",
-           "/artwork/Gaufre_1.jpg",
-           "/artwork/Gaufre_2.jpg",
-           "/artwork/Gaufre_3.jpg",
-           "/artwork/Gaufre_4.jpg",
-           "/artwork/Gaufre_5.jpg",
-           "/artwork/Gaufre_6.jpg",
-           "/artwork/Gaufre_7.jpg",
-           "/artwork/Gaufre_8.jpg",
-           "/artwork/Gaufre_9.jpg",
-           "/artwork/Gaufre_10.jpg",
-       */
-        /*
-           "/artwork/waffle_french.jpg",
-           "/artwork/waffle_zombie.jpg",
-           "/artwork/waffle_robot.jpg",
-        */
-        "/transparent/0.png",
-        "/transparent/1.png",
-        "/transparent/2.png",
-        "/transparent/3.png",
-        "/transparent/4.png",
-        "/transparent/5.png",
-        "/transparent/6.png",
-        "/transparent/7.png",
-        "/transparent/8.png",
-        "/transparent/9.png",
-      ]}/>
+      <Images sources={artworks}/>
       <div style={{
         paddingBottom: '250px',
       }}>

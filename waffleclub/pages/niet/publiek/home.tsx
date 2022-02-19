@@ -10,8 +10,11 @@ import {Footer} from "../../../components/Footer";
 import truck from "../../../public/banner.png";
 import table from "../../../public/table_1.png";
 import {Details} from "../../../components/Details";
+import AliceCarousel from "react-alice-carousel";
+import {readdirSync} from "fs";
+import path from "path";
 
-const showcase = ["/transparent/0.png",
+const artworks = ["/transparent/0.png",
   "/transparent/1.png",
   "/transparent/2.png",
   "/transparent/3.png",
@@ -21,14 +24,27 @@ const showcase = ["/transparent/0.png",
   "/transparent/7.png",
   "/transparent/8.png",
   "/transparent/9.png"];
-export default function Home() {
+export async function getServerSideProps() {
+  const dirRelativeToPublicFolder = 'artwork'
+
+  const dir = path.resolve('./public', dirRelativeToPublicFolder);
+
+  const filenames = readdirSync(dir);
+
+  const artworks = filenames.map((name:string) => path.join('/', dirRelativeToPublicFolder, name))
+
+  return {
+    props: {artworks}, // will be passed to the page component as props
+  }
+}
+export default function Home({artworks}:{artworks:string[]}) {
   return (
     <>
       <Head>
         <title>Waffle Social Club</title>
       </Head>
       <Header home={true}/>
-      <Hero/>
+      <Hero artworks={artworks}/>
       <Section title={'WELCOME TO THE WAFFLE CLUB'} flex>
         <div
           style={{
@@ -276,13 +292,18 @@ export default function Home() {
           content={"The answer to your question should be here somewhere, keep looking..."}
         />
       </Section>
-      <Section contentStyle={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, 300px )',
-      alignItems: 'baseline',
-    }}>
-      {showcase.map(src => <Image key={src} src={src} width={300} height={300} alt={""}/>)}
-    </Section>
+      <AliceCarousel
+        animationDuration={15000}
+        autoPlayInterval={1}
+        animationEasingFunction={'linear'}
+        autoPlay
+        infinite
+        disableDotsControls
+        autoWidth
+        disableButtonsControls
+        mouseTracking
+        items={artworks.map((src:string) => <Image key={src} src={src} width={300} height={300} alt={""}/>)}
+      />
       <Footer/>
     </>
   );
