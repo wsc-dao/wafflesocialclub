@@ -3,14 +3,16 @@ import {useMemo} from "react";
 import {Socials} from "./Socials";
 import Image from "next/image";
 import logoBlack from "../public/logo-black.png";
+import {YellowCream} from "../consts";
 
 const StyledFooter = styled.footer`
   display: flex;
-  flex-direction: column;
+ // flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 6rem 0;
+  padding: 6rem 2rem;
   gap: 2rem;
+  color: ${YellowCream};
 
   img {
     width: 200px;
@@ -23,7 +25,7 @@ const StyledFooter = styled.footer`
 
   .socials {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     max-width: 900px;
     width: 50vw;
@@ -32,7 +34,7 @@ const StyledFooter = styled.footer`
       width: 25px;
 
       svg {
-
+        fill: ${YellowCream};
       }
     }
   }
@@ -48,7 +50,7 @@ export const Footer = () => {
       width={200}
       height={200}
     />
-    <Socials/>
     <p>©WaffleSocialClub {year}. All Rights Reserved.</p>
+    <Socials/>
   </StyledFooter>;
 }

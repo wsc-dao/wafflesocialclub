@@ -150,13 +150,13 @@ export const Header = ({home,}: HeaderProps) => {
   return <CustomHeader scrolled={navbar}>
     <nav>
       <Link href={'/niet/publiek/home'}>
-        <img className={'logo desktop'} src={waffleIconBlack} alt="logo"/>
+        <img className={'logo desktop'} src={waffleIconBlack} alt="logo" width={70} height={70}/>
       </Link>
       <ul className={`nav ${open ? 'open' : ''}`}>
         <Link href={'/niet/publiek/home'}>
           <img className={'logo mobile'} src={waffleIconBlack} alt="logo"/>
         </Link>
-        <li><Link href={'/niet/publiek/roadmap.deck'}>About</Link></li>
+        <li><Link href={'/niet/publiek/roadmap.deck'}>Lite paper</Link></li>
         <li><Link href={'/niet/publiek/home#roadmap'}>Roadmap</Link></li>
         <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
         <li><Link href={'/niet/publiek/home#team'}>Waffle Team</Link></li>

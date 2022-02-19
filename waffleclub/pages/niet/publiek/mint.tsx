@@ -32,7 +32,6 @@ export default function Home() {
       <Header/>
       <Section title={'Waffle Club limited NFTs drop'}/>
       <Section title="Mint Date : dd/mm/YYYY" id="mint">
-        <div className="flex items-start justify-center">
           <MintContainer
             candyMachineId={candyMachineId}
             connection={connection}
@@ -40,7 +39,6 @@ export default function Home() {
             txTimeout={txTimeout}
             rpcHost={rpcHost}
           />
-        </div>
       </Section>
 
       <Section title={'Your Collection'} id="collection">

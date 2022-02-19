@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {OffWhite} from "../consts";
+import {motion} from "framer-motion";
 
 const StyledTimeline = styled.div`
   // display: grid;
@@ -22,6 +23,7 @@ const StyledTimeline = styled.div`
         flex-direction: row
       }
     }
+
     .filler {
       display: none;
       @media (min-width: 778px) {
@@ -39,34 +41,6 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     width: 50%;
   }
 
-  :before {
-    content: ' ';
-    position: absolute;
-    background: ${p => p.selected ? '#f5d8ad' : '#B8202E'};
-    border: 1px solid ${OffWhite};
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    height: 20px;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    bottom: 0;
-    z-index: 2;
-    left:0;
-    transform: translate3d(-50%, 50%, 0);
-
-    @media (min-width: 778px) {
-      left:unset;
-      transform: unset;
-      ${p => p.even ? `
-        transform: translate3d(50%, 50%, 0);
-        right: 0;
-      ` : `
-        left: 0;
-        transform: translate3d(-50%, 50%, 0);
-    `}
-    }
-  }
 
   :after {
     content: ' ';
@@ -78,7 +52,7 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     left: 0;
     transform: translateX(-50%);
     @media (min-width: 778px) {
-      left:unset;
+      left: unset;
       transform: unset;
       ${p => p.even ? `right: 0;
       transform: translateX(50%);` : `left: 0;
@@ -86,21 +60,92 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     }
   }
 
-  div {
+  .card {
+    position: relative;
+    z-index: 4;
     margin-top: 3rem;
     margin-bottom: 3rem;
     background: #f5d8ad;
     padding: 1rem 2rem;
     max-width: 350px;
+    border-radius: 10px;
+    box-shadow: #c9b99f 0 0 25px 0;
+    margin-left: 25px;
 
     &.left {
       @media (min-width: 778px) {
         margin-left: auto;
+        margin-right: 25px;
+      }
+    }
+
+    :before {
+      content: ' ';
+      position: absolute;
+      background: ${p => p.selected ? '#f5d8ad' : '#B8202E'};
+      border: 1px solid ${OffWhite};
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      height: 20px;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      top: 0;
+      z-index: 2;
+      left: 0;
+      transform: translate3d(-50%, 50%, 0);
+
+      @media (min-width: 778px) {
+        left: unset;
+        transform: unset;
+        ${p => p.even ? `
+        transform: translate3d(50%, 50%, 0);
+        right: -25px;
+      ` : `
+        left: -25px;
+        transform: translate3d(-50%, 50%, 0);
+    `}
       }
     }
   }
 `;
+const cardVariants = {
+  offscreen: {
+    y: 300
+  },
+  onscreen: {
+    y: 50,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    }
+  }
+};
 
+function AnimatedTimelineElement(props: { idx: number, selected: boolean, title: string, description: string, callbackfn: (el:any) => JSX.Element }) {
+  return (
+    <TimelineElement
+      even={!!(props.idx % 2)}
+      selected={props.selected}
+    >
+      <motion.div
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}
+    >
+      <motion.div
+        className={`card ${props.idx % 2 ? "left" : "right"}`}
+        variants={cardVariants}>
+
+          <h3>{props.title}</h3>
+          <ul>{props.description.split("\n").map(props.callbackfn)}</ul>
+    </motion.div>
+    </motion.div>
+    </TimelineElement>
+
+);
+}
 
 export const Timeline = () => <StyledTimeline>
   {[
@@ -133,15 +178,8 @@ export const Timeline = () => <StyledTimeline>
   ].map(({title, description, selected}, idx) => (
     <div key={`${title}-${idx}`} className={`row ${idx % 2 ? 'even' : 'odd'}`}>
       <div className={'filler'}/>
-      <TimelineElement
-        key={`${title}-${idx}`}
-        even={!!(idx % 2)}
-        selected={selected}
-      >
-        <div className={idx % 2 ? 'left' : 'right'}>
-          <h3>{title}</h3>
-          <ul>{description.split('\n').map(el => <li key={`${title}-${idx}-${el}`}>{el}</li>)}</ul>
-        </div>
-      </TimelineElement>
+      <AnimatedTimelineElement key={`${title}-${idx}`} idx={idx} selected={selected} title={title}
+                               description={description}
+                               callbackfn={el => <li key={`${title}-${idx}-${el}`}>{el}</li>}/>
     </div>))}
 </StyledTimeline>;

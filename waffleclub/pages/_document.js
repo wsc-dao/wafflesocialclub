@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    return (<Html>
+    return (<Html lang={'en'}>
       <Head>
         <link rel="preconnect" href="https://www.googletagmanager.com"/>
 
