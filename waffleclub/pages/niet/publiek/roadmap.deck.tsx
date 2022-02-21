@@ -18,7 +18,7 @@ const Roadmap = () => {
 
   const getPDFData = () => {
     // can be web URL
-    const url = "/sample.pdf";
+    const url = "/Litepaper_WSC-SQ.pdf";
     downloadPDFFromURL(url);
   };
 
