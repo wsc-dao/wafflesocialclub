@@ -73,7 +73,7 @@ export default function Home({artworks}:{artworks:string[]}) {
                 borderRadius: '20px',
                 fontWeight: 'bold'
               }}
-              href="/niet/publiek/roadmap.deck">View ou roadmap</a>
+              href="/niet/publiek/roadmap.deck">Check the roadmap</a>
             <a
               style={{
                 color: '#B8202E',
@@ -82,7 +82,7 @@ export default function Home({artworks}:{artworks:string[]}) {
                 borderRadius: '20px',
                 fontWeight: 'bold'
               }}
-              href="#collection">View collection</a>
+              href="#collection">Mint coming</a>
           </div>
         </div>
         <Image
@@ -101,12 +101,12 @@ export default function Home({artworks}:{artworks:string[]}) {
           maxWidth: '100%',
           fontSize: '1.3rem'
         }}>
-          <DataCard value={'3'} label={'Eggs'}/>
-          <DataCard value={'375g'} label={'Milk'}/>
+          <DataCard value={'4444'} label={'Waffles'}/>
+          <DataCard value={'4200'} label={'Available'}/>
           <DataCard value={'375g'} label={'Water'}/>
-          <DataCard value={'20g'} label={'Fresh Yeast'}/>
-          <DataCard value={'450g'} label={'Flour'}/>
-          <DataCard value={'150g'} label={'Butter'}/>
+          <DataCard value={'140+'} label={'Unique Traits'}/>
+          <DataCard value={'TBA'} label={'Mint Date'}/>
+          <DataCard value={'2'} label={'Solana'}/>
         </div>
       </Section>
       <Section title={'Roadmap'} id={"roadmap"}>
