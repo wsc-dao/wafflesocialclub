@@ -82,7 +82,7 @@ export default function Home({artworks}:{artworks:string[]}) {
                 borderRadius: '20px',
                 fontWeight: 'bold'
               }}
-              href="#collection">Mint coming</a>
+              href="#collection">Mint coming soon</a>
           </div>
         </div>
         <Image
