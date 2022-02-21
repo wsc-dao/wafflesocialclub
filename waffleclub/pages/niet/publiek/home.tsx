@@ -294,7 +294,6 @@ export default function Home({artworks}:{artworks:string[]}) {
         <Details
           question={"What about the ownership of the NFTs ?"}
           content={"Please we invite you to read the terms and conditions page"}
-          url={'test'}
         />
       </Section>
       <AliceCarousel
