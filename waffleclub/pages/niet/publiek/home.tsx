@@ -291,6 +291,11 @@ export default function Home({artworks}:{artworks:string[]}) {
           question={"I got a DM with a link from someone claiming to be a team member, can I trust it?"}
           content={"The answer to your question should be here somewhere, keep looking..."}
         />
+        <Details
+          question={"What about the ownership of the NFTs ?"}
+          content={"Please we invite you to read the terms and conditions page"}
+          url={'test'}
+        />
       </Section>
       <AliceCarousel
         animationDuration={15000}

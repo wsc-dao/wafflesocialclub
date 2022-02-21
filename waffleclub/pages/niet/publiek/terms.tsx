@@ -30,10 +30,8 @@ i. You own the NFT. Each Waffle is an NFT on the Solana blockchain. When you pur
 
       <Section title={'TAXES'} id="TAXES">
       <p>You are solely responsible for all taxes and charges that apply in connection with any Waffle NFT transaction. The creators are not responsible for determining the taxes that may apply to any of your transactions, and offer no representation or warranty that any such transaction will be tax-free or will not otherwise have tax consequences.</p>
-      <p>The Waffle Social Club is not targeted towards children. You agree that you are over the age of eighteen (18), or above the legal age of your jurisdiction, whichever is greater. </p>
       </Section>
       <Section title={'CHILDREN'} id="CHILDREN">
-      <p>You are solely responsible for all taxes and charges that apply in connection with any Waffle NFT transaction. The creators are not responsible for determining the taxes that may apply to any of your transactions, and offer no representation or warranty that any such transaction will be tax-free or will not otherwise have tax consequences.</p>
       <p>The Waffle Social Club is not targeted towards children. You agree that you are over the age of eighteen (18), or above the legal age of your jurisdiction, whichever is greater. </p>
       </Section>
       <Section title={'Terms are subject to change'} id="Terms">
