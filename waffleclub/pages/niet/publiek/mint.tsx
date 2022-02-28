@@ -30,8 +30,8 @@ export default function Home() {
         <title>Waffle Social Club Collection</title>
       </Head>
       <Header/>
-      <Section title={'Waffle Club limited NFTs drop'}/>
-      <Section title="Mint Date : dd/mm/YYYY" id="mint">
+      <Section title={'Waffle Social Club NFTs'}/>
+      <Section title="Exclusive Limited Edition" id="mint">
           <MintContainer
             candyMachineId={candyMachineId}
             connection={connection}

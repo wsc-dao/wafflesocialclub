@@ -52,8 +52,8 @@ export const Hero = ({artworks}: { artworks: string[] }) => {
       <div style={{
         paddingBottom: '250px',
       }}>
-        <h2>Mint date</h2>
-        <time> 12/05/2021 21:00 UTC</time>
+        <h2>Join the Waffle Social Club</h2>
+        <time></time>
       </div>
       <div style={{
         position: "absolute",
