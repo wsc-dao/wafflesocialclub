@@ -1,0 +1,27 @@
+{
+  "name": "Waffle Social Club",
+  "short_name": "WSC",
+  "theme_color": "#be1d2c",
+  "background_color": "#be1d2c",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "logo-red.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo-red.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo-red.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
