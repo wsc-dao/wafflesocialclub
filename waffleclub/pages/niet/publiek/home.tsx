@@ -1,18 +1,18 @@
+import {readdirSync} from "fs";
 import Head from "next/head";
 import Image from "next/image";
+import path from "path";
+import AliceCarousel from "react-alice-carousel";
+import {DataCard} from "../../../components/DataCard";
+import {Details} from "../../../components/Details";
+import {Footer} from "../../../components/Footer";
 import {Header} from "../../../components/Header";
 import {Hero} from "../../../components/Hero";
-import {DataCard} from "../../../components/DataCard";
+import {MemberCard} from "../../../components/MemberCard";
 import {Section} from "../../../components/Section";
 import {Timeline} from "../../../components/Timeline";
-import {MemberCard} from "../../../components/MemberCard";
-import {Footer} from "../../../components/Footer";
 import truck from "../../../public/banner.png";
 import table from "../../../public/whipped_creamdao.png";
-import {Details} from "../../../components/Details";
-import AliceCarousel from "react-alice-carousel";
-import {readdirSync} from "fs";
-import path from "path";
 
 const artworks = ["/transparent/0.png",
   "/transparent/1.png",
@@ -24,6 +24,7 @@ const artworks = ["/transparent/0.png",
   "/transparent/7.png",
   "/transparent/8.png",
   "/transparent/9.png"];
+
 export async function getServerSideProps() {
   const dirRelativeToPublicFolder = 'artwork'
 
@@ -31,13 +32,14 @@ export async function getServerSideProps() {
 
   const filenames = readdirSync(dir);
 
-  const artworks = filenames.map((name:string) => path.join('/', dirRelativeToPublicFolder, name))
+  const artworks = filenames.filter((name: string) => name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.jpeg')).map((name: string) => path.join('/', dirRelativeToPublicFolder, name))
 
   return {
     props: {artworks}, // will be passed to the page component as props
   }
 }
-export default function Home({artworks}:{artworks:string[]}) {
+
+export default function Home({artworks}: { artworks: string[] }) {
   return (
     <>
       <Head>
@@ -322,7 +324,7 @@ export default function Home({artworks}:{artworks:string[]}) {
         autoWidth
         disableButtonsControls
         mouseTracking
-        items={artworks.map((src:string) => <Image key={src} src={src} width={300} height={300} alt={""}/>)}
+        items={artworks.map((src: string) => <Image key={src} src={src} width={300} height={300} alt={""}/>)}
       />
       <Footer/>
     </>
