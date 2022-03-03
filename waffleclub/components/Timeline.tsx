@@ -1,7 +1,7 @@
+import {motion} from "framer-motion";
 import React from 'react';
 import styled from "styled-components";
 import {OffWhite} from "../consts";
-import {motion} from "framer-motion";
 
 const StyledTimeline = styled.div`
   // display: grid;
@@ -109,42 +109,60 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
     }
   }
 `;
-const cardVariants = {
+const cardVariantsLeft = {
   offscreen: {
-    y: 300
+    x: -300,
+    opacity: 0,
   },
   onscreen: {
-    y: 50,
+    x: 0,
+    opacity: 1,
     transition: {
       type: "spring",
       bounce: 0.4,
-      duration: 0.8
+      duration: 1.8
     }
   }
 };
+const cardVariantsRight = {
+  offscreen: {
+    x: 300,
+    opacity: 0,
+  },
+  onscreen: {
+    x: 0,
+    opacity: 1,
 
-function AnimatedTimelineElement(props: { idx: number, selected: boolean, title: string, description: string, callbackfn: (el:any) => JSX.Element }) {
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 1.8
+    }
+  },
+};
+
+function AnimatedTimelineElement(props: { idx: number, selected: boolean, title: string, description: string, callbackfn: (el: any) => JSX.Element }) {
   return (
     <TimelineElement
       even={!!(props.idx % 2)}
       selected={props.selected}
     >
       <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
-    >
-      <motion.div
-        className={`card ${props.idx % 2 ? "left" : "right"}`}
-        variants={cardVariants}>
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{once: true, amount: 0.8}}
+      >
+        <motion.div
+          className={`card ${props.idx % 2 ? "left" : "right"}`}
+          variants={props.idx % 2 ? cardVariantsLeft : cardVariantsRight}>
 
           <h3>{props.title}</h3>
           <ul>{props.description.split("\n").map(props.callbackfn)}</ul>
-    </motion.div>
-    </motion.div>
+        </motion.div>
+      </motion.div>
     </TimelineElement>
 
-);
+  );
 }
 
 export const Timeline = () => <StyledTimeline>
