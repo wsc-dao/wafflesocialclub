@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {useMemo} from "react";
 import styled from "styled-components";
 import {YellowCream} from "../consts";
@@ -57,7 +58,7 @@ export const Footer = () => {
     />
     <p>
       ©WaffleSocialClub {year}. All Rights Reserved.<br/>
-      <a href="/niet/publiek/terms">Terms and conditions</a>
+      <Link href="/niet/publiek/terms">Terms and conditions</Link>
     </p>
     <Socials/>
   </StyledFooter>;
