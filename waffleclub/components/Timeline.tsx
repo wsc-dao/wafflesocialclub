@@ -170,28 +170,28 @@ export const Timeline = () => <StyledTimeline>
     {
       title: 'December 2021',
       description: 'Gathering the Waffle A-Team\nVision & Utility of the NFT project\nLitepaper’s Creation ',
-      selected: true,
+      selected: false,
     }, {
       title: 'January 2021',
       description: 'Setting Social Networks (Discord / Twitter / FB / …)\nAssets and Traits definitions\nArtist & Artwork choice\nMarketing Planning ',
-      selected: true,
+      selected: false,
     },
     {
       title: 'February 2022',
       description: 'Community Building\nStreet Marketing Campaign\nPartnerships (Influencers, Companies,...)\nWebsite Development\nDevnet Testing',
-      selected: true,
+      selected: false,
     }, {
       title: 'March 2022',
       description: 'Waffle Reveal\nWebsite & Litepaper Reveal\nInfluencer Marketing Campaign\nGiveaway & Contest\nRarity agreement',
-      selected: false,
+      selected: true,
     }, {
       title: 'April 2022',
       description: 'Mainnet Deployment\nMint Release',
-      selected: false,
+      selected: true,
     }, {
       title: '2022-2023',
       description: 'More coming soon',
-      selected: false,
+      selected: true,
     }
   ].map(({title, description, selected}, idx) => (
     <div key={`${title}-${idx}`} className={`row ${idx % 2 ? 'even' : 'odd'}`}>
