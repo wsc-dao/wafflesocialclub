@@ -39,7 +39,8 @@ const StyledSection = styled.section<{ flex?: boolean }>`
     > span {
       max-width: 90%;
       width: 100%!important;
-      box-shadow: 0 0 20px ${OffWhite};
+      filter: drop-shadow(0 0 20px ${OffWhite});
+    
       border-radius: 20px;
       @media (min-width: 778px) {
         max-width: 45%;
