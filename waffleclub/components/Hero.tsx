@@ -52,7 +52,7 @@ export const Hero = ({artworks}: { artworks: string[] }) => {
         paddingBottom: '250px',
       }}>
         <h2>Join the Waffle Social Club</h2>
-        <h3></h3>
+        <time/>
       </div>
       <div style={{
         position: "absolute",
