@@ -168,29 +168,29 @@ function AnimatedTimelineElement(props: { idx: number, selected: boolean, title:
 export const Timeline = () => <StyledTimeline>
   {[
     {
-      title: 'November 2021',
-      description: 'Final team composition',
+      title: 'December 2021',
+      description: 'Gathering the Waffle A-Team\nVision & Utility of the NFT project\nLitepaper’s Creation ',
       selected: true,
     }, {
-      title: 'December 2021',
-      description: 'Teammeeting',
+      title: 'January 2021',
+      description: 'Setting Social Networks (Discord / Twitter / FB / …)\nAssets and Traits definitions\nArtist & Artwork choice\nMarketing Planning ',
       selected: true,
     },
     {
-      title: 'January 2022',
-      description: 'Artist selected\nTrait listing',
+      title: 'February 2022',
+      description: 'Community Building\nStreet Marketing Campaign\nPartnerships (Influencers, Companies,...)\nWebsite Development\nDevnet Testing',
       selected: true,
     }, {
-      title: 'February 2022',
-      description: 'Coming soon page\n',
+      title: 'March 2022',
+      description: 'Waffle Reveal\nWebsite & Litepaper Reveal\nInfluencer Marketing Campaign\nGiveaway & Contest\nRarity agreement',
       selected: false,
     }, {
-      title: 'Oktober 2021',
-      description: 'Artwork\nWebsite',
+      title: 'April 2022',
+      description: 'Mainnet Deployment\nMint Release',
       selected: false,
     }, {
-      title: 'November 2021',
-      description: 'Marketing plan\nScaling',
+      title: '2022-2023',
+      description: 'More coming soon',
       selected: false,
     }
   ].map(({title, description, selected}, idx) => (
