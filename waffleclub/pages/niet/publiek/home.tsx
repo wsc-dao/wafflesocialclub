@@ -111,7 +111,7 @@ export default function Home({artworks}: { artworks: string[] }) {
         </p>
         <Timeline/>
       </Section>
-      <Section title={'THE PRIVATE UNDERGROUND CLUB'} flex>
+      <Section title={'THE PRIVATE UNDERGROUND CLUB'} flex className={"private-club"}>
         <div>
           <p>
             Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also

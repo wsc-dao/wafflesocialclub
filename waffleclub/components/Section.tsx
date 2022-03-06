@@ -38,12 +38,38 @@ const StyledSection = styled.section<{ flex?: boolean }>`
 
     > span {
       max-width: 90%;
-      width: 100%!important;
+      width: 100% !important;
       filter: drop-shadow(0 0 20px ${OffWhite});
-    
       border-radius: 20px;
+      
       @media (min-width: 778px) {
         max-width: 45%;
+      }
+    }
+  }
+
+  &.private-club {
+
+    .content {
+      justify-content: space-evenly;
+
+      p {
+        max-width: 650px;
+        margin: auto;
+        margin-block-end: 1rem;
+      }
+
+      > span {
+        @media (min-width: 800px) {
+          background: green;
+          max-width: 40%;
+        }
+        @media (min-width: 1100px) {
+          max-width: 25%;
+          background: red;
+        }
+
+
       }
     }
   }
@@ -54,9 +80,10 @@ export const Section = ({
                           children,
                           contentStyle,
                           flex,
+                          className,
                           ...props
-                        }: { flex?: boolean; title?: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any }) =>
-  <StyledSection flex={flex} {...props}>
+                        }: { flex?: boolean; title?: string; children?: JSX.Element[] | JSX.Element; id?: string; style?: any; contentStyle?: any; className?: string }) =>
+  <StyledSection flex={flex} {...props} className={className}>
     {title && <h2>{title}</h2>}
     <div className="content" style={contentStyle || undefined}>
       {children}
