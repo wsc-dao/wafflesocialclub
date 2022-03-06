@@ -103,7 +103,7 @@ export default function Home({artworks}: { artworks: string[] }) {
       </Section>
       <Section title={'Roadmap'} id={"roadmap"}>
         <p>Inspired by BAYC, the Waffle grants you an <strong>exclusive membership</strong> to the private{' '}
-          <acronym title="Wafle Social Club">WSC</acronym>, giving you decisional power in the WaffleDAO* and access to
+          <abbr title="Wafle Social Club">WSC</abbr>, giving you decisional power in the WaffleDAO* and access to
           <strong> increasing benefits and projects</strong>.
         </p>
         <p>
