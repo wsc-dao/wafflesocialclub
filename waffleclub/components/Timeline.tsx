@@ -62,12 +62,13 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
 
   .card {
     position: relative;
+    text-align: left;
     z-index: 4;
     margin-top: 3rem;
     margin-bottom: 3rem;
     background: #f5d8ad;
     padding: 1rem 2rem;
-    max-width: 350px;
+    max-width: 100%;
     border-radius: 10px;
     box-shadow: #c9b99f 0 0 25px 0;
     margin-left: 25px;
@@ -92,7 +93,10 @@ const TimelineElement = styled.div<{ even: boolean; selected: boolean; }>`
       text-align: center;
       top: 0;
       z-index: 2;
-      left: 0;
+      left: -25px;
+      @media (min-width: 778px) {
+        left: 0;
+      }
       transform: translate3d(-50%, 50%, 0);
 
       @media (min-width: 778px) {

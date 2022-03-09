@@ -41,7 +41,7 @@ const StyledSection = styled.section<{ flex?: boolean }>`
       width: 100% !important;
       filter: drop-shadow(0 0 20px ${OffWhite});
       border-radius: 20px;
-      
+
       @media (min-width: 778px) {
         max-width: 45%;
       }
@@ -68,9 +68,24 @@ const StyledSection = styled.section<{ flex?: boolean }>`
           max-width: 25%;
           background: red;
         }
-
-
       }
+    }
+  }
+
+  &.faq {
+    display: block;
+    @media (min-width: 778px) {
+      display: grid;
+    }
+  }
+
+  &.terms {
+    p, ol {
+      max-width: 850px;
+      margin: auto;
+    }
+    li{
+      margin-top: 2rem;
     }
   }
 `;

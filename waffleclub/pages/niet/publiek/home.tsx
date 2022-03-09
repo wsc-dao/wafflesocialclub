@@ -2,7 +2,10 @@ import {readdirSync} from "fs";
 import Head from "next/head";
 import Image from "next/image";
 import path from "path";
+import {FC, useState} from "react";
 import AliceCarousel from "react-alice-carousel";
+import {AssetViewer} from "../../../components/AssetViewer";
+import {Carousel} from "../../../components/Carousel";
 import {DataCard} from "../../../components/DataCard";
 import {Details} from "../../../components/Details";
 import {Footer} from "../../../components/Footer";
@@ -14,21 +17,36 @@ import {Timeline} from "../../../components/Timeline";
 import truck from "../../../public/banner.png";
 import table from "../../../public/whipped_creamdao.png";
 
-export async function getServerSideProps() {
-  const dirRelativeToPublicFolder = 'artwork'
-
+const getImagesFromFolder = (dirRelativeToPublicFolder: string) => {
   const dir = path.resolve('./public', dirRelativeToPublicFolder);
-
   const filenames = readdirSync(dir);
+  return filenames.filter((name: string) => name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.jpeg')).map((name: string) => path.join('/', dirRelativeToPublicFolder, name))
+}
 
-  const artworks = filenames.filter((name: string) => name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.jpeg')).map((name: string) => path.join('/', dirRelativeToPublicFolder, name))
-
+export async function getServerSideProps() {
+  const artworks = getImagesFromFolder('artwork');
+  const accessories = getImagesFromFolder('waffle-assets/accessories');
+  const base = getImagesFromFolder('waffle-assets/base');
+  const body = getImagesFromFolder('waffle-assets/body');
+  const eyes = getImagesFromFolder('waffle-assets/eyes');
+  const head = getImagesFromFolder('waffle-assets/head');
+  const mouth = getImagesFromFolder('waffle-assets/mouth');
   return {
-    props: {artworks}, // will be passed to the page component as props
+    props: {
+      artworks,
+      assets: {
+        accessories,
+        base,
+        body,
+        eyes,
+        head,
+        mouth,
+      }
+    }, // will be passed to the page component as props
   }
 }
 
-export default function Home({artworks}: { artworks: string[] }) {
+export default function Home({artworks, assets}: { artworks: string[]; assets: any }) {
   return (
     <>
       <Head>
@@ -142,53 +160,7 @@ export default function Home({artworks}: { artworks: string[] }) {
           Each waffle will be unique and programmatically generated from over 1xx singular and possible traits. All
           waffles are yummy but some will be rarer and tastier than others.
         </p>
-        <div style={{overflow: 'auto'}}>
-          <table style={{
-            margin: 'auto',
-            width: '650px',
-            maxWidth: '100%',
-          }}>
-            <thead>
-            <tr>
-              <th>COMMON</th>
-              <th>UNCOMMON</th>
-              <th>RARE</th>
-              <th>EPIC</th>
-              <th>LEGENDARY</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Agreeable</td>
-              <td>Flavorful</td>
-              <td>Tasty</td>
-              <td>Delightful</td>
-              <td>Heavenly</td>
-            </tr>
-            <tr>
-              <td>Pleasant</td>
-              <td>Appetizing</td>
-              <td>Yummy</td>
-              <td>Mouthwatering</td>
-              <td>Luscious</td>
-            </tr>
-            <tr>
-              <td/>
-              <td/>
-              <td>Savory</td>
-              <td>Delicious</td>
-              <td>Ambrosial</td>
-            </tr>
-            <tr>
-              <td/>
-              <td/>
-              <td/>
-              <td>Delish</td>
-              <td/>
-            </tr>
-            </tbody>
-          </table>
-        </div>
+        <AssetViewer assets={assets}/>
       </Section>
 
       <Section
@@ -248,10 +220,11 @@ export default function Home({artworks}: { artworks: string[] }) {
       <Section
         title={'FAQ'}
         id="faq"
+        className={'faq'}
         contentStyle={{
           display: 'grid',
-          maxWidth: '1500px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr) )',
+          maxWidth: '100%',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr) )',
           gap: '2rem',
           alignItems: 'baseline',
         }}

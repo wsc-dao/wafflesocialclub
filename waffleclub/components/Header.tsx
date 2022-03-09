@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Link from "next/link";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
+import Link from "next/link";
 import {useCallback, useEffect, useState} from "react";
+import styled from "styled-components";
 import {Red, YellowCream} from "../consts";
 
 const CustomHeader = styled.header<{ scrolled: Boolean }>`
@@ -22,10 +22,42 @@ const CustomHeader = styled.header<{ scrolled: Boolean }>`
     .menu-button {
       position: absolute;
       z-index: 2;
-      right: 1rem;
-      top: 1rem;
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+
       @media (min-width: 778px) {
         display: none;
+      }
+
+      span, span:before, span:after {
+        position: relative;
+        height: 5px;
+        display: block;
+        width: 2rem;
+        border-radius: 5px;
+        background: ${YellowCream};
+      }
+
+      span:before, span:after {
+        content: ' ';
+        width: 120%;
+        position: absolute;
+        left: -10%;
+        height: 7px;
+
+      }
+
+      span:after {
+        position: absolute;
+        bottom: -13px;
+      }
+
+      span:before {
+        position: absolute;
+        top: -13px;
       }
     }
 
@@ -158,7 +190,7 @@ export const Header = ({home,}: HeaderProps) => {
         </Link>
         <li><Link href={'/niet/publiek/roadmap.deck'}>Lite paper</Link></li>
         <li><Link href={'/niet/publiek/home#roadmap'}>Roadmap</Link></li>
-        <li><Link href={'/niet/publiek/mint'}>Mint</Link></li>
+        {/*<li><Link href={'/niet/publiek/mint'}>Mint</Link></li>*/}
         <li><Link href={'/niet/publiek/home#team'}>Waffle Team</Link></li>
         <li><Link href={'/niet/publiek/home#faq'}>FAQ</Link></li>
         <li>
@@ -167,7 +199,7 @@ export const Header = ({home,}: HeaderProps) => {
           </div>
         </li>
       </ul>
-      <button className={'menu-button'} onClick={() => setOpen(!open)}>menu</button>
+      <button className={'menu-button'} onClick={() => setOpen(!open)}><span/></button>
     </nav>
   </CustomHeader>
 }

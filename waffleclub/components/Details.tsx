@@ -19,6 +19,7 @@ const CustomDetails = styled.details`
   summary {
     h3 {
       display: inline;
+     font-size: 1.1rem;
     }
   }
 
