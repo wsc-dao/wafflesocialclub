@@ -1,26 +1,20 @@
-import React, {useEffect, useRef, useState} from "react";
+import Head from "next/head";
 import {getDocument, GlobalWorkerOptions, version} from "pdfjs-dist";
+import React, {useEffect, useRef} from "react";
+import {Footer} from "../../../components/Footer";
+import {Header} from "../../../components/Header";
 
 GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.min.js`;
 
 const Roadmap = () => {
   let renderedPdf;
   const pageRenderRef = useRef<HTMLDivElement>(null)
-  const canvas = useRef<HTMLCanvasElement>(null);
-  //const pageRenderRef = useRef(null);
   const DEFAULT_SCALE = 1;
-  const [progressTxt, setprogressTxt] = useState("");
 
   useEffect(() => {
     console.log("load PDF");
-    getPDFData();
+    downloadPDFFromURL("/Litepaper_WSC-SQ.pdf");
   });
-
-  const getPDFData = () => {
-    // can be web URL
-    const url = "/Litepaper_WSC-SQ.pdf";
-    downloadPDFFromURL(url);
-  };
 
   const downloadPDFFromURL = (url: any) => {
     const xhrObj = new XMLHttpRequest();
@@ -56,14 +50,6 @@ const Roadmap = () => {
     console.log("File download started");
   };
 
-/*
-  const progressFunction = async (event: { lengthComputable: any; loaded: number; total: number; }) => {
-      if (event.lengthComputable) {
-        const progress = Math.round((event.loaded / event.total) * 100) + "%";
-        setprogressTxt(progress);
-      }
-    }; */
-
   const downloadError = () => {
     console.log("Network Error!");
   };
@@ -77,8 +63,7 @@ const Roadmap = () => {
   };
 
   const loadPDFWithBlob = (pdfData: any) => {
-    const encodedPDF = pdfData;
-    const encodedData = encodedPDF.split(",");
+    const encodedData = pdfData.split(",");
     if (encodedData[1] !== undefined) {
       const pdfbase64 = atob(encodedData[1]);
       showPDFInCanvas(pdfbase64);
@@ -115,62 +100,6 @@ const Roadmap = () => {
       pdf.getPage(pageNo).then(async (page) => {
         const viewport = page.getViewport({scale: DEFAULT_SCALE});
 
-        /*
-                let canvasInHTML = {
-                  canvas,
-                  ctx: undefined
-                };
-                */
-
-
-        /*
-        const canvasInHTML = useRef<HTMLCanvasElement>(null);
-        const [ctx, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
-
-        useEffect(() => {
-            if (canvasInHTML.current) {
-              const ctx = canvasInHTML.current.getContext('2d');
-
-              if (ctx) {
-                setContext(ctx);
-              }
-            }
-          }, [ctx]);
-
-        /*
-        const canvasInHTML = React.useRef<HTMLCanvasElement>(null);
-
-        const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
-        const renderCtx = canvasInHTML.current.getContext('2d');
-
-        useEffect(() => {
-            if (canvasInHTML.current) {
-              const renderCtx = canvasInHTML.current.getContext('2d');
-
-              if (renderCtx) {
-                setContext(renderCtx);
-              }
-            }
-          }, [context]);
-          */
-        /*
-        const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
-
-        const canvas = canvasInHTML.current;
-          useEffect(() => {
-            if (canvasInHTML.current) {
-                const canvas = canvasInHTML.current;
-                const ctx = canvas.getContext('2d');
-                if (ctx) {
-                    setContext(ctx);
-                  }
-            }
-        }, [context]);
-
-        const test = context
-
-        //const canvasInHTML.canvas = React.useRef<HTMLCanvasElement>(null);
-        */
         let canvasInHTML = {
           canvas: undefined as any,
           ctx: undefined as any
@@ -185,10 +114,6 @@ const Roadmap = () => {
 
         canvasInHTML.canvas.height = viewport.height;
         canvasInHTML.canvas.width = viewport.width;
-        //let canvas = document.getElementById('canvas') as HTMLCanvasElement;
-        //let ctx = canvas.getContext("2d");
-        //canvas.height = viewport.height;
-        //canvas.width = viewport.width;
 
         li.appendChild(canvasInHTML.canvas);
         container.appendChild(li);
@@ -233,9 +158,20 @@ const Roadmap = () => {
   };
 
   return (
-    <div>
-      <div ref={pageRenderRef}></div>
-    </div>
+    <>
+      <Head>
+        <title>Roadmap | Waffle Social Club</title>
+        <style>{`
+          canvas{
+            margin: auto;
+            display: block;
+          `}
+        </style>
+      </Head>
+      <Header home={true}/>
+      <div ref={pageRenderRef} style={{background: '#231f20'}}/>
+      <Footer/>
+    </>
   );
 };
 

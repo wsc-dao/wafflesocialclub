@@ -2,7 +2,10 @@ import {readdirSync} from "fs";
 import Head from "next/head";
 import Image from "next/image";
 import path from "path";
+import {FC, useState} from "react";
 import AliceCarousel from "react-alice-carousel";
+import {AssetViewer} from "../../../components/AssetViewer";
+import {Carousel} from "../../../components/Carousel";
 import {DataCard} from "../../../components/DataCard";
 import {Details} from "../../../components/Details";
 import {Footer} from "../../../components/Footer";
@@ -14,32 +17,36 @@ import {Timeline} from "../../../components/Timeline";
 import truck from "../../../public/banner.png";
 import table from "../../../public/whipped_creamdao.png";
 
-const artworks = ["/transparent/0.png",
-  "/transparent/1.png",
-  "/transparent/2.png",
-  "/transparent/3.png",
-  "/transparent/4.png",
-  "/transparent/5.png",
-  "/transparent/6.png",
-  "/transparent/7.png",
-  "/transparent/8.png",
-  "/transparent/9.png"];
+const getImagesFromFolder = (dirRelativeToPublicFolder: string) => {
+  const dir = path.resolve('./public', dirRelativeToPublicFolder);
+  const filenames = readdirSync(dir);
+  return filenames.filter((name: string) => name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.jpeg')).map((name: string) => path.join('/', dirRelativeToPublicFolder, name))
+}
 
 export async function getServerSideProps() {
-  const dirRelativeToPublicFolder = 'artwork'
-
-  const dir = path.resolve('./public', dirRelativeToPublicFolder);
-
-  const filenames = readdirSync(dir);
-
-  const artworks = filenames.filter((name: string) => name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.jpeg')).map((name: string) => path.join('/', dirRelativeToPublicFolder, name))
-
+  const artworks = getImagesFromFolder('artwork');
+  const accessories = getImagesFromFolder('waffle-assets/accessories');
+  const base = getImagesFromFolder('waffle-assets/base');
+  const body = getImagesFromFolder('waffle-assets/body');
+  const eyes = getImagesFromFolder('waffle-assets/eyes');
+  const head = getImagesFromFolder('waffle-assets/head');
+  const mouth = getImagesFromFolder('waffle-assets/mouth');
   return {
-    props: {artworks}, // will be passed to the page component as props
+    props: {
+      artworks,
+      assets: {
+        accessories,
+        base,
+        body,
+        eyes,
+        head,
+        mouth,
+      }
+    }, // will be passed to the page component as props
   }
 }
 
-export default function Home({artworks}: { artworks: string[] }) {
+export default function Home({artworks, assets}: { artworks: string[]; assets: any }) {
   return (
     <>
       <Head>
@@ -47,7 +54,7 @@ export default function Home({artworks}: { artworks: string[] }) {
       </Head>
       <Header home={true}/>
       <Hero artworks={artworks}/>
-      <Section title={'WELCOME TO THE WAFFLE CLUB'} flex>
+      <Section title={'WELCOME TO THE WAFFLE SOCIAL CLUB'} flex>
         <div
           style={{
             gap: '2rem',
@@ -56,14 +63,15 @@ export default function Home({artworks}: { artworks: string[] }) {
             justifyContent: "space-between",
             alignItems: "center"
           }}>
-          <p>Waffle Club is a collection of 4343 delicious Waffle NFTs - unique and delicious crypto-art, freshly
-            baked
-            on the Solana blockchain. Made with hand-picked ingredients to offer high quality products. It’s best to
-            eat
-            them now when it’s still warm. Go treat yourself!
+          <p>
+            <strong>Waffle Social Club </strong>is a collection of <strong>4343 delicious Waffle NFTs</strong> - unique
+            and delicious
+            <em> crypto-art</em>, freshly baked on the <strong>Solana blockchain</strong>. Made with hand-picked
+            ingredients to offer high quality
+            products. It’s best to eat them now when it’s still warm. <em>Go treat yourself!</em>
           </p>
           <p>
-            Lekker!
+            <strong>Lekker!</strong>
           </p>
           <div style={{display: 'flex', justifyContent: 'space-evenly', width: '100%'}}>
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
@@ -112,27 +120,27 @@ export default function Home({artworks}: { artworks: string[] }) {
         </div>
       </Section>
       <Section title={'Roadmap'} id={"roadmap"}>
-        <p>Inspired by BAYC, the Waffle grants you an exclusive membership to the private Waffle Club, giving you
-          decisional power in the WaffleDAO* and access to increasing benefits and projects.
+        <p>Inspired by BAYC, the Waffle grants you an <strong>exclusive membership</strong> to the private{' '}
+          <abbr title="Wafle Social Club">WSC</abbr>, giving you decisional power in the WaffleDAO* and access to
+          <strong> increasing benefits and projects</strong>.
         </p>
         <p>
-          The plan is to draw together the roadmap path.
+          <strong>The plan is to draw together the roadmap path.</strong>
         </p>
         <Timeline/>
       </Section>
-      <Section title={'THE PRIVATE UNDERGROUND CLUB'} flex>
+      <Section title={'THE PRIVATE UNDERGROUND CLUB'} flex className={"private-club"}>
         <div>
           <p>
-            Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also an exclusive
-            membership to a 4000+ members private club.
+            Owning your waffle, it’s not only an avatar and a provably-rare piece of art, it’s also
+            an <strong> exclusive membership</strong> to a 4000+ members <em> private club</em>.
           </p>
           <p>
-            Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads: a
-            permanent gallery to showcase and deal our NFTs, an underground and secret (not so secret anymore heh)
-            fight
-            club for members to meet-up, the privatization of the Atomium for member-exclusive parties, and much more
-            …
-            What we do is what you want as the WaffleDAO.
+            Events will be cooked to bring the community closer. Ideas and plans are already boiling in our heads:
+            a<strong> permanent gallery</strong> to showcase and deal our NFTs, an <strong> underground and
+            secret</strong> (not so secret anymore heh) fight club for members to meet-up, the privatization of the
+            Atomium for member-exclusive parties, and much more…<br/><em>What we will do, will be you, as the WaffleDAO,
+            want us to do.</em>
           </p>
 
         </div>
@@ -152,53 +160,7 @@ export default function Home({artworks}: { artworks: string[] }) {
           Each waffle will be unique and programmatically generated from over 1xx singular and possible traits. All
           waffles are yummy but some will be rarer and tastier than others.
         </p>
-        <div style={{overflow: 'auto'}}>
-          <table style={{
-            margin: 'auto',
-            width: '650px',
-            maxWidth: '100%',
-          }}>
-            <thead>
-            <tr>
-              <th>COMMON</th>
-              <th>UNCOMMON</th>
-              <th>RARE</th>
-              <th>EPIC</th>
-              <th>LEGENDARY</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Agreeable</td>
-              <td>Flavorful</td>
-              <td>Tasty</td>
-              <td>Delightful</td>
-              <td>Heavenly</td>
-            </tr>
-            <tr>
-              <td>Pleasant</td>
-              <td>Appetizing</td>
-              <td>Yummy</td>
-              <td>Mouthwatering</td>
-              <td>Luscious</td>
-            </tr>
-            <tr>
-              <td/>
-              <td/>
-              <td>Savory</td>
-              <td>Delicious</td>
-              <td>Ambrosial</td>
-            </tr>
-            <tr>
-              <td/>
-              <td/>
-              <td/>
-              <td>Delish</td>
-              <td/>
-            </tr>
-            </tbody>
-          </table>
-        </div>
+        <AssetViewer assets={assets}/>
       </Section>
 
       <Section
@@ -258,10 +220,11 @@ export default function Home({artworks}: { artworks: string[] }) {
       <Section
         title={'FAQ'}
         id="faq"
+        className={'faq'}
         contentStyle={{
           display: 'grid',
-          maxWidth: '1500px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr) )',
+          maxWidth: '100%',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr) )',
           gap: '2rem',
           alignItems: 'baseline',
         }}
