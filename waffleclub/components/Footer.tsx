@@ -8,7 +8,10 @@ import {Socials} from "./Socials";
 
 const StyledFooter = styled.footer`
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
+  @media (min-width: 778px) {
+    flex-direction: row;
+  }
   justify-content: space-between;
   align-items: center;
   padding: 6rem 0;
