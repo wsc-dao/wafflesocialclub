@@ -221,13 +221,6 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
         title={'FAQ'}
         id="faq"
         className={'faq'}
-        contentStyle={{
-          display: 'grid',
-          maxWidth: '100%',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr) )',
-          gap: '2rem',
-          alignItems: 'baseline',
-        }}
       >
         <Details
           question={"What is a NFT ?"}

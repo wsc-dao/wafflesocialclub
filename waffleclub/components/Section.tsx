@@ -73,9 +73,16 @@ const StyledSection = styled.section<{ flex?: boolean }>`
   }
 
   &.faq {
-    display: block;
-    @media (min-width: 778px) {
-      display: grid;
+    .content {
+      max-width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      @media (min-width: 778px) {
+        display: grid;
+      }
     }
   }
 
@@ -84,7 +91,8 @@ const StyledSection = styled.section<{ flex?: boolean }>`
       max-width: 850px;
       margin: auto;
     }
-    li{
+
+    li {
       margin-top: 2rem;
     }
   }
