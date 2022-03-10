@@ -21,6 +21,16 @@ const StyledAssetViewer = styled.div`
   justify-content: space-between;
   gap: 4rem;
   padding-top: 1rem;
+  flex-direction: column;
+  max-width: 100vw;
+
+  .swiper {
+    width: 100%;
+  }
+
+  @media (min-width: 778px) {
+    flex-direction: row;
+  }
 
   ul {
     list-style: none;

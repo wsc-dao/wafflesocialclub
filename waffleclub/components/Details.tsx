@@ -3,15 +3,15 @@ import styled from "styled-components";
 import {OffWhite} from "../consts";
 
 export const Details = (props: { question: string; content: string | ReactElement<any, string | JSXElementConstructor<any>> | ReactNodeArray; }) => (
-  <CustomDetails>
+  <StyledDetails>
     <summary><h3 style={{display: 'inline'}}>{props.question}</h3></summary>
     <div className="details">
       {props.content}
     </div>
-  </CustomDetails>
+  </StyledDetails>
 );
 
-const CustomDetails = styled.details`
+const StyledDetails = styled.details`
   background: ${OffWhite};
   border-radius: 20px;
   padding: 15px 15px 15px 45px;
