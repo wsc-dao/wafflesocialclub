@@ -113,7 +113,7 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
         }}>
           <DataCard value={'4444'} label={'Waffles'}/>
           <DataCard value={'4200'} label={'Available'}/>
-          <DataCard value={'375g'} label={'Milk'}/>
+          <DataCard value={'Made In'} label={'Belgium'}/>
           <DataCard value={'140+'} label={'Unique Traits'}/>
           <DataCard value={'TBA'} label={'Mint Date'}/>
           <DataCard value={'2'} label={'Solana'}/>
