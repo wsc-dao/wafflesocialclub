@@ -223,50 +223,50 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
         className={'faq'}
       >
         <Details
-          question={"What is a NFT ?"}
+          question={"What is a NFT?"}
           content={"NFTs (Non-Fungible Tokens) are one-of-a-kind tokens that represent a unique good or asset, like digital art. They can be sold to collectors and the sale of NFTs. Our NFTs will be create by minting and are hosted on the Solana blockchain."}/>
         <Details
-          question={"What is a wallet ?"}
+          question={"What is a wallet?"}
           content={"A wallet is the digital storage where all your NFTs are saved for you in one place to access them. It's like your very own digital safe."}
         />
         <Details
-          question={"How can I get more detailed information ?"}
+          question={"How can I get more detailed information?"}
           content={"You can join us on Discord and ask us anything"}
         />
         <Details
-          question={"When will I be able to bake my very own waffle ?"}
+          question={"When will I be able to bake my very own waffle?"}
           content={"Follow our social media to be the first informed of the reveal date."}
         />
         <Details
-          question={"How do I access my NFT ?"}
+          question={"How do I access my NFT?"}
           content={"1) Access your wallet by clicking the Phantom icon button just right from the address bar of your browser 2) Open your wallet by entering your password 3) Open your NFT collection by clicking the gallery button (four small squares)"}
         />
         <Details
-          question={"What can I do with my waffle NFT after minting ?"}
+          question={"What can I do with my waffle NFT after minting?"}
           content={"You can keep your waffle to get exclusive access to the Waffle Social Club and meet the membres of the community during our splendid events. You can also share it, gift it or sell it directly from your wallet on to the secondary market. There you can see what your NFT is worth at the moment."}
         />
         <Details
-          question={"What does my Waffle Social Club access offers ?"}
+          question={"What does my Waffle Social Club access offers?"}
           content={"The main goal of the Waffle Social Club is to be an incubator for belgian artists. We would love to shine some light on national talents. The Waffle Social Club will also give you the opportunity to attend splendid events for the community, catered by the community."}
         />
         <Details
-          question={"When will I be able to buy and sell waffles on the secondary market ?"}
+          question={"When will I be able to buy and sell waffles on the secondary market?"}
           content={"We will update you on our social media platforms as soon as our waffles will be available on the secondary market. Join us to stay on top of the news."}
         />
         <Details
-          question={"How to ensure I have the ownership of the NFT ?"}
+          question={"How to ensure I have the ownership of the NFT?"}
           content={"The fundamental idea of an NFT is tracking ownership on-chain. This means your NFT's ownership is directly linked to your wallet address. Please read the conditions and terms page"}
         />
         <Details
-          question={"Where can I see the contract address ?"}
+          question={"Where can I see the contract address?"}
           content={" The contract address will be shared here once the mint begins."}
         />
         <Details
-          question={"I got a DM with a link from someone claiming to be part of the team, can I trust it ?"}
+          question={"I got a DM with a link from someone claiming to be part of the team, can I trust it?"}
           content={"We never send DMs and never ask for a private key or recovery phrase. If someone ask you any personal information claiming to be part of the team, be careful and don't answer. We like our community to be safe."}
         />
         <Details
-          question={"Do we accept Euros ? "}
+          question={"Do we accept Euros? "}
           content={"The main goal of the Waffle Social Club is to be an incubator for belgian artists. We would love to shine some light on national talents. The Waffle Social Club will also give you the opportunity to attend splendid events for the community, catered by the community."}
         />
       </Section>

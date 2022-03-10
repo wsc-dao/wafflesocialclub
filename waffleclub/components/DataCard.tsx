@@ -44,7 +44,7 @@ export const DataCard = ({label, value}: { label: string; value: string; }) => {
   }, [label])
   return <StyledDataCard>
     <div>
-      <Image src={icon} alt=""/>
+      <Image src={icon} alt="" width={icon.height} height={icon.height} />
 
     </div>
     <b>{value}</b>
