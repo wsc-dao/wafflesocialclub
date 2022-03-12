@@ -6,6 +6,10 @@ import {Header} from "../../../components/Header";
 
 GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.min.js`;
 
+export async function getStaticProps() {
+  return {props: {}}
+}
+
 const Roadmap = () => {
   let renderedPdf;
   const pageRenderRef = useRef<HTMLDivElement>(null)
@@ -27,7 +31,7 @@ const Roadmap = () => {
     xhrObj.addEventListener("timeout", downloadTimeout, false);
     xhrObj.addEventListener("abort", downloadAbort, false);
 
-    xhrObj.onreadystatechange = async (event) => {
+    xhrObj.onreadystatechange = async () => {
       try {
         if (xhrObj && xhrObj.status === 400) {
           console.log("download error");
@@ -46,7 +50,7 @@ const Roadmap = () => {
     xhrObj.send(null);
   };
 
-  const loadStartFunction = (event: any) => {
+  const loadStartFunction = () => {
     console.log("File download started");
   };
 
@@ -79,7 +83,7 @@ const Roadmap = () => {
         const pageNo = 0;
         fetchPageNo(pageNo, renderedPdf, container);
       },
-      (error: string) => {
+      () => {
         console.log("PDF error");
       }
     );
@@ -143,7 +147,7 @@ const Roadmap = () => {
     return new Promise((resolve, reject) => {
       let fileReader = new FileReader();
       data = new Blob([data], {type: "application/pdf"});
-      fileReader.onload = (evt) => {
+      fileReader.onload = () => {
         const result = fileReader.result;
         try {
           //fileReader = null; // clear file reader
@@ -165,6 +169,7 @@ const Roadmap = () => {
           canvas{
             margin: auto;
             display: block;
+            width: 100%;
           `}
         </style>
       </Head>
