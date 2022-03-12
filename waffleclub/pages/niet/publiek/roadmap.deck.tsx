@@ -174,7 +174,7 @@ const Roadmap = () => {
         </style>
       </Head>
       <Header home={true}/>
-      <div ref={pageRenderRef} style={{background: '#231f20'}}/>
+      <div ref={pageRenderRef} style={{background: '#231f20', padding: '80px 0 0'}}/>
       <Footer/>
     </>
   );
