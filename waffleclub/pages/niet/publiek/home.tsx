@@ -2,10 +2,8 @@ import {readdirSync} from "fs";
 import Head from "next/head";
 import Image from "next/image";
 import path from "path";
-import {FC, useState} from "react";
 import AliceCarousel from "react-alice-carousel";
 import {AssetViewer} from "../../../components/AssetViewer";
-import {Carousel} from "../../../components/Carousel";
 import {DataCard} from "../../../components/DataCard";
 import {Details} from "../../../components/Details";
 import {Footer} from "../../../components/Footer";
@@ -51,6 +49,18 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
     <>
       <Head>
         <title>Waffle Social Club</title>
+        <style lang="css">{`
+        .btn-group{
+          flex-direction: column;
+          gap: 2rem;
+        }
+        
+        @media (min-width: 778px) {
+          .btn-group{
+            flex-direction: row;
+          }
+        }
+        `}</style>
       </Head>
       <Header home={true}/>
       <Hero artworks={artworks}/>
@@ -73,7 +83,7 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
           <p>
             <strong>Lekker!</strong>
           </p>
-          <div style={{display: 'flex', justifyContent: 'space-evenly', width: '100%'}}>
+          <div className={'btn-group'} style={{display: 'flex', justifyContent: 'space-evenly', width: '100%'}}>
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               style={{
@@ -105,7 +115,7 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
       <Section title={'Statistics & Data'}>
         <div style={{
           display: "grid",
-          gridTemplateColumns: 'repeat( auto-fit, minmax(100px, 1fr) )',
+          gridTemplateColumns: 'repeat( auto-fit, minmax(150px, 1fr) )',
           gap: '2rem',
           alignItems: 'center',
           maxWidth: '100%',
