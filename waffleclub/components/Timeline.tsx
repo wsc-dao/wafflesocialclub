@@ -194,7 +194,7 @@ export const Timeline = () => <StyledTimeline>
       selected: true,
     }, {
       title: '2022-2023',
-      description: 'More coming soon',
+      description: 'Secondary Marketplace\nCommunity Roadmap Definition\nDAO Treasury\nMore coming soon',
       selected: true,
     }
   ].map(({title, description, selected}, idx) => (

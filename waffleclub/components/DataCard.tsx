@@ -30,7 +30,7 @@ export const DataCard = ({label, value}: { label: string; value: string; }) => {
         return Eggs;
       case 'Available':
         return Water;
-      case 'Belgium':
+      case 'In Belgium':
         return Milk;
       case 'Solana':
         return Butter;
