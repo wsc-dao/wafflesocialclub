@@ -123,14 +123,14 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
         }}>
           <DataCard value={'4444'} label={'Waffles'}/>
           <DataCard value={'4200'} label={'Available on hold'}/>
-          <DataCard value={'Made In Belgium'} label={''}/>
           <DataCard value={'140+'} label={'Unique Traits'}/>
           <DataCard value={'TBA'} label={'Mint Date'}/>
-          <DataCard value={'2'} label={'Solana'}/>
+          <DataCard value={'TBD'} label={'Solana'}/>
+          <DataCard value={'Made In Belgium'} label={''}/>
         </div>
       </Section>
       <Section title={'Roadmap'} id={"roadmap"}>
-        <p>Inspired by BAYC, the Waffle grants you an <strong>exclusive membership</strong> to the private{' '}
+        <p>The Waffle grants you an <strong>exclusive membership</strong> to the private{' '}
           <abbr title="Wafle Social Club">WSC</abbr>, giving you decisional power in the WaffleDAO* and access to
           <strong> increasing benefits and projects</strong>.
         </p>
@@ -231,22 +231,10 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
       >
         <Details
           question={"What is a NFT?"}
-          content={"NFTs (Non-Fungible Tokens) are one-of-a-kind tokens that represent a unique good or asset, like digital art. They can be sold to collectors and the sale of NFTs. Our NFTs will be create by minting and are hosted on the Solana blockchain."}/>
-        <Details
-          question={"What is a wallet?"}
-          content={"A wallet is the digital storage where all your NFTs are saved for you in one place to access them. It's like your very own digital safe."}
-        />
-        <Details
-          question={"How can I get more detailed information?"}
-          content={"You can join us on Discord and ask us anything"}
-        />
+          content={"NFTs (Non-Fungible Tokens) are one-of-a-kind tokens that represent a unique good or asset, like digital art with sometimes benefits for the buyers. They can be sold to everyone that has interest in crypto or wants to invest in a project. Our NFTs will be certified on the Solana blockchain. "}/>
         <Details
           question={"When will I be able to bake my very own waffle?"}
-          content={"Follow our social media to be the first informed of the reveal date."}
-        />
-        <Details
-          question={"How do I access my NFT?"}
-          content={"1) Access your wallet by clicking the Phantom icon button just right from the address bar of your browser 2) Open your wallet by entering your password 3) Open your NFT collection by clicking the gallery button (four small squares)"}
+          content={"Follow our announcement on our social media to be the first informed of the exact date in April."}
         />
         <Details
           question={"What can I do with my waffle NFT after minting?"}
@@ -261,12 +249,12 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
           content={"We will update you on our social media platforms as soon as our waffles will be available on the secondary market. Join us to stay on top of the news."}
         />
         <Details
-          question={"How to ensure I have the ownership of the NFT?"}
-          content={"The fundamental idea of an NFT is tracking ownership on-chain. This means your NFT's ownership is directly linked to your wallet address. Please read the conditions and terms page"}
+          question={"Why do we chose Solana Blockchain over Ethereum?"}
+          content={"We wanted to include more people in the project, Ethereum has high fees like 40€ to hundred of euros for just using their blockchain."}
         />
         <Details
-          question={"Where can I see the contract address?"}
-          content={" The contract address will be shared here once the mint begins."}
+          question={"How to ensure I have the ownership of the NFT?"}
+          content={"The fundamental idea of an NFT is tracking ownership on-chain. This means your NFT's ownership is directly linked to your wallet address. Please read the conditions and terms page."}
         />
         <Details
           question={"I got a DM with a link from someone claiming to be part of the team, can I trust it?"}
@@ -274,7 +262,23 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
         />
         <Details
           question={"Do we accept Euros? "}
-          content={"The main goal of the Waffle Social Club is to be an incubator for belgian artists. We would love to shine some light on national talents. The Waffle Social Club will also give you the opportunity to attend splendid events for the community, catered by the community."}
+          content={"In a ways, we can say yes, Moonpay includes the Phantom wallet so you can send a bank transfer directly to them and they transfer you the Solana on your account. After you gonna have the possibility to buy a waffle on the mint page. But I supposed you can ask your crypto friend."}
+        />
+        <Details
+          question={"How can I get more detailed information?"}
+          content={"You can join us on Discord and ask us anything or check our docs on https://docs.wafflesocialclub.be/"}
+        />
+        <Details
+          question={"What is a wallet?"}
+          content={"A wallet is the digital storage where all your NFTs are saved for you in one place to access them. It's like your very own digital safe."}
+        />
+        <Details
+          question={"How do I access my NFT?"}
+          content={"1) Access your wallet by clicking the Phantom icon button just right from the address bar of your browser 2) Open your wallet by entering your password 3) Open your NFT collection by clicking the gallery button (four small squares)"}
+        />
+        <Details
+          question={"Where can I see the contract address?"}
+          content={" The contract address will be shared here once the mint begins."}
         />
       </Section>
       <AliceCarousel
