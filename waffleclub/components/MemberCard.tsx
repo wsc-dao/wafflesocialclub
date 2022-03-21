@@ -1,6 +1,6 @@
+import Image from "next/image";
 import styled from "styled-components";
 import {DarkGrey} from "../consts";
-import Image from "next/image";
 
 export const MemberCard = ({
                              name = 'TBD',
@@ -15,7 +15,7 @@ export const MemberCard = ({
     <div>
       {url ? <a href={url} target={'_blank'} rel="noreferrer"><h3>{name}</h3></a> : <h3>{name}</h3>}
       <p>
-        aka <strong>{title}</strong><br/>
+        The <strong>{title}</strong><br/><br/>
         {role}
       </p>
     </div>
@@ -24,6 +24,8 @@ export const MemberCard = ({
 const Member = styled.article`
   text-align: center;
   position: relative;
+  max-width: 27%;
+  min-width: 270px;
 
   div {
     position: absolute;
