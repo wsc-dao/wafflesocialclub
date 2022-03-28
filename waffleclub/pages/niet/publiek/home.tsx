@@ -122,11 +122,11 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
           fontSize: '1.3rem'
         }}>
           <DataCard value={'4444'} label={'Waffles'}/>
-          <DataCard value={'4200'} label={'Available on hold'}/>
+          <DataCard value={'4200'} label={'On Shelf'}/>
           <DataCard value={'140+'} label={'Unique Traits'}/>
           <DataCard value={'TBA'} label={'Mint Date'}/>
           <DataCard value={'TBD'} label={'Solana'}/>
-          <DataCard value={'Made In Belgium'} label={''}/>
+          <DataCard value={'Belgium'} label={'DNA'}/>
         </div>
       </Section>
       <Section title={'Roadmap'} id={"roadmap"}>
