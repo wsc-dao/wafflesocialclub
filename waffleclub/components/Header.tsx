@@ -193,11 +193,11 @@ export const Header = ({home,}: HeaderProps) => {
         {/*<li><Link href={'/niet/publiek/mint'}>Mint</Link></li>*/}
         <li><Link href={'/niet/publiek/home#team'}>Waffle Team</Link></li>
         <li><Link href={'/niet/publiek/home#faq'}>FAQ</Link></li>
-        <li>
+        {/*<li>
           <div className="balance">
             <WalletMultiButton/>
           </div>
-        </li>
+        </li>*/}
       </ul>
       <button className={'menu-button'} onClick={() => setOpen(!open)}><span/></button>
     </nav>

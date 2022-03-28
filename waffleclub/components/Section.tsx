@@ -74,7 +74,6 @@ const StyledSection = styled.section<{ flex?: boolean }>`
 
   &.faq {
     .content {
-      max-width: 100%;
       grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
       gap: 2rem;
       display: flex;

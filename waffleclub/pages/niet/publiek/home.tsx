@@ -71,19 +71,19 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
             display: "flex",
             flexDirection: 'column',
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "flex-start"
           }}>
           <p>
-            <strong>Waffle Social Club </strong>is a collection of <strong>4343 delicious Waffle NFTs</strong> - unique
+            <strong>Waffle Social Club </strong>is a collection of <strong>4444 delicious Waffle NFTs</strong> - unique
             and delicious
             <em> crypto-art</em>, freshly baked on the <strong>Solana blockchain</strong>. Made with hand-picked
             ingredients to offer high quality
             products. It’s best to eat them now when it’s still warm. <em>Go treat yourself!</em>
           </p>
-          <p>
+          <p style={{margin:0}}>
             <strong>Lekker!</strong>
           </p>
-          <div className={'btn-group'} style={{display: 'flex', justifyContent: 'space-evenly', width: '100%'}}>
+          <div className={'btn-group'} style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               style={{
@@ -122,11 +122,11 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
           fontSize: '1.3rem'
         }}>
           <DataCard value={'4444'} label={'Waffles'}/>
-          <DataCard value={'4200'} label={'Available'}/>
+          <DataCard value={'4200'} label={'On Shelf'}/>
           <DataCard value={'140+'} label={'Unique Traits'}/>
           <DataCard value={'TBA'} label={'Mint Date'}/>
           <DataCard value={'TBD'} label={'Solana'}/>
-          <DataCard value={'Made'} label={'In Belgium'}/>
+          <DataCard value={'Belgium'} label={'DNA'}/>
         </div>
       </Section>
       <Section title={'Roadmap'} id={"roadmap"}>
@@ -176,19 +176,16 @@ export default function Home({artworks, assets}: { artworks: string[]; assets: a
       <Section
         title={'Waffle Team'}
         contentStyle={{
-          display: 'grid',
+         display: 'flex',
           maxWidth: '1500px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr) )',
+        //  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr) )',
           gap: '6rem',
           alignItems: 'baseline',
+          justifyContent:'center',
+          flexWrap:'wrap'
         }}
         id={'team'}
       >
-        <MemberCard
-          name={'WaffleDAO'}
-          title={"our new CEO"}
-          url={'https://twitter.com/WaffleSoClubNFT'}
-        />
         <MemberCard
           url={"https://twitter.com/D3v0_WSC"}
           avatar={"/avatar_1.png"}
