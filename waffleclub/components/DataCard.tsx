@@ -28,9 +28,9 @@ export const DataCard = ({label, value}: { label: string; value: string; }) => {
     switch (label) {
       case 'Waffles':
         return Eggs;
-      case 'Available':
+      case 'On Shelf':
         return Water;
-      case 'In Belgium':
+      case 'DNA':
         return Milk;
       case 'Solana':
         return Butter;

@@ -9,11 +9,24 @@ export const AssetViewer: FC<{ assets: any }> = ({assets}) => {
   return <StyledAssetViewer>
     <ul>
       {Object.keys(assets).map((label) => <li key={label} className={label === selectedZone ? 'active' : ''}
-                                              onClick={() => setSelectedZone(label)}>{label}</li>)}
+      ><Button
+        onClick={() => setSelectedZone(label)}
+        primary={label !== selectedZone} label={label}/></li>)}
     </ul>
     <Carousel images={assets[selectedZone]}/>
   </StyledAssetViewer>
 }
+const Button: FC<any> = ({label, primary, onClick}) => (<a
+  style={{
+    background: primary ? '#B8202E' : '#f5d8ad',
+    color: primary ? '#f5d8ad' : '#B8202E',
+    padding: '12px 16px',
+    borderRadius: '20px',
+    fontWeight: 'bold',
+    marginBottom:'0.2rem',
+    display:'inline-block',
+  }}
+  onClick={onClick}>{label}</a>);
 
 const StyledAssetViewer = styled.div`
   display: flex;
@@ -38,6 +51,7 @@ const StyledAssetViewer = styled.div`
     li {
       cursor: pointer;
       text-transform: uppercase;
+      margin-bottom: 1rem;
 
       &:hover {
         transform: scale(1.1);
@@ -46,6 +60,15 @@ const StyledAssetViewer = styled.div`
 
     .active {
       font-weight: bold;
+      position: relative;
+
+      &:before {
+       // content: '*';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate3d(-200%, -50%, 0);
+      }
     }
   }
 
